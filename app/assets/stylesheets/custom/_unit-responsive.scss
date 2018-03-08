@@ -1,0 +1,23 @@
+//
+// Responsive unit
+// --------------------------------------------------
+
+@include unit-responsive((0: null, $screen-xs-min : xs, $screen-sm-min : sm, $screen-md-min : md, $screen-lg-min : lg, "1500px" : xlg, $screen-xl-min : xl), 12px, 20px);
+
+// Unit Spacing
+//
+
+.unit-spacing-xs {
+  @include unit-spacing((0: null, $screen-xs-min : xs, $screen-sm-min : sm, $screen-md-min : md, $screen-lg-min : lg, "1500px" : xlg, $screen-xl-min : xl), 20px, 40px);
+}
+
+.unit-spacing-sm {
+  @include unit-spacing((0: null, $screen-xs-min : xs, $screen-sm-min : sm, $screen-md-min : md, $screen-lg-min : lg, "1500px" : xlg, $screen-xl-min : xl), 20px, 50px);
+}
+
+.unit-shrink{
+  .unit-left,
+  .unit-right{
+    flex-shrink: 1;
+  }
+}

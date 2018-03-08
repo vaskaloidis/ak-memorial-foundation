@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en" class="wide wow-animation smoothscroll">
+  <head>
+
+    <title>AkMemorialFoundation</title>
+    <%= csrf_meta_tags %>
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <link rel="icon" href="<%= image_path 'favicon.ico' %>" type="image/x-icon">
+
+    <%= stylesheet_link_tag    '//fonts.googleapis.com/css?family=Oswald:300,400,700%7CRoboto:300,300italic,400,700,700italic' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'style.css' %>
+
+		<!--[if lt IE 10]>
+    <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <script src="js/html5shiv.min.js"></script>
+		<![endif]-->
+
+  </head>
+  <body>
+  <!-- Page-->
+  <div class="page text-center">
+    <!-- Page Header-->
+    <header class="page-header">
+      <!-- RD Navbar-->
+      <div class="rd-navbar-wrap">
+        <nav data-layout="rd-navbar-sidebar" data-sm-layout="rd-navbar-sidebar" data-md-layout="rd-navbar-static" data-md-device-layout="rd-navbar-static" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-md-stick-up-offset="36px" data-lg-stick-up-offset="136px" class="rd-navbar-base rd-navbar">
+          <div class="rd-navbar-inner">
+            <!-- RD Navbar Panel-->
+            <div class="rd-navbar-panel">
+              <!-- RD Navbar Toggle-->
+              <button data-rd-navbar-toggle=".rd-navbar-sub-panel" class="rd-navbar-toggle"><span></span></button>
+              <!-- RD Navbar Brand-->
+              <div class="rd-navbar-brand"><a href="index.html" class="reveal-inline-block"><img src="images/logo.png" width="195" height="60" alt=""></a></div>
+              <div data-rd-navbar-toggle=".rd-navbar-contacts" class="rd-navbar-collapse-toggle"><span></span></div>
+              <div class="rd-navbar-contacts">
+                <div class="media p">
+                  <div class="media-left"><span class="icon icon-sm text-gray mdi mdi-phone"></span></div>
+                  <div class="media-body">
+                    <div><a href="callto:#" class="text-base">1-800-1234-567</a></div><a href="callto:#" class="text-base">1-800-6547-321</a>
+                  </div>
+                </div>
+                <div class="media p">
+                  <div class="media-left"><span class="icon icon-sm text-gray mdi mdi-map-marker"></span></div>
+                  <div class="media-body"><a href="#" class="text-base">2130 Fulton Street San Diego, CA 94117-1080 USA</a></div>
+                </div>
+              </div>
+            </div>
+            <div class="rd-navbar-sub-panel">
+              <div class="rd-navbar-sub-panel-inner">
+                <!--RD Navbar Search-->
+                <div class="rd-navbar-search">
+                  <div data-custom-toggle=".rd-search" data-custom-toggle-disable-on-blur="false" class="rd-navbar-search-toggle"><span class="mdi mdi-magnify icon"></span></div>
+                  <form action="search-results.html" data-search-live="rd-search-results-live" method="GET" class="rd-search">
+                    <div class="form-group">
+                      <label for="rd-navbar-search-form-input" class="form-label">Search</label>
+                      <input id="rd-navbar-search-form-input" type="text" name="s" autocomplete="off" class="rd-navbar-search-form-input form-control form-control-gray-lightest">
+                      <button class="mdi mdi-magnify btn icon"></button>
+                    </div>
+                    <div id="rd-search-results-live" class="rd-search-results-live"></div>
+                  </form>
+                </div>
+                <div class="rd-navbar-nav-wrap">
+                  <!-- RD Navbar Nav-->
+                  <ul class="rd-navbar-nav">
+                    <li class="active"><a href="./">Home</a>
+                      <!-- RD Navbar Dropdown-->
+                      <ul class="rd-navbar-dropdown">
+                        <li><a href="index.html">Home variant 1</a></li>
+                        <li><a href="index-2.html">Home variant 2</a></li>
+                        <li><a href="index-3.html">Home variant 3</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="about.html">About</a>
+                      <!-- RD Navbar Dropdown-->
+                      <ul class="rd-navbar-dropdown">
+                        <li><a href="overview.html">Overview</a></li>
+                        <li><a href="experience.html">Experience</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                        <li><a href="careers.html">Careers</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="tee.html">tee times</a></li>
+                    <li><a href="training.html">training</a></li>
+                    <li><a href="#">course</a>
+                      <!-- RD Navbar Dropdown-->
+                      <ul class="rd-navbar-dropdown">
+                        <li><a href="course.html">Course</a></li>
+                        <li><a href="course-single.html">Single course</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">events</a>
+                      <!-- RD Navbar Dropdown-->
+                      <ul class="rd-navbar-dropdown">
+                        <li><a href="events.html">Events</a></li>
+                        <li><a href="event-single.html">Single event</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#">blog</a>
+                      <!-- RD Navbar Dropdown-->
+                      <ul class="rd-navbar-dropdown">
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="blog-modern.html">Modern Blog</a></li>
+                        <li><a href="blog-single-post.html">Single Post</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="">pages</a>
+                      <ul class="rd-navbar-megamenu">
+                        <li>
+                          <h5>Pages</h5>
+                          <ul>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="overview.html">Overview</a></li>
+                            <li><a href="experience.html">Experience</a></li>
+                            <li><a href="faq.html">FAQ</a></li>
+                            <li><a href="careers.html">Careers</a></li>
+                            <li><a href="tee.html">tee times</a></li>
+                            <li><a href="training.html">training</a></li>
+                            <li><a href="search-results.html">Search results</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <h5>Extras</h5>
+                          <ul>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="404.html">404</a></li>
+                            <li><a href="503.html">503</a></li>
+                            <li><a href="maintenance.html">Maintenance</a></li>
+                            <li><a href="soon.html">Coming Soon</a></li>
+                            <li><a href="login.html">Login</a></li>
+                            <li><a href="register.html">Register</a></li>
+                            <li><a href="sitemap.html">Site map</a></li>
+                            <li><a href="privacy.html">Privacy policy</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <h5>Elements</h5>
+                          <ul>
+                            <li><a href="typography.html">Typography</a></li>
+                            <li><a href="buttons.html">Buttons</a></li>
+                            <li><a href="forms.html">Forms</a></li>
+                            <li><a href="grid.html">Grid</a></li>
+                            <li><a href="tabs.html">Tabs</a></li>
+                            <li><a href="bars.html">Progress Bars</a></li>
+                            <li><a href="tables.html">Tables</a></li>
+                          </ul>
+                        </li>
+                        <li>
+                          <h5>Layouts</h5>
+                          <ul>
+                            <li><a href="header-default.html">Default header</a></li>
+                            <li><a href="header-hamburger.html">Header Hamburger Menu</a></li>
+                            <li><a href="header-corporate.html">Header Corporate</a></li>
+                            <li><a href="footer-default.html">Footer default</a></li>
+                            <li><a href="footer-widget.html">Footer Widget</a></li>
+                            <li><a href="footer-corporate.html">Footer corporate</a></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                    <li><a href="contacts.html">Contacts</a></li>
+                  </ul>
+                </div>
+                <div class="rd-navbar-shop"><a href="#"><span class="icon mdi mdi-cart"></span><span class="rd-navbar-shop-counter">0</span></a></div>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <%= yield %>
+
+      <footer class="page-footer text-lg-left rd-google-map-abs">
+        <div class="shell shell-wide section-top-80 section-bottom-40 section-md-bottom-60 section-lg-top-110 section-lg-bottom-110">
+          <div class="range">
+            <div class="cell-xl-2 cell-lg-3">
+              <h6>about</h6>
+              <p class="offset-top-12 offset-lg-top-32">Since the opening of Golfield on August 15, 1995, the Club has become a popular tourist destination attracting golfers. Carved through a forest of eucalyptus and pine trees with the backdrop of the snow-capped Taurus Mountains and an abundance of natural lakes, our club tests all abilities of players.</p>
+            </div>
+            <div class="cell-sm-6 cell-lg-2 cell-xl-preffix-1 offset-top-32 offset-lg-top-0 text-sm-left">
+              <h6>quick links</h6>
+              <ul class="offset-top-12 offset-lg-top-32 list-marked list-marked-lg list-marked-no-padding">
+                <li><a href="about.html">About</a></li>
+                <li><a href="tee.html">Tee Times</a></li>
+                <li><a href="training.html">Training</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contacts.html">Contacts</a></li>
+              </ul>
+            </div>
+            <div class="cell-sm-6 cell-lg-3 cell-xl-2 offset-top-32 offset-lg-top-0 text-sm-left">
+              <h6>contacts</h6>
+              <div class="text-left">
+                <div class="media p offset-top-12 offset-lg-top-32">
+                  <div class="media-left"><span class="icon text-white mdi mdi-map-marker"></span></div>
+                  <div class="media-body"><a href="#" class="text-gray">2130 Fulton Street San Diego, CA 94117-1080 USA</a></div>
+                </div>
+                <div class="media p">
+                  <div class="media-left"><span class="icon icon-xs text-white mdi mdi-phone"></span></div>
+                  <div class="media-body"><a href="callto:#" class="text-gray">1-800-1234-567</a></div>
+                </div>
+                <div class="media p">
+                  <div class="media-left"><span class="icon icon-xs text-white mdi mdi-email-outline"></span></div>
+                  <div class="media-body"><a href="mailto:#" class="text-primary">info@demolink.org</a></div>
+                </div>
+                <ul class="list-inline offset-top-26">
+                  <li><a href="#" class="icon icon-xs icon-circle icon-default fa-facebook"></a></li>
+                  <li><a href="#" class="icon icon-xs icon-circle icon-default fa-twitter"></a></li>
+                  <li><a href="#" class="icon icon-xs icon-circle icon-default fa-google"></a></li>
+                  <li><a href="#" class="icon icon-xs icon-circle icon-default fa-youtube-play"></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="shell shell-wide section-lg-bottom-60 section-bottom-40">
+          <p class="text-base">&#169; <span id="copyright-year"></span> All Rights Reserved Terms of Use and  <a href="privacy.html" class="text-base">Privacy Policy</a>
+          </p>
+        </div>
+        <!-- RD Google Map-->
+        <div data-zoom="12" data-x="-73.9874068" data-y="40.643180" data-styles="[{&quot;featureType&quot;:&quot;road&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;lightness&quot;:100},{&quot;visibility&quot;:&quot;simplified&quot;}]},{&quot;featureType&quot;:&quot;water&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;on&quot;},{&quot;color&quot;:&quot;#C6E2FF&quot;}]},{&quot;featureType&quot;:&quot;poi&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#C5E3BF&quot;}]},{&quot;featureType&quot;:&quot;road&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#D1D1B8&quot;}]}]" class="rd-google-map rd-google-map__model">
+          <ul class="map_locations">
+            <li data-y="40.643180" data-x="-73.9874068">
+              <p>9870 St Vincent Place, Glasgow, DC 45 Fr 45.</p>
+            </li>
+          </ul>
+        </div>
+      </footer>
+      <!-- Modal-->
+      <div id="myModal" role="dialog" class="modal fade">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" data-dismiss="modal" class="close mdi mdi-window-close"></button>
+            </div>
+            <div class="modal-body">
+              <div class="embed-responsive embed-responsive-16by9">
+                <iframe src="//player.vimeo.com/video/119332284?title=0&amp;byline=0&amp;portrait=0" class="embed-responsive-item youtube-player"></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+        More <a rel="nofollow" href="http://www.templatemonster.com/category.php?category=378&type=1" target="_blank">Golf Templates at TemplateMonster.com</a>
+      </div>
+  </div>
+  <!-- Global Mailform Output-->
+  <div id="form-output-global" class="snackbars"></div>
+  <!-- PhotoSwipe Gallery-->
+  <div tabindex="-1" role="dialog" aria-hidden="true" class="pswp">
+    <div class="pswp__bg"></div>
+    <div class="pswp__scroll-wrap">
+      <div class="pswp__container">
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+        <div class="pswp__item"></div>
+      </div>
+      <div class="pswp__ui pswp__ui--hidden">
+        <div class="pswp__top-bar">
+          <div class="pswp__counter"></div>
+          <button title="Close (Esc)" class="pswp__button pswp__button--close"></button>
+          <button title="Share" class="pswp__button pswp__button--share"></button>
+          <button title="Toggle fullscreen" class="pswp__button pswp__button--fs"></button>
+          <button title="Zoom in/out" class="pswp__button pswp__button--zoom"></button>
+          <div class="pswp__preloader">
+            <div class="pswp__preloader__icn">
+              <div class="pswp__preloader__cut">
+                <div class="pswp__preloader__donut"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+          <div class="pswp__share-tooltip"></div>
+        </div>
+        <button title="Previous (arrow left)" class="pswp__button pswp__button--arrow--left"></button>
+        <button title="Next (arrow right)" class="pswp__button pswp__button--arrow--right"></button>
+        <div class="pswp__caption">
+          <div class="pswp__caption__cent"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Java script-->
+  <script src="js/core.min.js"></script>
+  <script src="js/script.js"></script>
+  </body>
+</html>

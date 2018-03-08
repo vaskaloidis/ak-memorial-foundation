@@ -1,0 +1,83 @@
+// Tables custom
+// --------------------------------------------------
+
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td{
+  font-weight: 400;
+  color: #6f6f6f;
+  border-top: none;
+  border-bottom: 1px solid #dbdbdb;
+  padding: 13px 8px 12px 32px;
+
+  @media (min-width: $screen-lg-min) {
+    padding: 13px 8px 12px 82px;
+  }
+}
+
+.table > thead > tr > th{
+  border-bottom: 1px solid #3a3a3b;
+  color: #393a3c; 
+  text-transform: uppercase;
+}
+
+.table > tbody > tr.tr-bold{
+  > td,
+  > th{
+    color: $gray-dark;
+    font-weight: 700 !important;
+  }
+}
+
+.table-striped.table > thead > tr > th{
+  font-weight: 700;
+}
+
+.table-hover > tbody > tr:hover {
+  background-color: #f7f7f8;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #f7f7f8;
+}
+
+.table > thead > tr > td.success, .table > thead > tr > th.success, .table > thead > tr.success > td, .table > thead > tr.success > th, .table > tbody > tr > td.success, .table > tbody > tr > th.success, .table > tbody > tr.success > td, .table > tbody > tr.success > th, .table > tfoot > tr > td.success, .table > tfoot > tr > th.success, .table > tfoot > tr.success > td, .table > tfoot > tr.success > th{
+  color: #fff;
+  background-color: #7aaf24;
+  border-bottom: none;
+}
+
+.table{
+  tbody{
+    tr{
+      &:last-child{
+        td,
+        th{
+          color: #393a3c;
+        }
+      }
+    } 
+  }
+}
+
+.table-fixed{
+  @media (min-width: $screen-md-min) {
+    table-layout: fixed;
+  }
+}
+.table-fixed > thead > tr > th, .table-fixed > thead > tr > td, .table-fixed > tbody > tr > th, .table-fixed > tbody > tr > td, .table-fixed > tfoot > tr > th, .table-fixed > tfoot > tr > td {
+  padding: 13px 8px 12px 8px;
+}
+
+th {
+  text-align: center;
+}
+
+.table-custom {
+  @media (min-width: $screen-sm-min) {
+    table-layout: fixed;
+  }
+}
+
+.table-custom > thead > tr > th, .table-custom > thead > tr > td, .table-custom > tbody > tr > th, .table-custom > tbody > tr > td, .table-custom > tfoot > tr > th, .table-custom > tfoot > tr > td {
+  padding: 13px 8px 12px 8px;
+  border-bottom: none;
+}

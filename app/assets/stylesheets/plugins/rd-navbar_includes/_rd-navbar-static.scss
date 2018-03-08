@@ -1,0 +1,24 @@
+/*
+* Static Layout
+*/
+
+.rd-navbar-static {
+  display: block;
+
+  // RD Navbar brand
+  .rd-navbar-brand{
+
+  }
+
+  .rd-navbar-nav{
+    > li {
+      display: inline-flex;
+      align-items: center;
+
+      & + li{
+        margin-left: $navbar-static-nav-indent;
+      }
+    }
+  }
+}
+

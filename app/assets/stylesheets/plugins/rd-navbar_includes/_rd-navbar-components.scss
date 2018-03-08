@@ -1,0 +1,433 @@
+/*
+* Navbar components
+*/
+
+// RD Navbar
+.rd-navbar {
+  display: none;
+  background: $rd-navbar-background;
+  box-shadow: $rd-navbar-shadow;
+}
+
+.rd-navbar-search{
+  .form-group{
+    margin-bottom: 0;
+  }
+}
+
+// RD Navbar Toggle
+.rd-navbar-toggle {
+  @include make-toggle(
+          'button-lines-cross-3',
+          20px,
+          20px,
+          $rd-navbar-fixed-toggle-color
+  );
+  background-color: transparent;
+  border: none;
+  &:focus{
+    outline: none;
+  }
+  display: none;
+}
+
+// RD Navbar Brand
+.rd-navbar-brand {
+}
+// RD Navbar Nav
+.rd-navbar-nav {
+}
+
+// RD Navbar Dropdown
+.rd-navbar-dropdown {
+  display: none;
+}
+
+.rd-navbar-base{
+
+  .rd-navbar-search{
+
+    &-toggle{
+      cursor: pointer;
+
+      &.active{
+        .icon:after{
+          opacity: 1;
+        }
+
+        .icon:before{
+          opacity: 0;
+        }
+      }
+
+      .icon{
+        position: relative;
+      }
+
+      .icon:after{
+        content: '\f69a';
+        font-family: "Material Design Icons";
+        font-size: 24px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        line-height: 1;
+        opacity: 0;
+      }
+    }
+
+    .btn{
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      background-color: transparent;
+      padding: 10px;
+      border: none;
+
+      &:hover{
+        color: $brand-primary;
+      }
+    }
+
+    .form-control{
+      padding-right: 38px;
+    }
+  }
+
+
+  .rd-navbar-shop a{
+    display: inline-block;
+  }
+
+  .rd-navbar-search-toggle:hover,
+  .rd-navbar-shop a:hover{
+    .icon,
+    &,
+    .rd-navbar-shop-counter{
+      color: $brand-primary;
+    }
+  }
+
+  .rd-navbar-shop{
+    .icon{
+      color: $gray-dark;
+    }
+
+    &-counter{
+      display: inline-block;
+      margin-left: 7px;
+      vertical-align: middle;
+      font-size: 16px;
+      font-family: $font-family-sec;
+      color: $gray-base;
+    }
+  }
+
+  .icon{
+    font-size: 24px;
+    vertical-align: middle;
+  }
+
+  &.rd-navbar-static{
+    .rd-navbar-inner{
+      max-width: 1500px;
+    }
+
+    .rd-navbar-search {
+      position: relative;
+      margin-right: 14px;
+
+      @media (min-width: 1400px) {
+        margin-right: 66px;
+      }
+
+      .rd-search.active{
+        visibility: visible;
+        opacity: 1;
+      }
+
+      .rd-search{
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transition: .3s;
+        width: 260px;
+        right: 0;
+        z-index: 1;
+        top: 46px;
+      }
+    }
+
+    .rd-navbar-contacts{
+      display: flex;
+      justify-content: flex-start;
+      padding-top: 8px;
+      text-align: left;
+      flex-wrap: wrap;
+
+      .media{
+        margin-left: 15px;
+        margin-top: 0;
+        width: 250px;
+      }
+    }
+
+    .rd-navbar-nav-wrap{
+      flex-grow: 1;
+      order: -1;
+      text-align: left;
+      margin-top: 3px;
+
+      .rd-navbar-nav{
+        position: relative;
+      }
+
+      .rd-navbar-nav > li + li{
+        margin-left: 22px;
+
+        @media (min-width: 1400px) {
+          margin-left: 65px;
+        }
+      }
+    }
+
+
+    .rd-navbar-panel{
+      display: flex;
+      justify-content: space-between;
+      padding-top: 40px;
+      padding-bottom: 36px;
+    }
+
+    .rd-navbar-sub-panel{
+      padding-top: 17px;
+      padding-bottom: 18px;
+      border-top:1px solid #b7b7b7;
+
+      &-inner{
+        display: flex;
+      }
+    }
+
+    &.rd-navbar--is-stuck{
+      .rd-navbar-panel{
+        display: none;
+      }
+
+      .rd-navbar-sub-panel{
+        border-top: none;
+      }
+    }
+  }
+}
+
+.rd-navbar-corporate{
+
+  &.rd-navbar-sidebar{
+    .rd-navbar-sub-panel{
+      .rd-navbar-brand{
+        display: none;
+      }
+    }
+
+    .rd-navbar-panel{
+      .rd-navbar-shop{
+        display: none;
+      }
+    }
+  }
+
+  &.rd-navbar-static{
+
+    .rd-navbar-contacts{
+      .media{
+        &:first-child{
+          @media (max-width: $screen-lg-min - 1) {
+            margin-left: 0;
+            max-width: 160px;
+          }
+        }
+
+        &:nth-child(2){
+          @media (max-width: $screen-lg-min - 1) {
+            max-width: 230px;
+          }
+        }
+
+        &:last-child{
+          @media (max-width: $screen-lg-min - 1) {
+          }
+        }
+      }
+    }
+
+    .rd-navbar-panel{
+      .rd-navbar-brand{
+        display: none;
+      }
+    }
+
+    .rd-navbar-inner{
+      max-width: 1800px;
+    }
+
+    .rd-navbar-contacts{
+      padding-top: 0;
+
+      @media (min-width: $screen-lg-min) {
+        float: left;
+      }
+    }
+
+    .rd-navbar-panel{
+      position: relative;
+      padding: 18px 0 17px;
+      z-index: 1;
+
+      display: flex;
+
+      @media (min-width: $screen-lg-min) {
+        flex-direction: row;
+        align-items: flex-start;
+      }
+
+      &:before{
+        content: '';
+        z-index: -1;
+        position: absolute;
+        left: -100vw;
+        right: -100vw;
+        top: 0;
+        bottom: 0;
+        background-color: #3a3a3b;
+      }
+
+      .icon{
+        color: #b7b7b7;
+      }
+
+      a,
+      &{
+        color: #fff;
+      }
+
+      .media,
+      .media-body{
+        width: auto;
+      }
+
+      .media + .media{
+        margin-left: 28px;
+
+        @media (min-width: 1280px) {
+          margin-left: 80px;
+        }
+      }
+    }
+
+    .rd-navbar-shop{
+
+      @media (min-width: $screen-lg-min) {
+        text-align: right;
+        margin-top: 0;
+      }
+
+      a:hover{
+        color: $brand-primary;
+      }
+
+      .icon{
+        padding-right: 5px;
+        color: $brand-primary;
+      }
+
+      &-counter{
+        padding-left: 8px;
+        color: #fff;
+      }
+    }
+
+    .rd-navbar-nav-wrap{
+      flex-grow: 0;
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+      order: 0;
+
+      @media (min-width: 1700px) {
+        order: -1;
+        width: auto;
+        margin-top: 0;
+      }
+
+      .rd-navbar-nav > li + li {
+        margin-left: 22px;
+
+        @media (min-width: 1300px) {
+          margin-left: 44px;
+        }
+      }
+    }
+
+    .rd-navbar-brand{
+      order: -1;
+    }
+
+    .rd-navbar-search {
+      margin-right: 0;
+
+      .rd-search{
+        position: static;
+        visibility: visible;
+        opacity: 1;
+        width: 360px;
+      }
+    }
+
+    .rd-navbar-sub-panel{
+      border: none;
+      padding: 24px 0;
+
+      @media (min-width: 1700px) {
+        padding: 40px 0;
+      }
+
+      &-inner{
+        align-items: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        @media (min-width: 1700px) {
+          justify-content: space-between;
+        }
+      }
+
+      .rd-navbar-shop{
+        display: none;
+      }
+    }
+
+    &.rd-navbar--is-stuck{
+      .rd-navbar-sub-panel{
+        padding: 22px 0;
+
+        &-inner{
+          justify-content: center;
+        }
+
+        .rd-navbar-brand{
+          display: none;
+        }
+      }
+
+      .rd-navbar-nav-wrap{
+        margin-top: 0;
+      }
+
+      .rd-navbar-search{
+        display: none;
+      }
+    }
+  }
+}

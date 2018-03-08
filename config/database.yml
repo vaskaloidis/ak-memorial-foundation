@@ -1,0 +1,22 @@
+development: &default
+  database: ak-memorial-dev
+  adapter: postgresql
+  pool: 10
+  host: localhost
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  database: ak-memorial-dev
+
+test:
+  <<: *default
+  database: ak-memorial-test
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
+  database: ak-memorial_production
+  username: vkaloidis
+  password: <%= ENV['AK_MEMORIAL_DATABASE_PASSWORD'] %>

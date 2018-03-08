@@ -1,0 +1,31 @@
+//
+// Twitter
+// --------------------------------------------------
+
+.twitter-item{
+  position: relative;
+  padding-left: 32px;
+  color: #fff;
+
+  &:before{
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 20px;
+    color: #8fd4ff;
+    font-family: FontAwesome;
+    content: "\f099";
+  }
+
+  & + &{
+    margin-top: 28px;
+  }
+  
+  a{
+    color: #8fd4ff;
+
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+}
