@@ -1,0 +1,58 @@
+<div class="rd-navbar-wrap">
+  <nav data-layout="rd-navbar-sidebar" data-sm-layout="rd-navbar-sidebar" data-md-layout="rd-navbar-static" data-md-device-layout="rd-navbar-static" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-md-stick-up-offset="36px" data-lg-stick-up-offset="136px" class="rd-navbar-base rd-navbar">
+    <div class="rd-navbar-inner">
+      <!-- RD Navbar Panel-->
+      <div class="rd-navbar-panel">
+        <!-- RD Navbar Toggle-->
+        <button data-rd-navbar-toggle=".rd-navbar-sub-panel" class="rd-navbar-toggle"><span></span></button>
+        <!-- RD Navbar Brand-->
+        <div class="rd-navbar-brand"><a href="index.html" class="reveal-inline-block"><img src="images/logo.png" width="195" height="60" alt=""></a></div>
+        <div data-rd-navbar-toggle=".rd-navbar-contacts" class="rd-navbar-collapse-toggle"><span></span></div>
+        <div class="rd-navbar-contacts">
+          <div class="media p">
+            <div class="media-left"><span class="icon icon-sm text-gray mdi mdi-phone"></span></div>
+            <div class="media-body">
+              <div><a href="callto:#" class="text-base">1-800-1234-567</a></div><a href="callto:#" class="text-base">1-800-6547-321</a>
+            </div>
+          </div>
+          <div class="media p">
+            <div class="media-left"><span class="icon icon-sm text-gray mdi mdi-map-marker"></span></div>
+            <div class="media-body"><a href="#" class="text-base">2130 Fulton Street San Diego, CA 94117-1080 USA</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="rd-navbar-sub-panel">
+        <div class="rd-navbar-sub-panel-inner">
+          <!--RD Navbar Search-->
+          <div class="rd-navbar-search">
+            <div data-custom-toggle=".rd-search" data-custom-toggle-disable-on-blur="false" class="rd-navbar-search-toggle"><span class="mdi mdi-magnify icon"></span></div>
+            <form action="search-results.html" data-search-live="rd-search-results-live" method="GET" class="rd-search">
+              <div class="form-group">
+                <label for="rd-navbar-search-form-input" class="form-label">Search</label>
+                <input id="rd-navbar-search-form-input" type="text" name="s" autocomplete="off" class="rd-navbar-search-form-input form-control form-control-gray-lightest">
+                <button class="mdi mdi-magnify btn icon"></button>
+              </div>
+              <div id="rd-search-results-live" class="rd-search-results-live"></div>
+            </form>
+          </div>
+          <div class="rd-navbar-nav-wrap">
+            <!-- RD Navbar Nav-->
+            <ul class="rd-navbar-nav">
+              <li class="active"><a href="<%= root_url %>">Home</a></li>
+              <li><%= link_to 'About Us', page_path('about') %></li>
+              <li><%= link_to 'Legacy', page_path('legacy') %></li>
+              <li><%= link_to 'Golf Tournament', page_path('golf_tournament') %></li>
+              <li><%= link_to 'Children\'s Exhibit', page_path('childrens_exhibit') %></li>
+              <li><%= link_to 'Donate', page_path('donate') %></li>
+              <li><%= link_to 'Register', page_path('about') %></li>
+              <li><%= link_to 'Sponsorships', page_path('sponsorships') %></li>
+              <li><%= link_to 'Our Supporters', page_path('supporters') %></li>
+
+            </ul>
+          </div>
+          <div class="rd-navbar-shop"><a href="#"><span class="icon mdi mdi-cart"></span><span class="rd-navbar-shop-counter">0</span></a></div>
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
