@@ -5,7 +5,7 @@
     <div class="swiper-outer">
       <div data-simulate-touch="false" class="swiper-container swiper-slider">
         <div class="swiper-wrapper">
-          <div data-slide-bg="images/index-01.jpg" class="swiper-slide">
+          <div data-slide-bg="<%= image_path 'index-01.jpg' %>" class="swiper-slide">
             <div data-caption-animate="fadeInUp" class="swiper-slide-caption">
               <h1>welcome to golfield</h1>
               <p>Since its opening on August 15, 1995, the Golfield Golf Club has become a popular tourist destination
@@ -13,14 +13,14 @@
               <a href="about.html" class="btn btn-white btn-sm">Learn More</a>
             </div>
           </div>
-          <div data-slide-bg="images/index-02.jpg" class="swiper-slide">
+          <div data-slide-bg="<%= image_path 'index-02.jpg' %>" class="swiper-slide">
             <div data-caption-animate="fadeInUp" class="swiper-slide-caption">
               <h1>Enjoy Advantages of Golf</h1>
               <p>Known as a sport of leisure and as a gentleman’s game, golf is one of the most popular, well-received
                 sports worldwide.</p><a href="about.html" class="btn btn-white btn-sm">Learn More</a>
             </div>
           </div>
-          <div data-slide-bg="images/index-03.jpg" class="swiper-slide">
+          <div data-slide-bg="<%= image_path 'index-03.jpg' %>" class="swiper-slide">
             <div data-caption-animate="fadeInUp" class="swiper-slide-caption">
               <h1>Play Golf at Our Club</h1>
               <p>Golfield is one of the area’s most renowned golf clubs with a huge golf course, which is perfect for
@@ -51,10 +51,14 @@
         </p>
         <hr class="divider divider-60 divider-primary offset-top-32">
         <p>
-          A memorial golf tournament will be held every year in his honor. This year's tournament will be held April 12th at 'Waterbury Golf Club'. This tournament has raised an excess of $30,000 for charitable causes. We hope that you will support us this year and help make a difference in the lives of children the Make-A-Wish Foundation helps.
+          A memorial golf tournament will be held every year in his honor. This year's tournament will be held April
+          12th at 'Waterbury Golf Club'. This tournament has raised an excess of $30,000 for charitable causes. We hope
+          that you will support us this year and help make a difference in the lives of children the Make-A-Wish
+          Foundation helps.
         </p>
         <p>
-          Thank you for taking the time to visit the site. Should you have any questions about the foundation or the tournament, please do not hesitate to contact us
+          Thank you for taking the time to visit the site. Should you have any questions about the foundation or the
+          tournament, please do not hesitate to contact us
         </p>
         <h6>Thank You,</h6>
         <h6>The Kaloidis Family</h6>
@@ -69,28 +73,32 @@
       <hr class="divider divider-40 divider-primary offset-top-32">
       <div class="range">
         <div class="cell-md-3 cell-sm-6">
-          <div class="box-variant-1"><img src="images/icon-01.png" alt="" class="img-responsive center-block">
+          <div class="box-variant-1">
+            <img src="<%= image_path 'icon-01.png' %>" alt="" class="img-responsive center-block">
             <h6 class="offset-top-22">18 holes</h6>
             <hr class="divider divider-gray divider-50">
             <p>Played shotgun style at The Watertown Golf Course.</p>
           </div>
         </div>
         <div class="cell-md-3 cell-sm-6 offset-top-22 offset-sm-top-0">
-          <div class="box-variant-1"><img src="images/icon-02.png" alt="" class="img-responsive center-block">
+          <div class="box-variant-1">
+            <img src="<%= image_path 'icon-02.png' %>" alt="" class="img-responsive center-block">
             <h6 class="offset-top-22">benefitting the Make-A-Wish Foundation</h6>
             <hr class="divider divider-gray divider-50">
             <p>All proceeds go to the Make-A-Wish foundation. Learn more Here.</p>
           </div>
         </div>
         <div class="cell-md-3 cell-sm-6 offset-top-22 offset-md-top-0">
-          <div class="box-variant-1"><img src="images/icon-03.png" alt="" class="img-responsive center-block">
+          <div class="box-variant-1">
+            <img src="<%= image_path 'icon-03.png' %>" alt="" class="img-responsive center-block">
             <h6 class="offset-top-22">sponshorships available</h6>
             <hr class="divider divider-gray divider-50">
             <p>Advertise your company by purchasing a sponsorship</p>
           </div>
         </div>
         <div class="cell-md-3 cell-sm-6 offset-top-22 offset-md-top-0">
-          <div class="box-variant-1"><img src="images/icon-04.png" alt="" class="img-responsive center-block">
+          <div class="box-variant-1">
+            <img src="<%= image_path 'icon-04.png' %>" alt="" class="img-responsive center-block">
             <h6 class="offset-top-22">18-Hole golf course</h6>
             <hr class="divider divider-gray divider-50">
             <p>With the biggest links course in the USA, we have been hosting Championships since 1995</p>
@@ -104,7 +112,7 @@
     <div class="shell shell-wide section-top-60 section-md-top-0">
       <div class="range text-md-left">
         <div class="cell-md-6 img-fullwidth-wrapper">
-          <div style="background: url('images/index-04.jpg'); background-size: cover;" class="img-fullwidth img-fullwidth-left">
+          <div style="background: url('<%= image_path 'index-04.jpg' %>'); background-size: cover;" class="img-fullwidth img-fullwidth-left">
             <div class="img-wrap">
               <figure><span data-toggle="modal" data-target="#myModal" class="icon mdi mdi-play-circle-outline"></span>
               </figure>
@@ -118,48 +126,15 @@
             <p class="offset-top-26 offset-md-top-42 big">
             <p>A memorial golf tournament will be held every year in his honor. This year's tournament will be held
               April 12th at 'Waterbury Golf Club'. This tournament has raised an excess of $30,000 for charitable
-              causes. We hope that you will support us this year and help make a difference in the lives of children the
-              Make-A-Wish Foundation helps.</p>
-            <p class="offset-top-12">
-              Thank you for taking the time to visit the site. Should you have any questions about the foundation or the
-              tournament, please do not hesitate to contact us</p>
+              causes. </p>
 
-            <a href="about.html" class="btn btn-primary btn-sm offset-top-22">Learn more</a>
+            <a href="<%= page_path('about') %>" class="btn btn-primary btn-sm offset-top-22">Learn more</a>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  <%= render 'main/mini_gallery' %>
 
-  <section>
-    <!-- PhotoSwipe-->
-    <!-- Owl Carousel-->
-    <div data-photo-swipe-gallery="gallery" data-items="1" data-xs-items="3" data-sm-items="4" data-md-items="5" data-lg-items="6" class="owl-carousel owl-carousel-flex">
-      <a data-photo-swipe-item="" data-size="1000x667" href="images/index-16_original.jpg" class="thumbnail-variant-1"><img src="images/index-16.jpg" width="320" height="320" alt="" class="img-responsive center-block">
-        <div class="caption">
-          <div class="caption-inner"><span class="icon fa-search-plus"></span></div>
-        </div>
-      </a><a data-photo-swipe-item="" data-size="1000x667" href="images/index-17_original.jpg" class="thumbnail-variant-1"><img src="images/index-17.jpg" width="320" height="320" alt="" class="img-responsive center-block">
-      <div class="caption">
-        <div class="caption-inner"><span class="icon fa-search-plus"></span></div>
-      </div>
-    </a><a data-photo-swipe-item="" data-size="1000x667" href="images/index-18_original.jpg" class="thumbnail-variant-1"><img src="images/index-18.jpg" width="320" height="320" alt="" class="img-responsive center-block">
-      <div class="caption">
-        <div class="caption-inner"><span class="icon fa-search-plus"></span></div>
-      </div>
-    </a><a data-photo-swipe-item="" data-size="1000x667" href="images/index-19_original.jpg" class="thumbnail-variant-1"><img src="images/index-19.jpg" width="320" height="320" alt="" class="img-responsive center-block">
-      <div class="caption">
-        <div class="caption-inner"><span class="icon fa-search-plus"></span></div>
-      </div>
-    </a><a data-photo-swipe-item="" data-size="667x1000" href="images/index-20_original.jpg" class="thumbnail-variant-1"><img src="images/index-20.jpg" width="320" height="320" alt="" class="img-responsive center-block">
-      <div class="caption">
-        <div class="caption-inner"><span class="icon fa-search-plus"></span></div>
-      </div>
-    </a><a data-photo-swipe-item="" data-size="1000x667" href="images/index-21_original.jpg" class="thumbnail-variant-1"><img src="images/index-21.jpg" width="320" height="320" alt="" class="img-responsive center-block">
-      <div class="caption">
-        <div class="caption-inner"><span class="icon fa-search-plus"></span></div>
-      </div>
-    </a></div>
-  </section>
 </main>

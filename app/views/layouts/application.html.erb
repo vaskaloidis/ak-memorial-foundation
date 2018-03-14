@@ -14,7 +14,6 @@
     <%= stylesheet_link_tag    '//fonts.googleapis.com/css?family=Oswald:300,400,700%7CRoboto:300,300italic,400,700,700italic' %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= stylesheet_link_tag 'style.css' %>
 
 		<!--[if lt IE 10]>
     <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
@@ -40,17 +39,15 @@
           <div class="range">
             <div class="cell-xl-2 cell-lg-3">
               <h6>about</h6>
-              <p class="offset-top-12 offset-lg-top-32">Since the opening of Golfield on August 15, 1995, the Club has become a popular tourist destination attracting golfers. Carved through a forest of eucalyptus and pine trees with the backdrop of the snow-capped Taurus Mountains and an abundance of natural lakes, our club tests all abilities of players.</p>
+              <p class="offset-top-12 offset-lg-top-32">The Athan Kaloidis Memorial Foundation, Inc. was created in memory of our dear friend Athan Kaloidis. Through this tournament, the Foundation raises money to support the Make-A-Wish Foundation, and to help with the establishment of a children’s exhibit at the Harness Racing Museum & Hall of Fame in Goshen, New York.</p>
             </div>
             <div class="cell-sm-6 cell-lg-2 cell-xl-preffix-1 offset-top-32 offset-lg-top-0 text-sm-left">
               <h6>quick links</h6>
               <ul class="offset-top-12 offset-lg-top-32 list-marked list-marked-lg list-marked-no-padding">
-                <li><a href="about.html">About</a></li>
-                <li><a href="tee.html">Tee Times</a></li>
-                <li><a href="training.html">Training</a></li>
-                <li><a href="events.html">Events</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contacts.html">Contacts</a></li>
+                <li><a href="<%= page_path('about') %>">About</a></li>
+                <li><a href="<%= page_path('legacy') %>">Legacy</a></li>
+                <li><a href="<%= page_path('childrens_exhibit') %>">Children's Exhibit</a></li>
+                <li><a href="<%= gallery_path %>">Gallery</a></li>
               </ul>
             </div>
             <div class="cell-sm-6 cell-lg-3 cell-xl-2 offset-top-32 offset-lg-top-0 text-sm-left">
@@ -58,35 +55,29 @@
               <div class="text-left">
                 <div class="media p offset-top-12 offset-lg-top-32">
                   <div class="media-left"><span class="icon text-white mdi mdi-map-marker"></span></div>
-                  <div class="media-body"><a href="#" class="text-gray">2130 Fulton Street San Diego, CA 94117-1080 USA</a></div>
+                  <div class="media-body"><a href="#" class="text-gray">71 Chapin Avenue. Waterbury, CT. USA 06708</a></div>
                 </div>
                 <div class="media p">
                   <div class="media-left"><span class="icon icon-xs text-white mdi mdi-phone"></span></div>
-                  <div class="media-body"><a href="callto:#" class="text-gray">1-800-1234-567</a></div>
+                  <div class="media-body"><a href="callto:#" class="text-gray">1-203-518-1989</a></div>
                 </div>
                 <div class="media p">
                   <div class="media-left"><span class="icon icon-xs text-white mdi mdi-email-outline"></span></div>
-                  <div class="media-body"><a href="mailto:#" class="text-primary">info@demolink.org</a></div>
+                  <div class="media-body"><a href="mailto:#" class="text-primary">akmemorial@sbcglobal.net</a></div>
                 </div>
-                <ul class="list-inline offset-top-26">
-                  <li><a href="#" class="icon icon-xs icon-circle icon-default fa-facebook"></a></li>
-                  <li><a href="#" class="icon icon-xs icon-circle icon-default fa-twitter"></a></li>
-                  <li><a href="#" class="icon icon-xs icon-circle icon-default fa-google"></a></li>
-                  <li><a href="#" class="icon icon-xs icon-circle icon-default fa-youtube-play"></a></li>
-                </ul>
               </div>
             </div>
           </div>
         </div>
         <div class="shell shell-wide section-lg-bottom-60 section-bottom-40">
-          <p class="text-base">&#169; <span id="copyright-year"></span> All Rights Reserved Terms of Use and  <a href="privacy.html" class="text-base">Privacy Policy</a>
+          <p class="text-base">&#169; <span id="copyright-year"></span> All Rights Reserved The Athan Kaloidis Memorial Foundation
           </p>
         </div>
         <!-- RD Google Map-->
         <div data-zoom="12" data-x="-73.9874068" data-y="40.643180" data-styles="[{&quot;featureType&quot;:&quot;road&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;lightness&quot;:100},{&quot;visibility&quot;:&quot;simplified&quot;}]},{&quot;featureType&quot;:&quot;water&quot;,&quot;elementType&quot;:&quot;geometry&quot;,&quot;stylers&quot;:[{&quot;visibility&quot;:&quot;on&quot;},{&quot;color&quot;:&quot;#C6E2FF&quot;}]},{&quot;featureType&quot;:&quot;poi&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#C5E3BF&quot;}]},{&quot;featureType&quot;:&quot;road&quot;,&quot;elementType&quot;:&quot;geometry.fill&quot;,&quot;stylers&quot;:[{&quot;color&quot;:&quot;#D1D1B8&quot;}]}]" class="rd-google-map rd-google-map__model">
           <ul class="map_locations">
-            <li data-y="40.643180" data-x="-73.9874068">
-              <p>9870 St Vincent Place, Glasgow, DC 45 Fr 45.</p>
+            <li data-y="41.54937899999999" data-x="-73.07942860000003">
+              <p>71 Chapin Ave, Waterbury, CT, USA</p>
             </li>
           </ul>
         </div>
@@ -147,7 +138,7 @@
     </div>
   </div>
   <!-- Java script-->
-  <script src="js/core.min.js"></script>
-  <script src="js/script.js"></script>
+  <%= javascript_include_tag 'core.min.js' %>
+  <%= javascript_include_tag 'script.js' %>
   </body>
 </html>

@@ -6,18 +6,29 @@
         <!-- RD Navbar Toggle-->
         <button data-rd-navbar-toggle=".rd-navbar-sub-panel" class="rd-navbar-toggle"><span></span></button>
         <!-- RD Navbar Brand-->
-        <div class="rd-navbar-brand"><a href="index.html" class="reveal-inline-block"><img src="images/logo.png" width="195" height="60" alt=""></a></div>
+        <div class="rd-navbar-brand visible-xs visible-sm visible-md">
+          <a href="<%= root_path %>" class="reveal-inline-block">
+            <img style="padding-top: 50px" src="<%= image_path 'logo_small.png' %>" alt="">
+          </a>
+        </div>
+        <div class="rd-navbar-brand hidden-xs hidden-sm hidden-md">
+          <a href="<%= root_path %>" class="reveal-inline-block">
+            <img src="<%= image_path 'logo_small.png' %>" alt="">
+          </a>
+        </div>
         <div data-rd-navbar-toggle=".rd-navbar-contacts" class="rd-navbar-collapse-toggle"><span></span></div>
         <div class="rd-navbar-contacts">
           <div class="media p">
             <div class="media-left"><span class="icon icon-sm text-gray mdi mdi-phone"></span></div>
             <div class="media-body">
-              <div><a href="callto:#" class="text-base">1-800-1234-567</a></div><a href="callto:#" class="text-base">1-800-6547-321</a>
+              <div><a href="callto:#" class="text-base">1-203-217-9718</a></div>
+              <a href="callto:#" class="text-base">1-203-518-1989</a>
             </div>
           </div>
           <div class="media p">
             <div class="media-left"><span class="icon icon-sm text-gray mdi mdi-map-marker"></span></div>
-            <div class="media-body"><a href="#" class="text-base">2130 Fulton Street San Diego, CA 94117-1080 USA</a></div>
+            <div class="media-body"><a href="#" class="text-base">71 Chapin Avenue. <br> Waterbury, CT 06708. USA</a>
+            </div>
           </div>
         </div>
       </div>
@@ -25,7 +36,8 @@
         <div class="rd-navbar-sub-panel-inner">
           <!--RD Navbar Search-->
           <div class="rd-navbar-search">
-            <div data-custom-toggle=".rd-search" data-custom-toggle-disable-on-blur="false" class="rd-navbar-search-toggle"><span class="mdi mdi-magnify icon"></span></div>
+            <div data-custom-toggle=".rd-search" data-custom-toggle-disable-on-blur="false" class="rd-navbar-search-toggle">
+              <span class="mdi mdi-magnify icon"></span></div>
             <form action="search-results.html" data-search-live="rd-search-results-live" method="GET" class="rd-search">
               <div class="form-group">
                 <label for="rd-navbar-search-form-input" class="form-label">Search</label>
@@ -38,19 +50,78 @@
           <div class="rd-navbar-nav-wrap">
             <!-- RD Navbar Nav-->
             <ul class="rd-navbar-nav">
-              <li class="active"><a href="<%= root_url %>">Home</a></li>
-              <li><%= link_to 'About Us', page_path('about') %></li>
-              <li><%= link_to 'Legacy', page_path('legacy') %></li>
-              <li><%= link_to 'Golf Tournament', page_path('golf_tournament') %></li>
-              <li><%= link_to 'Children\'s Exhibit', page_path('childrens_exhibit') %></li>
-              <li><%= link_to 'Donate', page_path('donate') %></li>
+
+              <% if current_page?(root_path) %>
+                <li class="active">
+              <% else %>
+                <li>
+              <% end %>
+              <a href="<%= root_url %>">Home</a>
+              </li>
+
+              <% if current_page?(page_path('about')) or current_page?(page_path('legacy')) or current_page?(page_path('childrens_exhibit')) %>
+                <li class="active">
+              <% else %>
+                <li>
+              <% end %>
+                <%= link_to 'About', page_path('about') %>
+                <ul class="rd-navbar-dropdown">
+                  <li> <%= link_to 'Legacy', page_path('legacy') %></li>
+                  <li><%= link_to 'Children\'s Exhibit', page_path('childrens_exhibit') %></li>
+                </ul>
+              </li>
+
+
+              <% if current_page?(gallery_path) %>
+                <li class="active">
+              <% else %>
+                <li>
+              <% end %>
+
+              <a href="<%= gallery_path %>">Gallery</a>
+              <ul class="rd-navbar-dropdown">
+                <li><a href="<%= gallery_path %>">2015 Tournament</a></li>
+                <li><a href="<%= gallery_second_path %>">2016 Tournament</a></li>
+              </ul>
+              </li>
+
+              <!--<li><%#= link_to 'Donate', page_path('donate') %></li>-->
+
               <li><%= link_to 'Register', page_path('about') %></li>
+
+              <% if !user_signed_in? %>
+                <li>
+                  <%= link_to('Register', new_user_registration_path) %>
+                </li>
+              <% end %>
+
+
               <li><%= link_to 'Sponsorships', page_path('sponsorships') %></li>
-              <li><%= link_to 'Our Supporters', page_path('supporters') %></li>
+              <li><%= link_to 'Supporters', page_path('supporters') %></li>
+
+              <% if user_signed_in? %>
+                <% if current_page?(gallery_path) %>
+                  <li class="active">
+                <% else %>
+                  <li>
+                <% end %>
+                <a href="edit_user_registration_path"><%= current_user.email %></a>
+                <ul class="rd-navbar-dropdown">
+                  <li><%= link_to('Edit User Profile', edit_user_registration_path) %></li>
+                  <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+                </ul>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to('Login', new_user_session_path) %>
+                </li>
+              <% end %>
 
             </ul>
           </div>
-          <div class="rd-navbar-shop"><a href="#"><span class="icon mdi mdi-cart"></span><span class="rd-navbar-shop-counter">0</span></a></div>
+          <div class="rd-navbar-shop">
+            <a href="#"><span class="icon mdi mdi-cart"></span><span class="rd-navbar-shop-counter">0</span></a>
+          </div>
         </div>
       </div>
     </div>

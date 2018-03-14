@@ -15,3 +15,4 @@ Rails.application.config.assets.precompile += %w( style.css )
 
 Rails.application.config.assets.precompile += %w( core.min.js script.js )
 
+Rails.application.config.assets.precompile += %w( album/images/*.jpg )

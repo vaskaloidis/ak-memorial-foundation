@@ -1,0 +1,48 @@
+<div class="page text-center">
+  <!-- Page Header-->
+  <header class="page-header-min"><a href="<%= root_url %>" class="reveal-inline-block"><img src="<%= image_path 'logobig.png' %>" width="195" height="60" alt=""></a></header>
+  <!-- Page Content-->
+  <main class="page-content page-content-100">
+    <section class="section-80 page-content-inner">
+      <div class="shell">
+        <h2>We are currently working on.<br>This page will appear in</h2>
+        <hr class="divider divider-50 divider-primary offset-top-26 divider-3">
+        <!-- TimeCircles-->
+        <div class="DateCountdown-wrapper">
+          <div data-date="2016-12-01 00:00:00" class="DateCountdown"></div>
+        </div>
+        <p class="offset-top-80">Stay tuned and subscribe to our newsletter</p>
+        <div class="offset-top-32 range range-xs-center">
+          <div class="cell-md-6">
+            <!-- RD Mailform-->
+            <form data-form-output="form-output-global" data-form-type="subscribe" method="post" action="bat/rd-mailform.php" class="offset-top-22 rd-mailform form-inline">
+              <div class="form-group">
+                <label for="subscribe-email" class="form-label">Enter your e-mail</label>
+                <input id="subscribe-email" type="email" name="email" data-constraints="@Required @Email" class="form-control">
+              </div>
+              <button type="submit" class="btn btn-primary btn-sm">subscribe</button>
+            </form>
+            <hr>
+            <h4>Preview Login Key</h4>
+            <form data-form-output="form-output-global" data-form-type="subscribe" method="post" action="bat/rd-mailform.php" class="offset-top-22 rd-mailform form-inline">
+              <div class="form-group">
+                <label for="subscribe-email" class="form-label">Enter your e-mail</label>
+                <input id="subscribe-email" type="email" name="email" data-constraints="@Required @Email" class="form-control">
+              </div>
+              <button type="submit" class="btn btn-primary btn-sm">subscribe</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- Page Footer-->
+  <footer class="page-footer-min">
+    <div class="shell">
+      <p>&#169; <span id="copyright-year"></span> All Rights Reserved Terms of Use and  <a href="privacy.html">Privacy Policy</a>
+      </p>
+    </div>
+  </footer>
+</div>
+<!-- Global Mailform Output-->
+<div id="form-output-global" class="snackbars"></div>
