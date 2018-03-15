@@ -65,12 +65,10 @@
                 <li>
               <% end %>
                 <%= link_to 'About', page_path('about') %>
-                <ul class="rd-navbar-dropdown">
-                  <li> <%= link_to 'Legacy', page_path('legacy') %></li>
-                  <li><%= link_to 'Children\'s Exhibit', page_path('childrens_exhibit') %></li>
-                </ul>
               </li>
 
+              <li> <%= link_to 'Legacy', page_path('legacy') %></li>
+              <li><%= link_to 'Children\'s Exhibit', page_path('childrens_exhibit') %></li>
 
               <% if current_page?(gallery_path) %>
                 <li class="active">
