@@ -6,7 +6,7 @@
     <div data-photo-swipe-gallery="gallery" data-dots="true" data-items="1" data-sm-items="2" data-lg-items="3" data-margin="30" class="owl-carousel offset-top-60">
 
       <% used = Hash.new %>
-      <% dir = Dir.foreach(File.join('public', 'album', 'images')) %>
+      <% dir = Dir.foreach(File.join(File.expand_path("..", Dir.pwd), 'public', 'album', 'images')) %>
       <% 6.times do |count| %>
 
         <% acceptable = false %>
