@@ -1,0 +1,264 @@
+<!-- Page Content-->
+<main class="page-content">
+
+  <% if user_signed_in? %>
+    <section>
+      <!-- Swiper-->
+      <div class="swiper-outer">
+        <div data-simulate-touch="false" data-slide-effect="fade" data-autoplay="3000" class="swiper-container swiper-slider swiper-slider-variant-1">
+          <div class="swiper-wrapper">
+            <div data-slide-bg="<%= image_path 'index-01.jpg' %>" class="swiper-slide">
+              <div class="swiper-slide-caption">
+                <div class="shell shell-wide">
+                  <div class="range">
+                    <div class="cell-md-7 cell-lg-7 context-dark cell-xs-middle">
+                      <h1>Athan Kaloidis Memorial</h1>
+                      <p class="big">The legacy of a great man, remembered through a charity golf tournament, <br class="veil reveal-xl-block"> supported by the many people who were touched by the life of Athan Kaloidis.
+                      </p><a href="<%= page_path('about') %>" class="btn btn-white btn-sm">Learn More About a Great Man</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  <% else %>
+
+    <section>
+      <!-- Swiper-->
+      <div class="swiper-outer">
+        <div data-simulate-touch="false" data-slide-effect="fade" data-autoplay="3000" class="swiper-container swiper-slider swiper-slider-variant-1">
+          <div class="swiper-wrapper">
+            <div data-slide-bg="<%= image_path 'index-01.jpg' %>" class="swiper-slide">
+              <div class="swiper-slide-caption">
+                <div class="shell shell-wide">
+                  <div class="range">
+                    <div class="cell-md-7 cell-lg-7 context-dark cell-xs-middle">
+                      <h1>Athan Kaloidis Memorial</h1>
+                      <p class="big">The legacy of a great man, remembered through a charity golf tournament, <br class="veil reveal-xl-block"> supported by the many people who were touched by the life of Athan Kaloidis.
+                      </p><a href="<%= page_path('about') %>" class="btn btn-white btn-sm">Learn More About a Great Man</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-on-slider">
+          <div class="shell shell-wide">
+            <div class="range">
+              <div class="cell-md-7 cell-lg-7 context-dark cell-xs-middle"></div>
+              <div class="cell-md-5 cell-lg-4 cell-xl-3 cell-xl-preffix-1 offset-top-220 offset-md-top-0">
+                <div class="well-variant-3 swiper-on-slider-inner">
+                  <h2>Login</h2>
+                  <!-- RD Mailform-->
+                  <%= form_for(User.new, as: User.new, url: session_path(User.new), :html => {:class => 'offset-top-26 range rd-mailform'}) do |f| %>
+                    <!--<form method="post" action="bat/rd-mailform.php" class="offset-top-26 range rd-mailform">-->
+
+                    <div class="cell-sm-6 cell-md-12">
+                      <div class="form-group">
+                        <label for="contact-name" class="form-label">Email</label>
+                        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-gray-base" %>
+                        <!--<input id="contact-name" type="text" name="name" data-constraints="@Required" class="form-control form-control-gray-base">-->
+                      </div>
+                    </div>
+                    <div class="cell-sm-6 cell-md-12 offset-top-20 offset-sm-top-0 offset-md-top-20">
+                      <div class="form-group">
+                        <label for="contact-phone" class="form-label">Password</label>
+                        <%= f.password_field :password, autocomplete: "off", class: "form-control form-control-gray-base" %>
+                        <!--<input id="contact-phone" type="text" name="phone" data-constraints="@Required @Integer" class="">-->
+                      </div>
+                    </div>
+                    <div class="range offset-top-20">
+                      <div class="cell-sm-6">
+                        <div class="field">
+                          <%= f.check_box :remember_me %>
+                          <%= f.label :remember_me %>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cell-md-12 offset-top-20">
+                      <button class="btn btn-block btn-primary btn-sm">Login</button>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  <% end %>
+
+  <section class="section-80 section-md-110">
+    <div class="shell shell-wide">
+      <h2>Sponsorships
+        <small class="muted">Under Construction</small>
+      </h2>
+      <hr class="divider divider-60 divider-primary offset-top-32">
+      <!-- Owl Carousel-->
+      <div data-dots="true" data-items="1" data-xs-items="2" data-md-items="3" data-stage-padding="15" data-margin="30" data-mouse-drag="false" class="offset-top-36 offset-md-top-60 text-md-left owl-dots-md owl-carousel">
+        <div class="unit-shrink unit unit-lg-horizontal unit-spacing-xs">
+          <div class="unit-left">
+            <div>
+              <img src="<%= image_path 'home-3-03.jpg' %>" width="200" height="270" alt="" class="img-responsive reveal-inline-block">
+            </div>
+          </div>
+          <div class="unit-body">
+            <h5 class="text-bold p">
+              <a href="event-single.html" class="text-dark">Tournament Sponsor</a></h5>
+            <p class="text-dark offset-top-26">
+              <span class="inset-right-5 text-middle icon icon-lg text-primary mdi mdi-calendar"></span><span class="text-middle">Recognition as a major tournament sponsor, two foursomes, sponsor banner, four tee signs, Winners’ Circle flag, and program ad.</span>
+            </p>
+            <p class="text-dark offset-top-14">
+              <span class="inset-right-5 text-middle icon icon-lg text-primary mdi mdi-account"></span><span class="text-middle">1 Participant</span>
+            </p>
+            <p class="text-dark offset-top-14">
+              <span class="inset-right-5 text-middle icon icon-lg text-primary mdi mdi-trophy-variant"></span><span class="text-middle">$5,000</span>
+            </p><a href="event-single.html" class="btn btn-default btn-sm offset-top-18">Add To Cart</a>
+          </div>
+        </div>
+        <div class="unit-shrink unit unit-lg-horizontal unit-spacing-xs">
+          <div class="unit-left">
+            <div>
+              <img src="<%= image_path 'home-3-04.jpg' %>" width="200" height="270" alt="" class="img-responsive reveal-inline-block">
+            </div>
+          </div>
+          <div class="unit-body">
+            <h5 class="text-bold p">
+              <a href="event-single.html" class="text-dark">Global Bank Championship</a></h5>
+            <p class="text-dark offset-top-26">
+              <span class="inset-right-5 text-middle icon icon-lg text-primary mdi mdi-calendar"></span><span class="text-middle">September 12-15</span>
+            </p>
+            <p class="text-dark offset-top-14">
+              <span class="inset-right-5 text-middle icon icon-lg text-primary mdi mdi-account"></span><span class="text-middle">25 participants</span>
+            </p>
+            <p class="text-dark offset-top-14">
+              <span class="inset-right-5 text-middle icon icon-lg text-primary mdi mdi-trophy-variant"></span><span class="text-middle">$150,000</span>
+            </p><a href="event-single.html" class="btn btn-default btn-sm offset-top-18">book now</a>
+          </div>
+        </div>
+        <div class="unit-shrink unit unit-lg-horizontal unit-spacing-xs">
+          <div class="unit-left">
+            <div>
+              <img src="<%= image_path 'home-3-05.jpg' %>" width="200" height="270" alt="" class="img-responsive reveal-inline-block">
+            </div>
+          </div>
+          <div class="unit-body">
+            <h5 class="text-bold p">
+              <a href="event-single.html" class="text-dark">Open Amateur Championship</a></h5>
+            <p class="text-dark offset-top-26">
+              <span class="inset-right-5 text-middle icon icon-lg text-primary mdi mdi-calendar"></span><span class="text-middle">September 18-21</span>
+            </p>
+            <p class="text-dark offset-top-14">
+              <span class="inset-right-5 text-middle icon icon-lg text-primary mdi mdi-account"></span><span class="text-middle">30 participants</span>
+            </p>
+            <p class="text-dark offset-top-14">
+              <span class="inset-right-5 text-middle icon icon-lg text-primary mdi mdi-trophy-variant"></span><span class="text-middle">$200,000</span>
+            </p><a href="event-single.html" class="btn btn-default btn-sm offset-top-18">book now</a>
+          </div>
+        </div>
+      </div>
+      <div class="offset-top-32 offset-md-top-60">
+        <a href="events.html" class="btn btn-primary btn-sm">view all tournaments</a></div>
+    </div>
+  </section>
+  <section class="bg-gray-light bg-wrapper">
+    <div class="shell shell-wide">
+      <div class="range text-md-left">
+        <div class="cell-md-5 cell-lg-4 cell-lg-preffix-1 section-80 section-md-110">
+          <h2>A Few Words About Our Club</h2>
+          <hr class="divider divider-60 divider-primary offset-top-32 divider-md-left">
+          <p class="offset-top-42">Golfield was founded with the main goal to help all golf players,
+            both professional and amateur, to improve their skills.</p>
+          <p>Located not far from a forest of eucalyptus and pine trees with the back-drop of the
+            snowcapped Taurus Mountains, our Golf Club has something to offer any player, even with a
+            little experience.</p>
+          <div class="range offset-top-42 text-center">
+            <div class="cell-sm-4">
+              <div class="counter-sm">
+                <!-- CountTo-->
+                <div data-from="0" data-to="20" class="text-primary counter"></div>
+                <div class="counter-title offset-top-12 text-dark">Years of Experience</div>
+                <hr class="divider divider-gray-dark divider-30">
+              </div>
+            </div>
+            <div class="cell-sm-4">
+              <div class="counter-sm">
+                <!-- CountTo-->
+                <div data-from="0" data-to="18" class="text-primary counter"></div>
+                <div class="counter-title offset-top-12 text-dark">holes golf course</div>
+                <hr class="divider divider-gray-dark divider-30">
+              </div>
+            </div>
+            <div class="cell-sm-4">
+              <div class="counter-sm">
+                <!-- CountTo-->
+                <div data-from="0" data-to="26" class="text-primary counter"></div>
+                <div class="counter-title offset-top-12 text-dark">Qualified instructors</div>
+                <hr class="divider divider-gray-dark divider-30">
+              </div>
+            </div>
+          </div>
+          <div class="offset-top-32 offset-md-top-60">
+            <a href="about.html" class="btn btn-primary btn-sm">learn more</a></div>
+        </div>
+        <div class="offset-top-0 cell-md-preffix-2 cell-md-5 bg-half-md-dark context-dark cell-lg-5 cell-lg-preffix-2 section-80 section-md-110">
+          <h2>Our Advantages</h2>
+          <hr class="divider divider-60 divider-primary offset-top-32 divider-md-left">
+          <div class="range text-sm-left">
+            <div class="cell-sm-6 cell-md-12 cell-lg-6">
+              <div class="unit unit-horizontal unit-middle reveal-inline-flex text-left">
+                <div class="unit-left">
+                  <img src="<%= image_path 'icon-09.jpg' %>" width="60" height="60" alt=""></div>
+                <div class="unit-body">
+                  <h6>qualified<br>instructors</h6>
+                </div>
+              </div>
+              <p class="inset-xl-right-14 text-gray offset-top-14 offset-lg-top-22">Our qualified
+                instructors will help you make a better start in your training.</p>
+            </div>
+            <div class="cell-sm-6 cell-md-12 cell-lg-6 offset-top-32 offset-sm-top-0 offset-md-top-32 offset-lg-top-0">
+              <div class="unit unit-horizontal unit-middle reveal-inline-flex text-left">
+                <div class="unit-left">
+                  <img src="<%= image_path 'icon-10.jpg' %>" width="60" height="60" alt=""></div>
+                <div class="unit-body">
+                  <h6>high-quality<br>equipment</h6>
+                </div>
+              </div>
+              <p class="inset-xl-right-14 text-gray offset-top-14 offset-lg-top-22">Golf irons, balls,
+                golf bags & carts, gloves, apparel and accessories</p>
+            </div>
+            <div class="cell-sm-6 cell-md-12 cell-lg-6 offset-top-32 offset-lg-top-60">
+              <div class="unit unit-horizontal unit-middle reveal-inline-flex text-left">
+                <div class="unit-left">
+                  <img src="<%= image_path 'icon-11.jpg' %>" width="60" height="60" alt=""></div>
+                <div class="unit-body">
+                  <h6>regular<br>competitions</h6>
+                </div>
+              </div>
+              <p class="inset-xl-right-14 text-gray offset-top-14 offset-lg-top-22">Golf competitions
+                for amateurs and professional players</p>
+            </div>
+            <div class="cell-sm-6 cell-md-12 cell-lg-6 offset-top-32 offset-lg-top-60">
+              <div class="unit unit-horizontal unit-middle reveal-inline-flex text-left">
+                <div class="unit-left">
+                  <img src="<%= image_path 'icon-12.jpg' %>" width="60" height="60" alt=""></div>
+                <div class="unit-body">
+                  <h6>18-Hole<br>Golf Course</h6>
+                </div>
+              </div>
+              <p class="inset-xl-right-14 text-gray offset-top-14 offset-lg-top-22">Our golf course is
+                perfect for any golf players</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

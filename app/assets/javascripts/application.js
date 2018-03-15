@@ -12,3 +12,13 @@
 //
 //= require core.min.js
 //= require script.js
+
+$('#firstname-textbox').on('input propertychange paste', function() {
+    var golfer = document.getElementById("#golfer1-textbox");
+    golfer.value = document.getElementById("#firstname-textbox") + ' ' + document.getElementById("#lastname-textbox")
+});
+
+$('#lastname-textbox').on('input propertychange paste', function() {
+    var golfer = document.getElementById("#golfer1-textbox");
+    golfer.value = document.getElementById("#firstname-textbox") + ' ' + document.getElementById("#lastname-textbox")
+});
