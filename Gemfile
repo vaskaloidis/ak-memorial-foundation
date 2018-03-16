@@ -7,6 +7,8 @@ end
 
 ruby "2.4.1"
 
+gem 'rollbar'
+
 gem 'devise'
 gem 'high_voltage', '~> 3.0.0'
 
