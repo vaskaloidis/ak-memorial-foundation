@@ -5,14 +5,18 @@
     <!-- Owl Carousel-->
     <div data-photo-swipe-gallery="gallery" data-dots="true" data-items="1" data-sm-items="2" data-lg-items="3" data-margin="30" class="owl-carousel offset-top-60">
 
-      <% used = Hash.new %>
-      <% dir = Dir.foreach(Rails.root.join('public', 'album', 'images')) %>
+      <%
+        used = Hash.new
+        dir = Dir.foreach(ApplicationHelper.get_album(1))
+        ah = ApplicationHelper
+      %>
+
       <% 6.times do |count| %>
 
         <% acceptable = false %>
 
         <% while !acceptable %>
-          <% item = dir.entries.fetch(Random.rand(0..dir.count)) %>
+          <% item = dir.entries.fetch(Random.rand(1..(dir.count-1))) %>
           <% if item != '.' and item != '..' and item != '.DS_Store' and !used.has_value?(item) %>
             <% acceptable = true %>
             <% used.store(count, item) %>
@@ -22,7 +26,8 @@
 
         <div>
           <!-- PhotoSwipe image-->
-          <a data-photo-swipe-item="" data-size="684x504" href="/album/images/<%= item %>" class="thumbnail-variant-1"><img src="/album/images/<%= item %>" width="570" height="420" alt="" class="img-responsive center-block">
+          <a data-photo-swipe-item="" data-size="684x504" href="<%= ah.get_image(1, item) %>" class="thumbnail-variant-1">
+            <img src="<%= ah.get_image(1, item) %>" width="570" height="420" alt="" class="img-responsive center-block">
             <div class="caption">
               <div class="caption-inner"><span class="icon fa-search-plus"></span></div>
             </div>
@@ -31,7 +36,7 @@
           <% acceptable = false %>
 
           <% while !acceptable %>
-            <% item = dir.entries.fetch(Random.rand(0..dir.count)) %>
+            <% item = dir.entries.fetch(Random.rand(0..(dir.count-1))) %>
             <% if item != '.' and item != '..' and item != '.DS_Store' and !used.has_value?(item) %>
               <% acceptable = true %>
               <% used.store(count, item) %>
@@ -39,7 +44,8 @@
           <% end %>
 
 
-          <a data-photo-swipe-item="" data-size="684x504" href="/album/images/<%= item %>" class="thumbnail-variant-1"><img src="/album/images/<%= item %>" width="570" height="420" alt="" class="img-responsive center-block">
+          <a data-photo-swipe-item="" data-size="684x504" href="<%= ah.get_image(1, item) %>" class="thumbnail-variant-1">
+            <img src="<%= ah.get_image(1, item) %>" width="570" height="420" alt="" class="img-responsive center-block">
             <div class="caption">
               <div class="caption-inner"><span class="icon fa-search-plus"></span></div>
             </div>
@@ -49,7 +55,7 @@
 
       <% end %>
       <div class="offset-top-32 offset-md-top-60">
-        <a href="<%= gallery_path %>" class="btn btn-primary-dr btn-sm">
+        <a href="<%= '' %>" class="btn btn-primary-dr btn-sm">
           view all Gallery
         </a>
       </div>

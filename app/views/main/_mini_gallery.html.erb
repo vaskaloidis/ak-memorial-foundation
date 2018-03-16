@@ -3,28 +3,32 @@
   <!-- Owl Carousel-->
   <div data-photo-swipe-gallery="gallery" data-items="1" data-xs-items="3" data-sm-items="4" data-md-items="5" data-lg-items="6" class="owl-carousel owl-carousel-flex">
 
-    <% used = Hash.new %>
-    <% dir = Dir.foreach(Rails.root.join('public', 'album', 'images')) %>
+    <%
+      used = Hash.new
+      dir = Dir.foreach(ApplicationHelper.get_album(1))
+      ah = ApplicationHelper
+    %>
+
     <% 6.times do |count| %>
 
       <% acceptable = false %>
 
       <% while !acceptable %>
-        <% item = dir.entries.fetch(Random.rand(0..dir.count)) %>
-        <% if item != '.' and item != '..' and item != '.DS_Store' and !used.has_value?(item)%>
+        <% item = dir.entries.fetch(Random.rand(0..(dir.count-1))) %>
+        <% if item != '.' and item != '..' and item != '.DS_Store' and !used.has_value?(item) %>
           <% acceptable = true %>
           <% used.store(count, item) %>
         <% end %>
-
       <% end %>
 
+
       <div style="overflow:hidden;">
-      <a data-photo-swipe-item="" data-size="1000x667" href="/album/images/<%= item %>" class="thumbnail-variant-1">
-        <img src="/album/images/<%= item %>" width="320" height="320" alt="" class="img-responsive center-block">
-        <div class="caption">
-          <div class="caption-inner"><span class="icon fa-search-plus"></span></div>
-        </div>
-      </a>
+        <a data-photo-swipe-item="" data-size="1000x667" href="<%= ah.get_image(1, item) %>" class="thumbnail-variant-1">
+          <img src="<%= ah.get_image(1, item) %>" width="320" height="320" alt="" class="img-responsive center-block">
+          <div class="caption">
+            <div class="caption-inner"><span class="icon fa-search-plus"></span></div>
+          </div>
+        </a>
       </div>
 
     <% end %>

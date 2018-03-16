@@ -110,11 +110,7 @@
     <div class="shell shell-wide section-top-60 section-md-top-0">
       <div class="range text-md-left">
         <div class="cell-md-6 img-fullwidth-wrapper">
-          <div style="background: url('<%= image_path 'index-04.jpg' %>'); background-size: cover;" class="img-fullwidth img-fullwidth-left">
-            <div class="img-wrap">
-              <figure><span data-toggle="modal" data-target="#myModal" class="icon mdi mdi-play-circle-outline"></span>
-              </figure>
-            </div>
+          <div style="background: url('<%= ApplicationHelper.get_image(2, 'image102.jpg') %>'); background-size: cover;" class="img-fullwidth img-fullwidth-left">
           </div>
         </div>
         <div class="cell-md-6 cell-lg-preffix-1 cell-lg-4 section-60 section-md-110 offset-top-0">
@@ -126,7 +122,7 @@
               April 12th at 'Waterbury Golf Club'. This tournament has raised an excess of $30,000 for charitable
               causes. </p>
 
-            <a href="<%= page_path('about') %>" class="btn btn-primary btn-sm offset-top-22">Learn more</a>
+            <a href="<%= about_path %>" class="btn btn-primary btn-sm offset-top-22">Learn more</a>
           </div>
         </div>
       </div>

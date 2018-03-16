@@ -59,16 +59,27 @@
               <a href="<%= root_url %>">Home</a>
               </li>
 
-              <% if current_page?(page_path('about')) or current_page?(page_path('legacy')) or current_page?(page_path('childrens_exhibit')) %>
+              <% if current_page?(about_path) %>
                 <li class="active">
               <% else %>
                 <li>
               <% end %>
-                <%= link_to 'About', page_path('about') %>
-              </li>
+              <%= link_to 'About', about_path %></li>
 
-              <li> <%= link_to 'Legacy', page_path('legacy') %></li>
-              <li><%= link_to 'Children\'s Exhibit', page_path('childrens_exhibit') %></li>
+              <% if current_page?(legacy_path) %>
+                <li class="active">
+              <% else %>
+                <li>
+              <% end %>
+              <%= link_to 'Legacy', legacy_path %></li>
+
+              <% if current_page?(childrens_exhibit_path) %>
+                <li class="active">
+              <% else %>
+                <li>
+              <% end %>
+              <%= link_to 'Children\'s Exhibit', childrens_exhibit_path %></li>
+
 
               <% if current_page?(gallery_path) %>
                 <li class="active">
@@ -83,7 +94,7 @@
               </ul>
               </li>
 
-              <!--<li><%#= link_to 'Donate', page_path('donate') %></li>-->
+              <!--<li><%#= link_to 'Donate', donate') %></li>-->
 
               <% if !user_signed_in? %>
                 <li>
@@ -92,8 +103,8 @@
               <% end %>
 
 
-              <li><%= link_to 'Sponsorships', page_path('sponsorships') %></li>
-              <li><%= link_to 'Supporters', page_path('supporters') %></li>
+              <li><%= link_to 'Sponsorships', sponsorships_path %></li>
+              <li><%= link_to 'Supporters', supporters_path %></li>
 
               <% if user_signed_in? %>
                 <% if current_page?(gallery_path) %>
