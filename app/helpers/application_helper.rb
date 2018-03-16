@@ -2,7 +2,8 @@ module ApplicationHelper
 
   def self.get_root_dir
     if Rails.env.production?
-      return Rails.root.join(File.expand_path("..", Dir.pwd), '')
+      return Rails.root
+      # return Rails.root.join(File.expand_path("..", Dir.pwd), '')
     else
       return Rails.root
     end
