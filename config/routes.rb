@@ -1,13 +1,27 @@
 Rails.application.routes.draw do
+
+  resources :purchases
+  devise_for :users
+
+  resources :charges
+  resources :shopping_carts
+
+  resources :products do
+    resources :users do
+      resource :shopping_carts
+    end
+  end
+
+
   root to: 'main#home'
 
-  #   devise_for :users
-  devise_for :users, controllers: {
-      sessions: 'users/sessions'
-  }
+  get '/admin', to: 'main#admin', as: 'admin'
 
-  get '/gallery', to: 'main#gallery'
-  get '/gallery_second', to: 'main#gallery_second'
+  get '/view_profile', to: 'main#profile', as: 'view_profile'
+
+  get '/twenty_ten_gallery', to: 'main#twenty_ten_gallery'
+  get '/twenty_fifteen_gallery', to: 'main#twenty_fifteen_gallery'
+  get '/athen_gallery', to: 'main#athen_gallery'
 
   get '/about', to: 'main#about', as: 'about'
   get '/childrens_exhibit', to: 'main#childrens_exhibit', as: 'childrens_exhibit'
