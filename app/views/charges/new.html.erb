@@ -1,0 +1,49 @@
+<main class="page-content">
+  <section class="section-80 section-md-110">
+    <div class="shell">
+
+      <h2>Shopping Cart</h2>
+
+      <hr class="divider divider-primary divider-60 divider-offset">
+
+      <% if signed_in? %>
+
+        <%= form_tag charges_path do %>
+          <article>
+            <% if flash[:error].present? %>
+              <div id="error_explanation">
+                <p><%= flash[:error] %></p>
+              </div>
+            <% end %>
+            <label class="alert alert-success">
+              <span>Total Donation Amount: $<%= @total_charge.to_s %></span>
+            </label>
+          </article>
+
+          <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                  data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+                  data-description="Athan Kaloidis Memorial Purchase"
+                  data-amount="<%= (@total_charge * 100).to_s %>"
+                  data-locale="auto"></script>
+        <% end %>
+
+        <div class="offset-top-42 offset-lg-top-100">
+          <%= render 'shopping_carts/cart' %>
+        </div>
+
+      <% else %>
+        <div class="offset-top-42 offset-lg-top-100">
+          <div class="alert alert-success">
+            You need to <%= link_to('Login', new_user_session_path) %> First.
+          </div>
+        </div>
+
+      <% end %>
+
+    </div>
+  </section>
+</main>
+
+<br>
+
+

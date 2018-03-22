@@ -9,8 +9,7 @@
           <h1>2015 Tournament Gallery</h1>
           <ol class="breadcrumb">
             <li><a href="./">Home</a></li>
-            <li>2015 Tournament Gallery
-            </li>
+            <li>2015 Tournament</li>
           </ol>
         </div>
       </div>
@@ -22,11 +21,11 @@
       <hr class="divider divider-60 divider-primary offset-top-32">
       <div data-photo-swipe-gallery="gallery" class="offset-top-60 range">
 
-        <% Dir.foreach(ApplicationHelper.get_album(1)) do |item| %>
+        <% Dir.foreach(ApplicationHelper.get_album(3)) do |item| %>
           <% next if item == '.' or item == '..' or item == '.DS_Store' %>
           <div class="cell-lg-3 cell-md-4 cell-xs-6">
-            <a data-photo-swipe-item="" data-size="588x560" href="<%= ApplicationHelper.get_image(1, item) %>" class="thumbnail-variant-1">
-              <img src="<%= ApplicationHelper.get_image(1, item) %>" width="420" height="400" alt="" class="img-responsive center-block">
+            <a data-photo-swipe-item="" data-size="588x560" href="<%= ApplicationHelper.get_image(3, item) %>" class="thumbnail-variant-1">
+              <img src="<%= ApplicationHelper.get_image(3, item) %>" width="auto" height="auto" alt="" class="img-responsive center-block">
               <div class="caption">
                 <div class="caption-inner"><span class="icon fa-search-plus"></span></div>
               </div>

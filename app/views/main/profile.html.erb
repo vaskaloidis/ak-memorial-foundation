@@ -1,0 +1,142 @@
+<main class="page-content">
+
+  <section class="section-10 section-md-30 bg-gray-light">
+    <div class="shell text-xl-center offset-top-42">
+
+      <h2>Your Tournament Golfer Group</h2>
+      <hr class="divider divider-60 divider-primary offset-top-32">
+      <a href="<%= edit_user_registration_path %>" class="btn btn-primary">Edit Profile</a>
+
+      <div class="offset-top-42">
+        <div class="row">
+
+          <div class="col-xs-12 col-md-6">
+            <% if !current_user.first_name.nil? %>
+              <strong>Name: </strong> <%= current_user.first_name %>
+              <% if !current_user.last_name.nil? %>
+                <%= current_user.last_name %>
+              <% end %>
+              <br>
+            <% end %>
+
+            <% if !current_user.email.nil? %>
+              <strong>Email: </strong> <%= current_user.email %><br>
+            <% end %>
+
+            <% if !current_user.phone.nil? %>
+              <strong>Phone: </strong> <%= current_user.phone %><br>
+            <% end %>
+          </div>
+
+          <div class="col-xs-12 col-md-6">
+            <% if !current_user.company_name.nil? %>
+              <strong>Company Name: </strong> <%= current_user.company_name %><br>
+            <% end %>
+
+            <% if !current_user.company_website.nil? %>
+              <strong>Company Website: </strong> <%= current_user.company_website %><br>
+            <% end %>
+
+            <% if !current_user.company_published_name.nil? %>
+              <strong>Company Formal Name: </strong> <%= current_user.company_published_name %><br>
+            <% end %>
+
+            <% if !current_user.fax.nil? %>
+              <strong>Fax: </strong> <%= current_user.fax %><br>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+
+      <h4>Golf Tournament Group</h4>
+      <div class="offset-top-32">
+        <div class="row">
+          <div class="col-xs-12 col-md-12">
+            <table class="table table-hover table-striped">
+              <thead>
+              <tr>
+                <th class="success"></th>
+                <th class="success">Name</th>
+                <th class="success">Email</th>
+                <th class="success">Tournament Registration Status</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% if !current_user.golfer2_name.nil? and !current_user.golfer2_email.nil? %>
+                <tr>
+                  <td>Golfer 2</td>
+                  <td><%= current_user.golfer2_name %></td>
+                  <td><%= current_user.golfer2_email %></td>
+                  <td></td>
+                </tr>
+                <% if !current_user.golfer3_name.nil? and !current_user.golfer3_email.nil? %>
+                  <tr>
+                    <td>Golfer 3</td>
+                    <td><%= current_user.golfer3_name %></td>
+                    <td><%= current_user.golfer3_email %></td>
+                    <td></td>
+                  </tr>
+                <% end %>
+
+                <% if !current_user.golfer4_name.nil? and !current_user.golfer4_email.nil? %>
+                  <tr>
+                    <td>Golfer 4</td>
+                    <td><%= current_user.golfer4_name %></td>
+                    <td><%= current_user.golfer4_email %></td>
+                    <td></td>
+                  </tr>
+                <% end %>
+
+              <% else %>
+                <tr>
+                  <td>You Need to Set A Tournament Group in your Profile</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-xs-30 section-md-60">
+        <h4>Purchases</h4>
+        <div class="offset-top-32">
+          <div class="row">
+            <div class="col-xs-12 col-md-12">
+
+              <table class="table table-hover table-striped">
+                <tbody>
+                <% if !current_user.purchases.count == 0 %>
+                  <% current_user.purchases.each do |purchase| %>
+                    <tr>
+                      <td>Golfer 2</td>
+                      <td><%= purchase.product.name %></td>
+                      <td><%= purchase.product.description %></td>
+                      <td><%= purchase.created_at %></td>
+                    </tr>
+                  <% end %>
+                <% else %>
+                  <tr>
+                    <td>(None)</td>
+                  </tr>
+                <% end %>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    </div>
+  </section>
+
+
+</main>

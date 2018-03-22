@@ -10,10 +10,38 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314073215) do
+ActiveRecord::Schema.define(version: 20180322021513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "category"
+    t.decimal "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.bigint "product_id"
+    t.bigint "user_id"
+    t.integer "product_category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_purchases_on_product_id"
+    t.index ["user_id"], name: "index_purchases_on_user_id"
+  end
+
+  create_table "shopping_carts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "product_id"
+    t.index ["product_id"], name: "index_shopping_carts_on_product_id"
+    t.index ["user_id"], name: "index_shopping_carts_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,9 +58,6 @@ ActiveRecord::Schema.define(version: 20180314073215) do
     t.string "name"
     t.string "phone"
     t.string "fax"
-    t.string "golfer2"
-    t.string "golfer3"
-    t.string "golfer4"
     t.string "note"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -44,8 +69,19 @@ ActiveRecord::Schema.define(version: 20180314073215) do
     t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "golfer2_name"
+    t.string "golfer2_email"
+    t.string "golfer3_name"
+    t.string "golfer3_email"
+    t.string "golfer4_email"
+    t.string "golfer4_name"
+    t.boolean "admin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "purchases", "products"
+  add_foreign_key "purchases", "users"
+  add_foreign_key "shopping_carts", "products"
+  add_foreign_key "shopping_carts", "users"
 end

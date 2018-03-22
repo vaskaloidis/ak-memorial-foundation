@@ -12,4 +12,21 @@
  */
 .rd-navbar-panel {
   padding-top: 20px;
-  padding-bottom: 15px; }
+  padding-bottom: 15px;
+}
+
+img.pswp__img {
+    height: auto !important;
+}
+
+.thumbnail-variant-1 > img {
+    max-height: 200px !important;
+}
+#error_explanation > p {
+    color: white;
+}
+
+#admin-table > tr td{
+    padding: 0 !important;
+    margin: 0 !important;
+}

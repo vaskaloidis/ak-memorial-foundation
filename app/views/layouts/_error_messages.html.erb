@@ -1,0 +1,21 @@
+<% if object.errors.any? %>
+  <div id="error_explanation">
+    <div class="alert alert-danger alert-dismissable">
+      <!--<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>-->
+      <p style="color: white;">This form contains <%= pluralize(object.errors.count, 'error') %>.</p>
+      <ul>
+        <% object.errors.full_messages.each do |msg| %>
+          <li style="color: white;">
+            <% @current_password_error = false %>
+            <% if msg == "Current password can't be blank" %>
+              <% @current_password_error = true %>
+              You must enter your current password, to update your profile.
+            <% else %>
+              <%= msg %>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>

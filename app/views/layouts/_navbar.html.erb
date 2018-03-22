@@ -21,8 +21,7 @@
           <div class="media p">
             <div class="media-left"><span class="icon icon-sm text-gray mdi mdi-phone"></span></div>
             <div class="media-body">
-              <div><a href="callto:#" class="text-base">1-203-217-9718</a></div>
-              <a href="callto:#" class="text-base">1-203-518-1989</a>
+              <div><a href="callto:2035181989" class="text-base">203-518-1989</a></div>
             </div>
           </div>
           <div class="media p">
@@ -35,18 +34,6 @@
       <div class="rd-navbar-sub-panel">
         <div class="rd-navbar-sub-panel-inner">
           <!--RD Navbar Search-->
-          <div class="rd-navbar-search">
-            <div data-custom-toggle=".rd-search" data-custom-toggle-disable-on-blur="false" class="rd-navbar-search-toggle">
-              <span class="mdi mdi-magnify icon"></span></div>
-            <form action="search-results.html" data-search-live="rd-search-results-live" method="GET" class="rd-search">
-              <div class="form-group">
-                <label for="rd-navbar-search-form-input" class="form-label">Search</label>
-                <input id="rd-navbar-search-form-input" type="text" name="s" autocomplete="off" class="rd-navbar-search-form-input form-control form-control-gray-lightest">
-                <button class="mdi mdi-magnify btn icon"></button>
-              </div>
-              <div id="rd-search-results-live" class="rd-search-results-live"></div>
-            </form>
-          </div>
           <div class="rd-navbar-nav-wrap">
             <!-- RD Navbar Nav-->
             <ul class="rd-navbar-nav">
@@ -80,42 +67,66 @@
               <% end %>
               <%= link_to 'Children\'s Exhibit', childrens_exhibit_path %></li>
 
-
-              <% if current_page?(gallery_path) %>
+              <% if current_page?(twenty_ten_gallery_path) or current_page?(athen_gallery_path) or current_page?(twenty_fifteen_gallery_path) %>
                 <li class="active">
               <% else %>
                 <li>
               <% end %>
-
-              <a href="<%= gallery_path %>">Gallery</a>
+              <a href="<%= athen_gallery_path %>">Gallery</a>
               <ul class="rd-navbar-dropdown">
-                <li><a href="<%= gallery_path %>">2015 Tournament</a></li>
-                <li><a href="<%= gallery_second_path %>">Athan & Family</a></li>
+                <li><a href="<%= twenty_ten_gallery_path %>">2010 Tournament</a></li>
+                <li><a href="<%= twenty_fifteen_gallery_path %>">2015 Tournament</a></li>
+                <li><a href="<%= athen_gallery_path %>">Athan & Family</a></li>
               </ul>
               </li>
 
               <!--<li><%#= link_to 'Donate', donate') %></li>-->
 
               <% if !user_signed_in? %>
-                <li>
-                  <%= link_to('Register', new_user_registration_path) %>
-                </li>
-              <% end %>
-
-
-              <li><%= link_to 'Sponsorships', sponsorships_path %></li>
-              <li><%= link_to 'Supporters', supporters_path %></li>
-
-              <% if user_signed_in? %>
-                <% if current_page?(gallery_path) %>
+                <% if current_page?(new_user_registration_path) %>
                   <li class="active">
                 <% else %>
                   <li>
                 <% end %>
-                <a href="edit_user_registration_path"><%= current_user.email %></a>
+                <%= link_to('Register', new_user_registration_path) %>
+                </li>
+              <% end %>
+
+              <% if current_page?(sponsorships_path) %>
+                <li class="active">
+              <% else %>
+                <li>
+              <% end %>
+              <%= link_to 'Sponsorships', sponsorships_path %></li>
+
+              <!-- TODO: Enable Supportesr Page-->
+              <% supporters_page_feature = false %>
+              <% if supporters_page_feature %>
+                <% if current_page?(supporters_path) %>
+                  <li class="active">
+                <% else %>
+                  <li>
+                <% end %>
+                <%= link_to 'Supporters', supporters_path %></li>
+              <% end %>
+
+              <% if user_signed_in? %>
+
+                <% if current_page?(edit_user_registration_path) or current_page?(view_profile_path) or current_page?(admin_path) %>
+                  <li class="active">
+                <% else %>
+                  <li>
+                <% end %>
+
+                <a href="<%= view_profile_path %>"><%= current_user.email %></a>
                 <ul class="rd-navbar-dropdown">
-                  <li><%= link_to('Edit User Profile', edit_user_registration_path) %></li>
-                  <li><%= link_to('Logout', destroy_user_session_path, method: :delete) %></li>
+                  <% if current_user.admin == true %>
+                    <li><%= link_to('Admin', admin_path) %></li>
+                    <hr>
+                  <% end %>
+                  <li><%= link_to('View Profile', view_profile_path) %></li>
+                  <li><%= link_to('Edit Profile', edit_user_registration_path) %></li>
+                  <li><%= link_to('Logout', destroy_user_session_path, method: :get) %></li>
                 </ul>
                 </li>
               <% else %>
@@ -127,7 +138,16 @@
             </ul>
           </div>
           <div class="rd-navbar-shop">
-            <a href="#"><span class="icon mdi mdi-cart"></span><span class="rd-navbar-shop-counter">0</span></a>
+            <a href="<%= shopping_carts_path %>">
+              <span class="icon mdi mdi-cart"></span>
+              <span class="rd-navbar-shop-counter">
+                <% if signed_in? %>
+                  <%= current_user.shopping_cart.count %>
+                <% else %>
+                  0
+                <% end %>
+              </span>
+            </a>
           </div>
         </div>
       </div>

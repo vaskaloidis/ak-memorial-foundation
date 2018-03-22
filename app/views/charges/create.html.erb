@@ -1,0 +1,33 @@
+<main class="page-content">
+  <section class="section-80 section-md-110">
+    <div class="shell">
+
+      <h2>Shopping Cart</h2>
+      <hr class="divider divider-primary divider-60 divider-offset">
+
+      <p id="notice"><%= notice %></p>
+
+      <div class="offset-top-42 offset-lg-top-100">
+
+        <% if signed_in? %>
+
+          <div class="alert alert-success">
+            Thank You for your Donation of $<%= @amount_dollars.to_s %> to the Athan Kaloidis Memorial Golf Tournament.
+          </div>
+
+        <% else %>
+
+          <div class="alert alert-success">
+            You need to <%= link_to('Login', new_user_session_path) %> First.
+          </div>
+
+        <% end %>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<br>
+
+

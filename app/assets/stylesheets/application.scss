@@ -11,8 +11,28 @@
  * It is generally better to create a new file per style scope.
  */
 
-
 .rd-navbar-panel {
-  padding-top:20px;
-  padding-bottom:15px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
+
+img.pswp__img {
+  height: auto !important;
+}
+
+.thumbnail-variant-1 > img {
+  max-height: 200px !important;
+}
+
+#error_explanation {
+  color: white;
+}
+
+#error_explanation > h2 {
+  @extend %h4;
+}
+
+#error_explanation > ul > li {
+  @extend %alert;
+  @extend %body;
 }
