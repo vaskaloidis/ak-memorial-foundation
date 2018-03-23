@@ -1,8 +1,10 @@
 # Athan Kaloidis Memorial Golf Tournament Seeds
 
-User.delete_all
-Product.delete_all
-ShoppingCart.delete_all
+unless Rails.env.production?
+  User.delete_all
+  Product.delete_all
+  ShoppingCart.delete_all
+end
 
 # Me
 c1 = User.new
@@ -93,7 +95,6 @@ p.name = 'Donation'
 p.description = 'Donate any amount to the Athan Kaloidis Memorial Foundation.'
 p.category = 'donation'
 p.save
-
 
 
 # Finished
