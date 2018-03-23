@@ -6,7 +6,9 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-Dotenv::Railtie.load
+unless Rails.env.production?
+  Dotenv::Railtie.load
+end
 
 require 'money'
 require 'stripe'
@@ -25,12 +27,12 @@ module AkMemorialFoundation
     config.action_mailer.delivery_method = :smtp
     # config.action_mailer.default_url_options = { :host => "bluehelmet.software" }
     config.action_mailer.smtp_settings = {
-        address:              'smtp.gmail.com',
-        port:                 587,
-        domain:               'gmail.com',
-        user_name:            'blue.helmet.dev@gmail.com',
-        password:             ENV['GMAIL_PASSWORD'],
-        authentication:       :plain,
+        address: 'smtp.gmail.com',
+        port: 587,
+        domain: 'gmail.com',
+        user_name: 'blue.helmet.dev@gmail.com',
+        password: ENV['GMAIL_PASSWORD'],
+        authentication: :plain,
         enable_starttls_auto: true
     }
 

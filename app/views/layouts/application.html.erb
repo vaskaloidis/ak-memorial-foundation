@@ -13,8 +13,8 @@
 
   <%= stylesheet_link_tag '//fonts.googleapis.com/css?family=Oswald:300,400,700%7CRoboto:300,300italic,400,700,700italic' %>
   <%= stylesheet_link_tag 'style.css', media: 'all' %>
-  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
 
   <script src="https://js.stripe.com/v3/"></script>
 
@@ -24,13 +24,14 @@
     <a href="http://windows.microsoft.com/en-US/internet-explorer/">
       <img src="images/ie8-panel/warning_bar_0000_us.jpg"
            border="0" height="42" width="820"
-           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.">
+           alt="You are using an outdated browser.">
     </a>
   </div>
   <script src="js/html5shiv.min.js"></script>
   <![endif]-->
 
 </head>
+
 <body>
 
 <div class="page text-center">

@@ -24,6 +24,7 @@ c1.save
 c1 = User.new
 c1.first_name = 'Vasi'
 c1.last_name = 'Kaloidis'
+c1.phone = '2032066332'
 c1.email = 'vasi@vasisrestaurant.com'
 pass = 'Vasis2018!'
 c1.password = pass
@@ -33,6 +34,9 @@ c1.save
 
 # Johnny
 c1 = User.new
+c1.first_name = 'John'
+c1.last_name = 'Kaloidis'
+c1.phone = '2035181989'
 c1.email = 'john@kaloidislaw.com'
 pass = 'Law2018!'
 c1.password = pass
