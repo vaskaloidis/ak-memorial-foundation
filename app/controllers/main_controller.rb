@@ -49,8 +49,12 @@ class MainController < ApplicationController
 
   private
   def verify_admin
-    unless current_user.admin?
-      format.html {redirect_to root_path, notice: 'You are not an Admin.'}
+    if signed_in?
+      unless current_user.admin?
+        redirect_to root_path, notice: 'You are not an Admin.'
+      end
+    else
+      redirect_to root_path, notice: 'You are not logged in.'
     end
   end
 end

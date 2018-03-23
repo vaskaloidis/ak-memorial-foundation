@@ -109,11 +109,17 @@
             <div class="col-xs-12 col-md-12">
 
               <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                  <th class="success">Product</th>
+                  <th class="success">Description</th>
+                  <th class="success">Date</th>
+                </tr>
+                </thead>
                 <tbody>
-                <% if !current_user.purchases.count == 0 %>
+                <% if current_user.purchases.count > 0 %>
                   <% current_user.purchases.each do |purchase| %>
                     <tr>
-                      <td>Golfer 2</td>
                       <td><%= purchase.product.name %></td>
                       <td><%= purchase.product.description %></td>
                       <td><%= purchase.created_at %></td>

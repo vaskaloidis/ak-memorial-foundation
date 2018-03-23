@@ -16,10 +16,12 @@
                 <div id="admin-table" class="table-responsive offset-top-32">
                   <table style="padding:0px; margin:0px;" class="table table-hover text-left">
                     <thead style="padding:0px; margin:0px;">
-                      <tr style="padding:0px; margin:0px;">
-                        <th style="padding:2px; margin:0px;" class="success text-left"><%= group.first_name %> <%= group.last_name %> Group<br> Name</th>
-                        <th style="padding:0px; margin:0px;" class="success text-left">Email</th>
-                        <th style="padding:0px; margin:0px;" class="success text-left">Status</th>
+                    <tr style="padding:0px; margin:0px;">
+                      <th style="padding:2px; margin:0px;" class="success text-left"><%= group.first_name %> <%= group.last_name %>
+                        Group<br> Name
+                      </th>
+                      <th style="padding:0px; margin:0px;" class="success text-left">Email</th>
+                      <th style="padding:0px; margin:0px;" class="success text-left">Status</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -151,23 +153,25 @@
                           <%= user.company %>
                         <% end %>
                       </td>
-                      <div>
-                        <% unless user.company_name.nil? %>
-                          <strong>Company Name: </strong> <%= user.company_name %>
-                        <% end %>
-                        <% unless user.company_website.nil? %>
-                          <strong>Company Website: </strong> <%= user.company_website %>
-                        <% end %>
-                        <% unless user.company_preferred_name.nil? %>
-                          <strong>Company Preferred_: </strong> <%= user.company_preferred_name %>
-                        <% end %>
-                        <% unless user.phone.nil? %>
-                          <strong>Phone: </strong> <%= user.phone %>
-                        <% end %>
-                        <% unless user.note.nil? %>
-                          <strong>Note: </strong> <%= user.note %>
-                        <% end %>
-                      </div>
+                      <% if 1 == 2 %>
+                        <div>
+                          <% unless user.company_name.nil? %>
+                            <strong>Company Name: </strong> <%= user.company_name %>
+                          <% end %>
+                          <% unless user.company_website.nil? %>
+                            <strong>Company Website: </strong> <%= user.company_website %>
+                          <% end %>
+                          <% unless user.company_preferred_name.nil? %>
+                            <strong>Company Preferred_: </strong> <%= user.company_preferred_name %>
+                          <% end %>
+                          <% unless user.phone.nil? %>
+                            <strong>Phone: </strong> <%= user.phone %>
+                          <% end %>
+                          <% unless user.note.nil? %>
+                            <strong>Note: </strong> <%= user.note %>
+                          <% end %>
+                        </div>
+                      <% end %>
                     </tr>
                   <% end %>
                 <% else %>
