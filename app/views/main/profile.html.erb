@@ -113,6 +113,7 @@
                 <tr>
                   <th class="success">Product</th>
                   <th class="success">Description</th>
+                  <th class="success">Price</th>
                   <th class="success">Date</th>
                 </tr>
                 </thead>
@@ -122,6 +123,7 @@
                     <tr>
                       <td><%= purchase.product.name %></td>
                       <td><%= purchase.product.description %></td>
+                      <td>$<%= purchase.amount %></td>
                       <td><%= purchase.created_at %></td>
                     </tr>
                   <% end %>
