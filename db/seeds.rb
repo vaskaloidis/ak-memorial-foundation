@@ -6,8 +6,6 @@ unless Rails.env.production?
   ShoppingCart.delete_all
 end
 
-
-
 # Me
 c1 = User.new
 c1.first_name = 'Vas'

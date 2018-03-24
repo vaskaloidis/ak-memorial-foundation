@@ -13,6 +13,12 @@ Rails.application.routes.draw do
   end
 
 
+  get 'add_product/:product_id/to_user_cart/:user_id',
+        to: 'shopping_carts#add_product_to_cart',
+        as: 'add_product_to_user_cart'
+
+  match 'add_donation', to: 'shopping_carts#add_donation_to_cart', via: [:post]
+
   root to: 'main#home'
 
   get '/admin', to: 'main#admin', as: 'admin'

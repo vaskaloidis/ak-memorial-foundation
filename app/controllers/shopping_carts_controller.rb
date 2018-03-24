@@ -14,16 +14,57 @@ class ShoppingCartsController < ApplicationController
   def show
   end
 
+  def add_donation_to_cart
+    @shopping_cart = ShoppingCart.new
+    @shopping_cart.user = User.find(params[:user_id])
+    @shopping_cart.product = Product.find(params[:product_id])
+    @shopping_cart.amount = params[:amount]
+
+    respond_to do |format|
+      if @shopping_cart.save
+
+        @shopping_carts = current_user.shopping_cart
+
+        format.html {redirect_to shopping_carts_path, notice: 'Product Added To Cart'}
+        format.json {render :show, status: :created, location: @shopping_cart}
+      else
+        format.html {render :new}
+        format.json {render json: @shopping_cart.errors, status: :unprocessable_entity}
+      end
+    end
+  end
+
+  def add_product_to_cart
+    @shopping_cart = ShoppingCart.new
+    @shopping_cart.user = User.find(params[:user_id])
+    @shopping_cart.product = Product.find(params[:product_id])
+    @shopping_cart.amount = @shopping_cart.product.price
+
+    respond_to do |format|
+      if @shopping_cart.save
+
+        @shopping_carts = current_user.shopping_cart
+
+        format.html {redirect_to shopping_carts_path, notice: 'Product Added To Cart'}
+        format.json {render :show, status: :created, location: @shopping_cart}
+      else
+        format.html {render :new}
+        format.json {render json: @shopping_cart.errors, status: :unprocessable_entity}
+      end
+    end
+  end
+
   # GET /shopping_carts/new
   def new
-    @shopping_carts = current_user.shopping_cart
     @shopping_cart = ShoppingCart.new
     @shopping_cart.user = User.find(params[:user_id])
     @shopping_cart.product = Product.find(params[:product_id])
 
-
     respond_to do |format|
       if @shopping_cart.save
+
+        @shopping_carts = current_user.shopping_cart
+
         format.html {redirect_to shopping_carts_path, notice: 'Product Added To Cart'}
         format.json {render :show, status: :created, location: @shopping_cart}
       else
@@ -41,6 +82,7 @@ class ShoppingCartsController < ApplicationController
   # POST /shopping_carts.json
   def create
     @shopping_cart = ShoppingCart.new(shopping_cart_params)
+    @shopping_cart.amount = Product.find(params[:product_id]).amount
 
     respond_to do |format|
       if @shopping_cart.save

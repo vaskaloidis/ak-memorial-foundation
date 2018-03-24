@@ -119,7 +119,7 @@
               <img src="images/experiense-0<%= (count).to_s %>.jpg" width="570" height="370" alt="" class="img-responsive center-block">
               <div class="caption">
                 <% if signed_in? %>
-                  <a href="<%= new_product_user_shopping_carts_path(product.id, current_user.id) %>" class="btn btn-white btn-sm">Add
+                  <a href="<%= add_product_to_user_cart_path(product.id, current_user.id) %>" class="btn btn-white btn-sm">Add
                     To Cart</a>
                   <% else %>
                     <% link_to 'Login To Purchase', new_user_session_path, { :class=>'btn btn-white btn-sm' } %>
@@ -139,7 +139,7 @@
                     </span>
                 </p>
                 <% if signed_in? %>
-                  <a href="<%= new_product_user_shopping_carts_path(product.id, current_user.id) %>"
+                  <a href="<%= add_product_to_user_cart_path(product.id, current_user.id) %>"
                      class="btn btn-default btn-sm offset-top-18">
                     Add To Cart
                   </a>

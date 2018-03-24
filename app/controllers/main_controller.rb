@@ -15,6 +15,9 @@ class MainController < ApplicationController
   def about
   end
 
+  def donate
+  end
+
   def childrens_exhibit
   end
 

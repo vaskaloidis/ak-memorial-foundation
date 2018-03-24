@@ -60,7 +60,7 @@
           <div class="alert alert-warning">
             Please complete golf tournament registration.
             <%= link_to 'Add Tournament Player Package to Cart ($150).',
-                        new_product_user_shopping_carts_path(Product.golf_package.id, current_user.id) %>
+                        add_product_to_user_cart_path(Product.golf_package.id, current_user.id) %>
           </div>
         <% end %>
       <% end %>

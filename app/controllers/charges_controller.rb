@@ -21,6 +21,7 @@ class ChargesController < ApplicationController
       purchase.user = current_user
       purchase.product = item.product
       purchase.product_category = item.product.category
+      purchase.amount = item.amount
       purchase.save
     end
 
