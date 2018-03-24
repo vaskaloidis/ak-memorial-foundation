@@ -91,139 +91,141 @@
               <% end %>
             <% end %>
           <% end %>
-            </div>
-            </div>
+        </div>
+      </div>
 
-          <h4>Admins</h4>
-          <div class="offset-top-32">
-            <div class="row">
-              <div class="col-xs-12 col-md-12">
-                <table class="table table-hover table-striped">
-                  <thead>
-                  <tr>
-                    <th class="success">Name</th>
-                    <th class="success">Email</th>
-                    <th class="success">Phone</th>
-                  </tr>
-                  </thead>
-                  <tbody>
-                  <% @admins.each do |admin| %>
+      <h4>Admins</h4>
+      <div class="offset-top-32">
+        <div class="row">
+          <div class="col-xs-12 col-md-12">
+            <table class="table table-hover table-striped">
+              <thead>
+              <tr>
+                <th class="success">Name</th>
+                <th class="success">Email</th>
+                <th class="success">Phone</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @admins.each do |admin| %>
+                <tr>
+                  <td><%= admin.first_name %> <%= admin.last_name %></td>
+                  <td><%= admin.email %></td>
+                  <td>
+                    <% unless admin.phone.nil? %>
+                      <%= admin.phone %>
+                    <% end %>
+                  </td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-xs-30 section-md-60">
+        <h4>Registered Users</h4>
+        <div class="offset-top-32">
+          <div class="row">
+            <div class="col-xs-12 col-md-12">
+
+              <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                  <th class="success">Name</th>
+                  <th class="success">Email</th>
+                  <th class="success">Company</th>
+                  <th class="success">Paid</th>
+                  <th class="success">Info</th>
+                  <th class="success">Group</th>
+                  <th class="success"></th>
+                </tr>
+                </thead>
+                <tbody>
+                <% if @users.count > 0 %>
+                  <% @users.each do |user| %>
                     <tr>
-                      <td><%= admin.first_name %> <%= admin.last_name %></td>
-                      <td><%= admin.email %></td>
                       <td>
-                        <% unless admin.phone.nil? %>
-                          <%= admin.phone %>
+                        <% unless user.first_name.nil? %>
+                          <%= user.first_name %>
                         <% end %>
+                        <% unless user.first_name.nil? %>
+                          <%= user.last_name %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <%= user.email %>
+                      </td>
+                      <td>
+                        <% unless user.first_name.nil? %>
+                          <%= user.company_name %>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if user.admin? == true %>
+                          <strong>Admin</strong>
+                        <% elsif user.purchased_golf_package? %>
+                          Purchased
+                        <% else %>
+                          Un-Purchased
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if 1 == 1 %>
+                          <div>
+                            <% unless user.company_name.nil? %>
+                              <strong>Company Name: </strong> <%= user.company_name %><br>
+                            <% end %>
+                            <% unless user.company_website.nil? %>
+                              <strong>Company Website: </strong> <%= user.company_website %><br>
+                            <% end %>
+                            <% unless user.company_published_name.nil? %>
+                              <strong>Company Preferred_: </strong> <%= user.company_published_name %><br>
+                            <% end %>
+                            <% unless user.phone.nil? %>
+                              <strong>Phone: </strong> <%= user.phone %><br>
+                            <% end %>
+                            <% unless user.note.nil? %>
+                              <strong>Note: </strong> <%= user.note %><br>
+                            <% end %>
+                          </div>
+                        <% end %>
+                      </td>
+                      <td>
+                        <% if 1 == 1 %>
+                          <div>
+                            <% unless user.golfer2_name.nil? %>
+                              <strong>Golfer 2 Name: </strong> <%= user.golfer2_name %><br>
+                            <% end %>
+                            <% unless user.golfer3_name.nil? %>
+                              <strong>Golfer3 name: </strong> <%= user.golfer3_name %><br>
+                            <% end %>
+                            <% unless user.golfer4_name.nil? %>
+                              <strong>Golfer4 Name: </strong> <%= user.golfer4_name %><br>
+                            <% end %>
+                          </div>
+                        <% end %>
+                      </td>
+                      <td>
+
                       </td>
                     </tr>
                   <% end %>
-                  </tbody>
-                </table>
-              </div>
+                <% else %>
+                  <tr>
+                    <td>(None)</td>
+                  </tr>
+                <% end %>
+                </tbody>
+              </table>
+
             </div>
           </div>
+        </div>
+      </div>
 
-          <div class="section-xs-30 section-md-60">
-            <h4>Registered Users</h4>
-            <div class="offset-top-32">
-              <div class="row">
-                <div class="col-xs-12 col-md-12">
-
-                  <table class="table table-hover table-striped">
-                    <thead>
-                    <tr>
-                      <th class="success">Name</th>
-                      <th class="success">Email</th>
-                      <th class="success">Company</th>
-                      <th class="success">Paid</th>
-                      <th class="success">Info</th>
-                      <th class="success">Group</th>
-                      <th class="success"></th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <% if @users.count > 0 %>
-                      <% @users.each do |user| %>
-                        <tr>
-                          <td>
-                            <% unless user.first_name.nil? %>
-                              <%= user.first_name %>
-                            <% end %>
-                            <% unless user.first_name.nil? %>
-                              <%= user.last_name %>
-                            <% end %>
-                          </td>
-                          <td>
-                            <%= user.email %>
-                          </td>
-                          <td>
-                            <% unless user.first_name.nil? %>
-                              <%= user.company_name %>
-                            <% end %>
-                          </td>
-                          <td>
-                            <% if user.purchased_golf_package? %>
-                              Purchased
-                            <% else %>
-                              Un-Purchased
-                            <% end %>
-                          </td>
-                          <td>
-                            <% if 1 == 1 %>
-                              <div>
-                                <% unless user.company_name.nil? %>
-                                  <strong>Company Name: </strong> <%= user.company_name %><br>
-                                <% end %>
-                                <% unless user.company_website.nil? %>
-                                  <strong>Company Website: </strong> <%= user.company_website %><br>
-                                <% end %>
-                                <% unless user.company_published_name.nil? %>
-                                  <strong>Company Preferred_: </strong> <%= user.company_published_name %><br>
-                                <% end %>
-                                <% unless user.phone.nil? %>
-                                  <strong>Phone: </strong> <%= user.phone %><br>
-                                <% end %>
-                                <% unless user.note.nil? %>
-                                  <strong>Note: </strong> <%= user.note %><br>
-                                <% end %>
-                              </div>
-                            <% end %>
-                          </td>
-                          <td>
-                            <% if 1 == 1 %>
-                              <div>
-                                <% unless user.golfer2_name.nil? %>
-                                  <strong>Golfer 2 Name: </strong> <%= user.golfer2_name %><br>
-                                <% end %>
-                                <% unless user.golfer3_name.nil? %>
-                                  <strong>Golfer3 name: </strong> <%= user.golfer3_name %><br>
-                                <% end %>
-                                <% unless user.golfer4_name.nil? %>
-                                  <strong>Golfer4 Name: </strong> <%= user.golfer4_name %><br>
-                                <% end %>
-                              </div>
-                            <% end %>
-                          </td>
-                          <td>
-
-                          </td>
-                        </tr>
-                      <% end %>
-                    <% else %>
-                      <tr>
-                        <td>(None)</td>
-                      </tr>
-                    <% end %>
-                    </tbody>
-                  </table>
-
-                </div>
-              </div>
-            </div>
-          </div>
-
-          </div>
+    </div>
 
 
     </div>
