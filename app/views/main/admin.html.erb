@@ -1,7 +1,7 @@
 <main class="page-content">
 
   <section class="section-10 section-md-30 bg-gray-light">
-    <div class="shell text-xl-center offset-top-42">
+    <div style="margin:0px 50px 0px 50px;" class="container-fluid section-100 right text-xl-center offset-top-42">
 
       <h2>Admin</h2>
       <hr class="divider divider-60 divider-primary offset-top-32">
@@ -138,6 +138,7 @@
                       <th class="success">Company</th>
                       <th class="success">Paid</th>
                       <th class="success">Info</th>
+                      <th class="success">Group</th>
                       <th class="success"></th>
                     </tr>
                     </thead>
@@ -185,6 +186,21 @@
                                 <% end %>
                                 <% unless user.note.nil? %>
                                   <strong>Note: </strong> <%= user.note %><br>
+                                <% end %>
+                              </div>
+                            <% end %>
+                          </td>
+                          <td>
+                            <% if 1 == 1 %>
+                              <div>
+                                <% unless user.golfer2_name.nil? %>
+                                  <strong>Golfer 2 Name: </strong> <%= user.golfer2_name %><br>
+                                <% end %>
+                                <% unless user.golfer3_name.nil? %>
+                                  <strong>Golfer3 name: </strong> <%= user.golfer3_name %><br>
+                                <% end %>
+                                <% unless user.golfer4_name.nil? %>
+                                  <strong>Golfer4 Name: </strong> <%= user.golfer4_name %><br>
                                 <% end %>
                               </div>
                             <% end %>
