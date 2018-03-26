@@ -80,8 +80,10 @@
               </ul>
               </li>
 
+              <% if 1==2 %>
               <li><%= link_to 'Donate', donate_path %></li>
-
+              <% end %>
+              
               <% if !user_signed_in? %>
                 <% if current_page?(new_user_registration_path) %>
                   <li class="active">
