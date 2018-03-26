@@ -135,8 +135,8 @@
                 <tr>
                   <th class="success">Name</th>
                   <th class="success">Email</th>
-                  <th class="success">Company</th>
-                  <th class="success">Paid</th>
+                  <th class="success">Phone</th>
+                  <th class="success">Golfer-Package</th>
                   <th class="success">Info</th>
                   <th class="success">Group</th>
                   <th class="success"></th>
@@ -158,8 +158,8 @@
                         <%= user.email %>
                       </td>
                       <td>
-                        <% unless user.first_name.nil? %>
-                          <%= user.company_name %>
+                        <% unless user.phone.nil? %>
+                          <%= user.phone %><br>
                         <% end %>
                       </td>
                       <td>
@@ -175,17 +175,12 @@
                         <% if 1 == 1 %>
                           <div>
                             <% unless user.company_name.nil? %>
-                              <strong>Company Name: </strong> <%= user.company_name %><br>
+                              <%= user.company_name %><br>
                             <% end %>
                             <% unless user.company_website.nil? %>
-                              <strong>Company Website: </strong> <%= user.company_website %><br>
+                              <%= user.company_website %><br>
                             <% end %>
-                            <% unless user.company_published_name.nil? %>
-                              <strong>Company Preferred_: </strong> <%= user.company_published_name %><br>
-                            <% end %>
-                            <% unless user.phone.nil? %>
-                              <strong>Phone: </strong> <%= user.phone %><br>
-                            <% end %>
+
                             <% unless user.note.nil? %>
                               <strong>Note: </strong> <%= user.note %><br>
                             <% end %>
@@ -193,22 +188,20 @@
                         <% end %>
                       </td>
                       <td>
-                        <% if 1 == 1 %>
-                          <div>
-                            <% unless user.golfer2_name.nil? %>
-                              <strong>Golfer 2 Name: </strong> <%= user.golfer2_name %><br>
-                            <% end %>
-                            <% unless user.golfer3_name.nil? %>
-                              <strong>Golfer3 name: </strong> <%= user.golfer3_name %><br>
-                            <% end %>
-                            <% unless user.golfer4_name.nil? %>
-                              <strong>Golfer4 Name: </strong> <%= user.golfer4_name %><br>
-                            <% end %>
-                          </div>
-                        <% end %>
+                        <div>
+                          <% unless user.golfer2_name.nil? %>
+                            <%= user.golfer2_name %><br>
+                          <% end %>
+                          <% unless user.golfer3_name.nil? %>
+                            <%= user.golfer3_name %><br>
+                          <% end %>
+                          <% unless user.golfer4_name.nil? %>
+                            <%= user.golfer4_name %><br>
+                          <% end %>
+                        </div>
                       </td>
                       <td>
-
+                        <!-- Actions -->
                       </td>
                     </tr>
                   <% end %>
@@ -221,6 +214,84 @@
               </table>
 
             </div>
+          </div>
+        </div>
+      </div>
+
+      <h4>Sponsorships Purchased</h4>
+      <div class="offset-top-32">
+        <div class="row">
+          <div class="col-xs-12 col-md-12">
+            <table class="table table-hover table-striped">
+              <thead>
+              <tr>
+                <th class="success">Name</th>
+                <th class="success">Company</th>
+                <th class="success">Sponsorship</th>
+                <th class="success">Amount</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% total = 0.0 %>
+              <% @sponsorships.each do |purchase| %>
+                <tr>
+                  <td><%= purchase.user.first_name + ' ' + purchase.user.last_name %></td>
+                  <td>
+                    <% unless purchase.user.company_name.nil? %>
+                      <%= purchase.user.company_name %>
+                    <% end %>
+                  </td>
+                  <td><%= purchase.product.name %></td>
+                  <td><%= Money.us_dollar(purchase.amount * 100.00).format %></td>
+                  <% total = total + purchase.amount %>
+                </tr>
+              <% end %>
+              <tr>
+                <td></td>
+                <td></td>
+                <td><Strong>Total: </Strong></td>
+                <td><%= Money.us_dollar(total * 100.00).format %></td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <h4>Donations</h4>
+      <div class="offset-top-32">
+        <div class="row">
+          <div class="col-xs-12 col-md-12">
+            <table class="table table-hover table-striped">
+              <thead>
+              <tr>
+                <th class="success">Name</th>
+                <th class="success">Company</th>
+                <th class="success">Donation</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% total = 0.0 %>
+              <% @donations.each do |purchase| %>
+                <tr>
+                  <td><%= purchase.user.first_name + ' ' + purchase.user.last_name %></td>
+                  <td>
+                    <% unless purchase.user.company_name.nil? %>
+                      <%= purchase.user.company_name %>
+                    <% end %>
+                  </td>
+                  <td><%= Money.us_dollar(purchase.amount * 100.00).format %></td>
+                  <% total = total + purchase.amount %>
+                </tr>
+              <% end %>
+              <tr>
+                <td></td>
+                <td></td>
+                <td><Strong>Total: </Strong></td>
+                <td><%= Money.us_dollar(total * 100.00).format %></td>
+              </tr>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>

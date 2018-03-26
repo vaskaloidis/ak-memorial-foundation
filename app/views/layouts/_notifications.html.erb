@@ -1,0 +1,26 @@
+<% if notice %>
+  <p class="alert alert-success"><%= notice %></p>
+<% end %>
+<% if alert %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
+
+<% if user_signed_in? %>
+  <% if !current_user.admin? %>
+    <% unless current_user.purchased_golf_package? %>
+      <% if current_user.cart_contains_golf_package? %>
+        <div class="alert alert-warning">
+          Please Finish Purchase Of Your Tournament Player Package.<br>
+          <%= link_to 'Checkout.',
+                      new_charge_path %>
+        </div>
+      <% else %>
+        <div class="alert alert-warning">
+          Please complete golf tournament registration.
+          <%= link_to 'Add Tournament Player Package to Cart ($150).',
+                      add_product_to_user_cart_path(Product.golf_package.id, current_user.id) %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,51 @@
+<div data-dots="true" data-items="1" data-sm-items="2" data-lg-items="3" data-margin="30" class="owl-carousel offset-top-60">
+
+  <% count = 1 %>
+  <% @sponsorships.each do |product| %>
+
+    <% if count.remainder(2) != 0 %>
+      <div>
+    <% end %>
+
+    <div class="thumbnail-variant-2">
+      <div class="caption-wrapper">
+        <img src="images/experiense-0<%= (count).to_s %>.jpg" width="570" height="370" alt="" class="img-responsive center-block">
+        <div class="caption">
+          <% if signed_in? %>
+            <a href="<%= add_product_to_user_cart_path(product.id, current_user.id) %>" class="btn btn-white btn-sm">Add
+              To Cart</a>
+          <% else %>
+            <% link_to 'Login To Purchase', new_user_session_path, { :class=>'btn btn-white btn-sm' } %>
+          <% end %>
+        </div>
+      </div>
+      <div class="caption-2">
+        <div class="caption-2-inner">
+          <span class="inset-right-5 text-middle icon icon-lg text-primary mdi mdi-trophy-variant"></span>
+          <h6><a href="experience.html"><%= product.name %></a></h6>
+          <hr class="divider divider-50 divider-gray-dark">
+          <p><%= product.description %></p>
+          <p class="text-dark offset-top-14">
+                    <span class="text-middle">
+                      <i class="fas fa-dollar-sign"></i>
+                      <%= Money.new((product.price * 100.0), "USD").format(:no_cents_if_whole => true) %>
+                    </span>
+          </p>
+          <% if signed_in? %>
+            <a href="<%= add_product_to_user_cart_path(product.id, current_user.id) %>"
+               class="btn btn-default btn-sm offset-top-18">
+              Add To Cart
+            </a>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <% if count.remainder(2) == 0 or count == @sponsorships.count %>
+      </div>
+    <% end %>
+
+    <% count = count + 1 %>
+  <% end %>
+
+</div>

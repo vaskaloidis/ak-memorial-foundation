@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   get '/athen_gallery', to: 'main#athen_gallery'
 
   get '/about', to: 'main#about', as: 'about'
+  get '/donate', to: 'main#donate', as: 'donate'
   get '/childrens_exhibit', to: 'main#childrens_exhibit', as: 'childrens_exhibit'
   get '/golf_tournament', to: 'main#golf_tournament', as: 'golf_tournament'
   get '/legacy', to: 'main#legacy', as: 'legacy'

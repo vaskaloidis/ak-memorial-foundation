@@ -3,8 +3,11 @@ class MainController < ApplicationController
   before_action :verify_admin, only: [:admin]
 
   def admin
-    @purchases = Purchase.all
-    @users = User.all
+    @golf_packages = Purchase.where(:product_category => 'golf_package').all
+    @donations = Purchase.where(:product_category => 'donation').all
+    @sponsorships = Purchase.where(:product_category => 'sponsor').all
+
+    @users = User.where(admin: false).all
     @admins = User.where(admin: true).all
 
   end
@@ -16,6 +19,9 @@ class MainController < ApplicationController
   end
 
   def donate
+    @donation = ShoppingCart.new
+    @donation.user = current_user
+    @donation.product = Product.donation
   end
 
   def childrens_exhibit
