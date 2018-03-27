@@ -26,7 +26,8 @@
           </div>
           <div class="media p">
             <div class="media-left"><span class="icon icon-sm text-gray mdi mdi-map-marker"></span></div>
-            <div class="media-body"><a href="#" class="text-base">580 Watertown Avenue. <br> Waterbury, CT 06708. USA</a>
+            <div class="media-body">
+              <a href="#" class="text-base">580 Watertown Avenue. <br> Waterbury, CT 06708. USA</a>
             </div>
           </div>
         </div>
@@ -80,10 +81,8 @@
               </ul>
               </li>
 
-              <% if 1==2 %>
               <li><%= link_to 'Donate', donate_path %></li>
-              <% end %>
-              
+
               <% if !user_signed_in? %>
                 <% if current_page?(new_user_registration_path) %>
                   <li class="active">
@@ -94,12 +93,14 @@
                 </li>
               <% end %>
 
-              <% if current_page?(sponsorships_path) %>
-                <li class="active">
-              <% else %>
-                <li>
+              <% if false %>
+                <% if current_page?(sponsorships_path) %>
+                  <li class="active">
+                <% else %>
+                  <li>
+                <% end %>
+                <%= link_to 'Sponsorships', sponsorships_path %></li>
               <% end %>
-              <%= link_to 'Sponsorships', sponsorships_path %></li>
 
               <% if current_page?(supporters_path) %>
                 <li class="active">

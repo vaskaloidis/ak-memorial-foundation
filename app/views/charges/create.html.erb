@@ -9,19 +9,11 @@
 
       <div class="offset-top-42 offset-lg-top-100">
 
-        <% if signed_in? %>
-
           <div class="alert alert-success">
             Thank You for your Donation of $<%= @amount_dollars.to_s %> to the Athan Kaloidis Memorial Golf Tournament.
+
+            You can view your donations <%= link_to 'in your Profile', view_profile_path %>
           </div>
-
-        <% else %>
-
-          <div class="alert alert-success">
-            You need to <%= link_to('Login', new_user_session_path) %> First.
-          </div>
-
-        <% end %>
 
       </div>
     </div>

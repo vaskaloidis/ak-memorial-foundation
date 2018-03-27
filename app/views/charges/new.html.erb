@@ -1,41 +1,98 @@
 <main class="page-content">
-  <section class="section-80 section-md-110">
+  <section class="section-40">
     <div class="shell">
 
       <h2>Shopping Cart</h2>
 
       <hr class="divider divider-primary divider-60 divider-offset">
 
-      <% if signed_in? %>
+      <label class="alert alert-success">
+        <span>Total Donation Amount: $<%= @total_charge.to_s %></span>
+      </label>
 
-        <%= form_tag charges_path do %>
-          <article>
-            <% if flash[:error].present? %>
-              <div id="error_explanation">
-                <p><%= flash[:error] %></p>
+      <%= form_tag charges_path, {:class => ''} do %>
+        <article>
+          <% if flash[:error].present? %>
+            <div style="color:white" class="alert alert-danger">
+              <p><%= flash[:error].html_safe %></p>
+            </div>
+          <% end %>
+        </article>
+
+
+        <% if signed_in? %>
+          <%= render 'shopping_carts/cart' %>
+        <% else %>
+          <%= hidden_field_tag(:total_charge, @total_charge) %>
+          <%= hidden_field_tag(:product_id, @product.id) %>
+
+          <%= render 'charges/quick_cart' %>
+
+
+          <div class="section-0">
+
+            <% if @product.category == 'sponsor' %>
+              <div class="row text-center section-40">
+                <div class="col-xs-12 col-md-6">
+                  <h4>Create Site Login<br>
+                    <small class="text-muted">(or <%= link_to('login instead', new_user_session_path) %>)</small>
+                  </h4>
+                  <div class="form-group">
+                    <label for="contact-name" class="text-bold pull-left form-label form-label-outside">Email</label>
+                    <%= email_field :user, :email, class: "form-control form-control-gray cell-xs-12 cell-md-6", :required => true %>
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="text-bold pull-left form-label form-label-outside">Password
+                      <small>(6 characters minimum)</small>
+                    </label>
+                    <%= password_field :user, :password, autocomplete: "off", class: 'form-control form-control-gray cell-xs-12 cell-md-6', :required => true %>
+                  </div>
+                  <div class="form-group">
+                    <label for="password-2" class="text-bold pull-left form-label form-label-outside">Repeat your
+                      password</label>
+                    <%= password_field :user, :password_confirmation, autocomplete: "off", class: 'form-control form-control-gray cell-xs-12 cell-md-6', :required => true %>
+                  </div>
+                </div>
+
+                <div class="col-xs-12 col-md-6">
+                  <div class="form-group">
+                    <label for="contact-company" class="text-bold pull-left form-label form-label-outside">Company</label><br>
+                    <%= text_field(:user, :company_name, class: "form-control form-control-gray cell-xs-12 cell-md-6", :required => true) %>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="website-company" class="text-bold pull-left form-label form-label-outside">Company
+                      Website</label><br>
+                    <%= text_field(:user, :company_website, class: "form-control form-control-gray cell-xs-12 cell-md-6", :required => true) %>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-company" class="text-bold pull-left form-label form-label-outside">Formal
+                      Company Name
+                      <small>(This will Display any on Purchased Sponsorship Banners)</small>
+                    </label><br>
+                    <%= text_field(:user, :company_published_name, class: "form-control form-control-gray cell-xs-12 cell-md-6", :required => true) %>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="contact-company" class="text-bold pull-left form-label form-label-outside">Phone</label><br>
+                    <%= text_field(:user, :phone, class: "form-control form-control-gray cell-xs-12 cell-md-6", :required => true) %>
+                  </div>
+                </div>
               </div>
             <% end %>
-            <label class="alert alert-success">
-              <span>Total Donation Amount: $<%= @total_charge.to_s %></span>
-            </label>
-          </article>
 
+          </div>
+
+        <% end %>
+
+        <div class="row text-center">
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                   data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
                   data-description="Athan Kaloidis Memorial Purchase"
                   data-amount="<%= (@total_charge * 100).to_s %>"
                   data-locale="auto"></script>
-        <% end %>
 
-        <div class="offset-top-42 offset-lg-top-100">
-          <%= render 'shopping_carts/cart' %>
-        </div>
-
-      <% else %>
-        <div class="offset-top-42 offset-lg-top-100">
-          <div class="alert alert-success">
-            You need to <%= link_to('Login', new_user_session_path) %> First.
-          </div>
         </div>
 
       <% end %>

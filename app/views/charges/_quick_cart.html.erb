@@ -1,0 +1,53 @@
+<div class="visible-md visible-lg table-responsive offset-top-32">
+  <table class="table table-hover table-striped text-left">
+    <thead>
+    <tr>
+      <th class="text-left success">Product</th>
+      <th class="text-left success">Type</th>
+      <th class="text-left success">Description</th>
+      <th class="text-left success">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    <% product = @product %>
+    <tr>
+      <td><%= product.name %></td>
+      <td>
+        <% if product.category == 'golf_package' %>
+          Golfer Package
+        <% elsif product.category == 'donation' %>
+          Donation
+        <% elsif product.category == 'sponsor' %>
+          Sponsorship
+        <% end %>
+      </td>
+      <td><%= product.description %></td>
+      <td><%= Money.us_dollar(product.price * 100).format %></td>
+    </tr>
+    <tr class="text-base">
+      <td></td>
+      <td></td>
+      <td>Your Total:</td>
+      <td><%= Money.us_dollar(product.price * 100).format %></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="visible-xs visible-sm">
+  <h4>Order Summary</h4>
+  <strong><%= product.name %></strong><br>
+  <% if product.category == 'golf_package' %>
+    Golfer Package
+  <% elsif product.category == 'donation' %>
+    Donation
+  <% elsif product.category == 'sponsor' %>
+    Sponsorship
+  <% end %>
+  <br>
+
+  <%= product.description %><br>
+  <%= Money.us_dollar(product.price * 100).format %><br>
+
+</div>
