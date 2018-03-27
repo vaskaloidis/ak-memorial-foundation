@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
   resources :purchases
-  devise_for :users
+  devise_for :users, :controllers =>
+      {
+          :registrations => "users/registrations"
+      }
 
   resources :charges
   resources :shopping_carts
@@ -12,12 +15,13 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/quick_purchase/:product_id', to: 'charges#new', as: 'quick_purchase'
 
   get 'add_product/:product_id/to_user_cart/:user_id',
-        to: 'shopping_carts#add_product_to_cart',
-        as: 'add_product_to_user_cart'
+      to: 'shopping_carts#add_product_to_cart',
+      as: 'add_product_to_user_cart'
 
-  match 'add_donation', to: 'shopping_carts#add_donation_to_cart', via: [:post]
+  match 'add_donation', to: 'shopping_carts#add_donation_to_cart', via: [:post], as: 'add_donation'
 
   root to: 'main#home'
 

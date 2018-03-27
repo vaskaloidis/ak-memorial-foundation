@@ -22,6 +22,8 @@ class MainController < ApplicationController
     @donation = ShoppingCart.new
     @donation.user = current_user
     @donation.product = Product.donation
+
+    @sponsorships = Product.where(category: :sponsor)
   end
 
   def childrens_exhibit
@@ -41,6 +43,7 @@ class MainController < ApplicationController
   end
 
   def supporters
+    @supporters = Purchase.where(product_category: 'sponsor')
   end
 
   def profile

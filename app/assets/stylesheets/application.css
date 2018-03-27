@@ -30,3 +30,22 @@ img.pswp__img {
     padding: 0 !important;
     margin: 0 !important;
 }
+
+.alert-danger {
+    color:white;
+}
+
+.thumbnail-variant-2 .caption-wrapper {
+    background: none;
+}
+
+img.swipe_icon {
+    height:13px;
+    width: auto;
+}
+
+.swipe {
+    color: #7aaf24;
+    opacity: 0.8;
+    font-size: .6em;
+}

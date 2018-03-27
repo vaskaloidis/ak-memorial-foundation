@@ -39,4 +39,20 @@ class User < ApplicationRecord
     return false
   end
 
+  def cart_contains?(product)
+    if self.shopping_cart.include?(product)
+      return true
+    else
+      return false
+    end
+  end
+
+  def purchased?(product)
+    if self.purchases.include?(product)
+      return true
+    else
+      return false
+    end
+  end
+
 end
