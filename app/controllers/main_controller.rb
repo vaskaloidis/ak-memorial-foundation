@@ -5,7 +5,7 @@ class MainController < ApplicationController
   def admin
     @golf_packages = Purchase.where(:product_category => 'golf_package').all
     @donations = Purchase.where(:product_category => 'donation').all
-    @sponsorships = Purchase.where(:product_category => 'sponsor').all
+    @sponsorships = Purchase.where(:product_category => 'sponsor').order('amount DESC').all
 
     @users = User.where(admin: false).all
     @admins = User.where(admin: true).all
@@ -35,9 +35,6 @@ class MainController < ApplicationController
   def legacy
   end
 
-  def sponsorships
-    @sponsorships = Product.where(category: :sponsor)
-  end
 
   def buy_package
   end
@@ -47,6 +44,7 @@ class MainController < ApplicationController
   end
 
   def profile
+    @memberships = current_user.group_member
   end
 
   # Photo Galleries

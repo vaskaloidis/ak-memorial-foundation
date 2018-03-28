@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+</head>
+<body>
+<h1>Athan Kaloidis Memorial Golf Tournament</h1>
+<h2><%= @registered.first_name %> <%= @registered.last_name %> Added You To Their Group</h2>
+<p>
+  Dear <%= @notified.first_name %> <%= @notified.last_name %>,<br>
+
+  You have <%= @registered.first_name %> <%= @registered.last_name %> (<%= @registered.email %>) as a member of your golf tournament group. <br>
+
+  They have now registered for the Tournament also
+</p>
+<p>
+  <strong>Tournament Group:</strong><br>
+  <ul>
+    <li><strong><%= @registered.first_name %> <%= @registered.last_name %> - <%= @registered.golfer2_email %></strong></li>
+    <li><%= @registered.golfer2_name %> - <%= @registered.golfer2_email %></li>
+    <li><%= @registered.golfer3_name %> - <%= @registered.golfer3_email %></li>
+    <li><%= @registered.golfer4_name %> - <%= @registered.golfer4_email %></li>
+  </ul>
+</p>
+<p>
+  Thank You For Being A Part of This Year's Memorial Golf Tournament!<br>
+  - The Athan Kaloidis Memorial Foundation
+</p>
+
+</body>
+</html>

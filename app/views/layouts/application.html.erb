@@ -6,14 +6,21 @@
 
 <body>
 
+<%= render 'layouts/notifications' %>
+
 <div class="page text-center">
 
   <header class="page-header">
     <%= render 'layouts/navbar' %>
   </header>
 
-  <%= render 'layouts/notifications' %>
+
 
   <%= yield %>
 
+</div>
+
+
 <%= render 'layouts/footer' %>
+
+<%#= console %>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+</head>
+<body>
+<h1>Athan Kaloidis Memorial Golf Tournament</h1>
+<h2><%= @user.first_name %> <%= @user.last_name %> Added You To Their Group</h2>
+<p>
+  Dear <%= @name %>,<br>
+
+  The <%= Date.today.year.to_s %> Athan Kaloidis Memorial Golf Tournament will be helpd
+  at <%= ApplicationHelper.tournament_venue %> (<%= ApplicationHelper.tournament_venue_address %>)
+  on <%= ApplicationHelper.tournament_venue %>.<br>
+  You were invited to play in the tournament by <%= @user.first_name %> <%= @user.last_name %>, and added to their
+  4-some golf tournament group.
+</p>
+<p>
+  <strong>Tournament Group:</strong><br>
+  <ul>
+    <li><strong><%= @user.first_name %> <%= @user.last_name %> - <%= @user.golfer2_email %></strong></li>
+    <li><%= @user.golfer2_name %> - <%= @user.golfer2_email %></li>
+    <li><%= @user.golfer3_name %> - <%= @user.golfer3_email %></li>
+    <li><%= @user.golfer4_name %> - <%= @user.golfer4_email %></li>
+  </ul>
+</p>
+<p>
+  To play in the tournament, <%= link_to 'Register Here', invite_golfer_path(@invite.id) %>.
+</p>
+<p>
+  We Hope To See You There!<br>
+  - The Athan Kaloidis Memorial Foundation
+</p>
+
+</body>
+</html>

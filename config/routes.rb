@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :purchases
+  resources :invites
   devise_for :users, :controllers =>
       {
           :registrations => "users/registrations"
       }
 
+  resources :purchases
   resources :charges
   resources :shopping_carts
 
@@ -14,6 +15,10 @@ Rails.application.routes.draw do
       resource :shopping_carts
     end
   end
+
+  get '/invite/:invite_id',
+      to: 'users#users/registrations',
+      as: 'invite_golfer'
 
   get '/quick_purchase/:product_id', to: 'charges#new', as: 'quick_purchase'
 
@@ -41,5 +46,11 @@ Rails.application.routes.draw do
   get '/sponsorships', to: 'main#sponsorships', as: 'sponsorships'
   get '/supporters', to: 'main#supporters', as: 'supporters'
 
+  # get 'admin/quick_purchase_golfer_package'
+  # get 'admin/quick_purchase_sponsorship'
+  get '/admin/quick_purchase_golfer_package/:user_id', to: 'admin#quick_purchase_golfer_package', as: 'admin_quick_purchase_golfer_package'
+  get '/admin/quick_purchase_sponsorship/:user_id', to: 'admin#quick_purchase_sponsorship', as: 'admin_quick_purchase_sponsorship'
+
+  # mount Judge::Engine => '/judge'
 
 end

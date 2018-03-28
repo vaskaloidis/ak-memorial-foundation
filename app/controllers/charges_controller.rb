@@ -15,8 +15,6 @@ class ChargesController < ApplicationController
 
   def create
 
-    flash.keep
-
     if signed_in?
 
       # Amount in cents

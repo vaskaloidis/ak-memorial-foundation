@@ -18,5 +18,20 @@ module ApplicationHelper
     return File.join('photo_albums', album.to_s, image_file).to_s
   end
 
+  def self.tournament_date
+    return 'August 27th'
+  end
+
+  def self.tournament_venue
+    return 'Waterbury Golf Club'
+  end
+
+  def self.tournament_venue_address(break_line = false)
+    if break_linke
+      return '46 Guernseytown Rd<br>Watertown, CT 06795'.html_safe
+    else
+      return 'return 46 Guernseytown Rd Watertown, CT 06795'.html_safe
+    end
+  end
 
 end

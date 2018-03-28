@@ -5,13 +5,12 @@ git_source(:github) do |repo_name|
 end
 # Athan Kaloidis Memorial Gems
 ruby "2.5.0"
-gem 'rails', '~> 5.1.4'
+gem 'rails', '~> 5.1.4' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rollbar'
 gem 'stripe'
 gem 'yaml_db'
 gem 'devise'
 gem 'money'
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'pg'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
@@ -20,6 +19,11 @@ gem 'jquery'
 gem 'jquery-rails'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
+# gem 'judge'
+
+gem 'rails_12factor'
+# gem 'rails_12factor', group: :production
+
 
 group :development, :test do
   gem 'dotenv-rails'
@@ -29,6 +33,7 @@ group :development, :test do
 end
 
 group :development do
+  # gem 'letter_opener'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'

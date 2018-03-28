@@ -13,12 +13,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
 
-    cart = ShoppingCart.new
-    cart.user = current_user
-    cart.product = Product.golf_package
-    cart.amount = Product.golf_package.price
-    cart.save
+    if resource.valid? and resource.errors.empty?
+      # user = User.find(resource.id)
+      resource.invite_golfer_two
+      resource.invite_golfer_three
+      resource.invite_golfer_four
+
+      cart = ShoppingCart.new
+      cart.user = resource
+      cart.product = Product.golf_package
+      cart.amount = Product.golf_package.price
+      cart.save
+    end
+
+    # InviteUsersMailer.notify_registered(current_user).deliver_later
   end
+
   #
   # # GET /resource/edit
   # def edit
@@ -26,9 +36,22 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
   #
   # # PUT /resource
-  # def update
-  #   super
-  # end
+  def update
+    super
+
+    if self.resource.changed.include?('golfer_2email')
+      current_user.invite_golfer_two
+    end
+
+    if self.resource.changed.include?('golfer_3email')
+      current_user.invite_golfer_three
+    end
+
+    if self.resource.changed.include?('golfer_4email')
+      current_user.invite_golfer_four
+    end
+  end
+
   #
   # # DELETE /resource
   # def destroy
@@ -65,5 +88,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
+  #   new_charge_path
   # end
 end

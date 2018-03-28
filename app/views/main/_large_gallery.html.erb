@@ -1,13 +1,13 @@
-<section class="section-80 section-md-110 bg-gray-light">
+<div class="bg-gray-light">
   <div class="shell shell-wide">
-    <h2>Our Gallery</h2>
-    <hr class="divider divider-60 divider-primary offset-top-32">
+    <h2>Gallery</h2>
+    <hr class="divider divider-60 divider-primary">
     <!-- Owl Carousel-->
-    <div data-photo-swipe-gallery="gallery" data-dots="true" data-items="1" data-sm-items="2" data-lg-items="3" data-margin="30" class="owl-carousel offset-top-60">
+    <div data-photo-swipe-gallery="gallery" data-dots="true" data-items="1" data-sm-items="2" data-lg-items="3" data-margin="30" class="owl-carousel">
 
       <%
         used = Hash.new
-        dir = Dir.foreach(ApplicationHelper.get_album(1))
+        dir = Dir.foreach(ApplicationHelper.get_album(album_number))
         ah = ApplicationHelper
       %>
 
@@ -25,9 +25,9 @@
 
 
         <div>
-          <a data-photo-swipe-item="" data-size="684x504" href="<%= ah.get_image(1, item) %>" class="thumbnail-variant-1">
+          <a data-photo-swipe-item="" data-size="684x504" href="<%= ah.get_image(album_number, item) %>" class="thumbnail-variant-1">
             <!-- img.width="570".height="420 -->
-            <!--<img src="<%= ah.get_image(1, item) %>" width="auto" height="auto" alt="" class="img-responsive center-block">-->
+            <!--<img src="<%= ah.get_image(album_number, item) %>" width="auto" height="auto" alt="" class="img-responsive center-block">-->
             <div class="caption">
               <div class="caption-inner"><span class="icon fa-search-plus"></span></div>
             </div>
@@ -47,14 +47,14 @@
           <a data-photo-swipe-item="" data-size="684x504"
              style=" width:570px;
                     height: 420px;
-                    background-image: url('<%= ah.get_image(1, item) %>');
+                    background-image: url('<%= ah.get_image(album_number, item) %>');
                     background-repeat: no-repeat;
                     background-size: contain, cover;
                     background-position: center center;"
-             href="<%= ah.get_image(1, item) %>"
+             href="<%= ah.get_image(album_number, item) %>"
              class="thumbnail-variant-1">
             <!-- img.width="570".height="420 -->
-            <!--<img src="<%= ah.get_image(1, item) %>" width="auto" height="auto" alt="" class="img-responsive center-block">-->
+            <!--<img src="<%= ah.get_image(album_number, item) %>" width="auto" height="auto" alt="" class="img-responsive center-block">-->
             <div class="caption">
               <div class="caption-inner"><span class="icon fa-search-plus"></span></div>
             </div>
@@ -63,15 +63,10 @@
 
 
       <% end %>
-      <div class="offset-top-32 offset-md-top-60">
-        <a href="<%= '' %>" class="btn btn-primary-dr btn-sm">
-          view all Gallery
-        </a>
-      </div>
     </div>
   </div>
-  <div class="swipe visible-xs visible-md text-center">
+  <div class="swipe visible-xs visible-sm visible-md text-center">
     <img src="<%= image_path 'swipe_icon.png' %>" class="swipe_icon"> Swipe
   </div>
 
-</section>
+</div>

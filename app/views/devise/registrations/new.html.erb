@@ -10,6 +10,8 @@
 
       <div class="container">
 
+        <div style="display:none" id="form_validate_alert" class="alert alert-danger">
+        </div>
         <%= render 'layouts/error_messages', object: resource %>
 
         <div class="section-40 col-xs-12 col-md-12">
@@ -19,28 +21,39 @@
               <h4>Basic Info</h4>
 
               <div class="form-group">
-                <label for="contact-name" class="form-label form-label-outside">First Name</label>
-                <%= f.text_field(:first_name, id: "firstname-textbox", class: "form-control form-control-gray") %>
+                <label for="user_first_name" class="form-label form-label-outside">First Name
+                  <small>(Required)</small>
+                </label>
+                <%= f.text_field(:first_name, class: "form-control form-control-gray") %>
               </div>
 
               <div class="form-group">
-                <label for="contact-name" class="form-label form-label-outside">Last Name</label>
-                <%= f.text_field(:last_name, id: "lastname-textbox", class: "form-control form-control-gray") %>
+                <label for="user_last_name" class="form-label form-label-outside">Last Name
+                  <small>(Required)</small>
+                </label>
+                <%= f.text_field(:last_name, class: "form-control form-control-gray") %>
               </div>
 
               <div class="form-group">
-                <label for="contact-email" class="form-label form-label-outside">E-Mail</label>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control form-control-gray" %>
-                <!--<input id="contact-email" type="email" name="email" data-constraints="@Required @Email" class="form-control form-control-gray">-->
+                <label for="user_email" class="form-label form-label-outside">E-Mail
+                  <small>(Required)</small>
+                </label>
+                <% if params.has_key?(:invite_id) %>
+                  <%= f.email_field :email, value: Invite.find(params[:invite_id].email), class: "form-control form-control-gray" %>
+              <% else %>
+                  <%= f.email_field :email, class: "form-control form-control-gray" %>
+              <% end %>
               </div>
 
               <div class="form-group">
-                <label for="phone" class="form-label form-label-outside">Phone</label>
+                <label for="user_phone" class="form-label form-label-outside">Phone
+                  <small>(Required)</small>
+                </label>
                 <%= f.telephone_field(:phone, class: "form-control form-control-gray") %>
               </div>
 
               <div class="form-group">
-                <label for="fax" class="form-label form-label-outside">Fax</label>
+                <label for="user_fax" class="form-label form-label-outside">Fax</label>
                 <%= f.telephone_field(:fax, class: "form-control form-control-gray") %>
               </div>
 
@@ -53,17 +66,17 @@
               </h4>
 
               <div class="form-group">
-                <label for="contact-company" class="form-label form-label-outside">Company</label>
+                <label for="user_company_name" class="form-label form-label-outside">Company</label>
                 <%= f.text_field(:company_name, class: "form-control form-control-gray") %>
               </div>
 
               <div class="form-group">
-                <label for="website-company" class="form-label form-label-outside">Company Website</label>
+                <label for="user_company_website" class="form-label form-label-outside">Company Website</label>
                 <%= f.text_field(:company_website, class: "form-control form-control-gray") %>
               </div>
 
               <div class="form-group">
-                <label for="contact-company" class="form-label form-label-outside">Formal Company Name
+                <label for="user_company_published_name" class="form-label form-label-outside">Formal Company Name
                   <small>(This will Display on Banners)</small>
                 </label>
                 <%= f.text_field(:company_published_name, class: "form-control form-control-gray") %>
@@ -86,44 +99,44 @@
 
             <div class="row section-bottom-30">
               <div class="col-xs-12 col-md-6">
-                <label for="contact-golfer1-email" disabled class="form-label form-label-outside">Golfer 1 Name</label>
-                <input id="golfer-1-name" disabled value="You" type="text" name="name" class="form-control form-control-gray">
+                <label for="user_golfer1_name" disabled class="form-label form-label-outside">Golfer 1 Name</label>
+                <input id="user_golfer1_name" disabled value="You" type="text" name="disable_golfer1_name" class="form-control form-control-gray">
               </div>
               <div class="col-xs-12 col-md-6">
-                <label for="contact-golfer1-email" disabled class="form-label form-label-outside">Golfer 1 Name</label>
-                <input id="golfer-1-email" disabled value="You" type="text" name="name" class="form-control form-control-gray">
+                <label for="user_golfer1_email" disabled class="form-label form-label-outside">Golfer 1 Name</label>
+                <input id="user_golfer1_email" disabled value="You" type="text" name="disable_golfer1_email" class="form-control form-control-gray">
               </div>
             </div>
 
             <div class="row section-bottom-30 bg-gray-light">
               <div class="col-xs-12 col-md-6">
-                <label for="contact-golfer2" class="form-label form-label-outside">Golfer 2 Name</label>
+                <label for="user_golfer2_name" class="form-label form-label-outside">Golfer 2 Name</label>
                 <%= f.text_field(:golfer2_name, class: "form-control form-control-gray") %>
               </div>
               <div class="col-xs-12 col-md-6">
-                <label for="contact-golfer2" class="form-label form-label-outside">Golfer 2 Email</label>
+                <label for="user_golfer2_email" class="form-label form-label-outside">Golfer 2 Email</label>
                 <%= f.text_field(:golfer2_email, class: "form-control form-control-gray") %>
               </div>
             </div>
 
             <div class="row section-bottom-30">
               <div class="col-xs-12 col-md-6">
-                <label for="contact-golfer3" class="form-label form-label-outside">Golfer 3 Name</label>
+                <label for="user_golfer3_name" class="form-label form-label-outside">Golfer 3 Name</label>
                 <%= f.text_field(:golfer3_name, class: "form-control form-control-gray") %>
               </div>
               <div class="col-xs-12 col-md-6">
-                <label for="contact-golfer3" class="form-label form-label-outside">Golfer 3 Email</label>
+                <label for="user_golfer3_email" class="form-label form-label-outside">Golfer 3 Email</label>
                 <%= f.text_field(:golfer3_email, class: "form-control form-control-gray") %>
               </div>
             </div>
 
             <div class="row section-bottom-30 bg-gray-light">
               <div class="col-xs-12 col-md-6">
-                <label for="contact-golfer4" class="form-label form-label-outside">Golfer 4 Name</label>
+                <label for="user_golfer4_name" class="form-label form-label-outside">Golfer 4 Name</label>
                 <%= f.text_field(:golfer4_name, class: "form-control form-control-gray") %>
               </div>
               <div class="col-xs-12 col-md-6">
-                <label for="contact-golfer4" class="form-label form-label-outside">Golfer 4 Email</label>
+                <label for="user_golfer4_email" class="form-label form-label-outside">Golfer 4 Email</label>
                 <%= f.text_field(:golfer4_email, class: "form-control form-control-gray") %>
               </div>
             </div>
@@ -136,31 +149,35 @@
               <small class="text-muted">(Your Username Is Your Email)</small>
             </h4>
 
-            <label for="password" class="form-label form-label-outside">Password</label>
-            <%= f.password_field :password, autocomplete: "off", class: 'form-control corm-control-gray' %>
-            <% if @minimum_password_length %>
-              <em>(<%= @minimum_password_length %> characters minimum)</em>
-            <% end %><br/>
-            <!--<input id="password" type="password" name="password" data-constraints="@Required" class="form-control form-control-gray">-->
-            <label for="password-2" class="form-label form-label-outside">Repeat your password</label>
-            <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control corm-control-gray' %>
-            <!--TODO: JS Pass verify
-            <input id="password-2" type="password" name="password-2" data-constraints="@Required" class="form-control form-control-gray">-->
+            <div class="form-group">
+              <label for="password" class="form-label form-label-outside">Password
+                <small>(6 Characters Minimum)</small>
+              </label>
+              <%= f.password_field :password, autocomplete: "off", class: 'form-control corm-control-gray' %>
+            </div>
+
+            <div class="form-group">
+              <!--<input id="password" type="password" name="password" data-constraints="@Required" class="form-control form-control-gray">-->
+              <label for="password-2" class="form-label form-label-outside">Repeat your password</label>
+              <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control corm-control-gray' %>
+              <!--TODO: JS Pass verify
+              <input id="password-2" type="password" name="password-2" data-constraints="@Required" class="form-control form-control-gray">-->
+            </div>
           </div>
 
           <div class="col-xs-12 col-md-6">
+            <h4 class="section-bottom-30">Registration Message</h4>
             <div class="form-group">
-              <h4 class="section-bottom-30">Registration Message<br>
-              </h4>
+              <label for="user_note" class="form-label form-label-outside">Registration Note</label>
               <%= f.text_area(:note, class: "form-control form-control-gray") %>
-              <!--<textarea id="contact-message" name="message" data-constraints="@Required" class="form-control form-control-gray"></textarea>-->
             </div>
           </div>
         </div>
 
         <div class="row">
           <div class=" text-center text-md-left">
-            <button type="submit" class="btn btn-primary btn-sm">Register</button>
+            <%= f.submit 'Register', class: 'btn btn-primary btn-sm' %>
+            <!--<button type="submit" class="btn btn-primary btn-sm">Register</button>-->
           </div>
         </div>
 
@@ -170,4 +187,5 @@
 
   </section>
 </main>
+
 
