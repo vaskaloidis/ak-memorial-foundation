@@ -15,9 +15,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
     if resource.valid? and resource.errors.empty?
       # user = User.find(resource.id)
-      resource.invite_golfer_two
-      resource.invite_golfer_three
-      resource.invite_golfer_four
+      # resource.invite_golfer_two
+      # resource.invite_golfer_three
+      # resource.invite_golfer_four
 
       cart = ShoppingCart.new
       cart.user = resource
