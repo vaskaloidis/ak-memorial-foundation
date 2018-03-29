@@ -8,6 +8,17 @@
 
     <div style="padding: 0px 40px 0px 40px" class="container-fluid">
 
+      <div class="alert alert-warning">
+        <strong>Golfer Packages:</strong>
+        <span style="color: green">$<%= number_with_precision(Purchase.golf_package_total_sales, :precision => 2, :delimiter => ',') %></span>
+        <strong>Donations:</strong>
+        <span style="color: green">$<%= number_with_precision(Purchase.donation_total_sales, :precision => 2, :delimiter => ',') %></span>
+        <strong>Sponsorships:</strong>
+        <span style="color: green">$<%= number_with_precision(Purchase.sponsor_total_sales, :precision => 2, :delimiter => ',') %></span><br>
+        <strong>Total:</strong>
+        <% total = Purchase.golf_package_total_sales + Purchase.donation_total_sales + Purchase.sponsor_total_sales %>
+        <span style="color: green">$<%= number_with_precision(total, :precision => 2, :delimiter => ',') %></span>
+      </div>
       <div data-type="horizontal" class="responsive-tabs responsive responsive-tabs-classic horizontal">
         <ul class="resp-tabs-list tabs-1 text-center tabs-group-default">
           <li>Tournament Groups</li>
