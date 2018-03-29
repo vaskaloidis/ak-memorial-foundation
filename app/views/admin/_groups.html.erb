@@ -1,0 +1,67 @@
+<!-- Groups -->
+<section>
+  <div class="row">
+    <% @users.each do |group| %>
+      <% unless group.golfer2_email.nil? %>
+        <div class="col-xs-12 col-md-4 section-top-30">
+          <div style="padding:20px">
+                <span style="border-bottom:1px solid #a4a18f;background-color:#dff0d8" class="center-block">
+                  <h5>
+                    <span style="color:black;" class="inset-right-5 text-middle icon icon-lg text-primary mdi mdi-trophy-variant"></span>
+                    <strong><%= group.first_name %> <%= group.last_name %><br>
+                      <%= group.email %><br>
+                    (<%= User.golfer_status(group.email) %>)</strong>
+                    <%= link_to '<i class="fas fa-cogs"></i>'.html_safe, edit_user_path(group.id) %>
+                  </h5>
+                </span>
+
+            <% unless group.golfer2_email.nil? %>
+              <% user_status = User.golfer_status(group.golfer2_email) %>
+              <% if user_status == 'Un-Registered' %>
+                <%= '<div style="background-color:#fcf8e3" class="center-block">'.html_safe %>
+              <% elsif user_status == 'Incomplete' %>
+                <%= '<div style="background-color:#fcf8e3" class="center-block">'.html_safe %>
+              <% else %>
+                <%= '<div style="background-color:#dff0d8" class="center-block">'.html_safe %>
+              <% end %>
+              <%= group.golfer2_name %>
+              <%= group.golfer2_email %>
+              (<%= User.golfer_status(group.golfer2_email) %>)
+              <%= '</div>'.html_safe %>
+            <% end %>
+
+            <% unless group.golfer3_email.nil? %>
+              <% user_status = User.golfer_status(group.golfer3_email) %>
+              <% if user_status == 'Un-Registered' %>
+                <%= '<div style="background-color:#fcf8e3" class="center-block">'.html_safe %>
+              <% elsif user_status == 'Incomplete' %>
+                <%= '<div style="background-color:#fcf8e3" class="center-block">'.html_safe %>
+              <% else %>
+                <%= '<div style="background-color:#dff0d8" class="center-block">'.html_safe %>
+              <% end %>
+              <%= group.golfer3_name %>
+              <%= group.golfer3_email %>
+              (<%= User.golfer_status(group.golfer3_email) %>)
+              <%= '</div>'.html_safe %>
+            <% end %>
+
+            <% unless group.golfer4_email.nil? %>
+              <% user_status = User.golfer_status(group.golfer4_email) %>
+              <% if user_status == 'Un-Registered'.html_safe %>
+                <%= '<div style="background-color:#fcf8e3" class="center-block">'.html_safe %>
+              <% elsif user_status == 'Incomplete' %>
+                <%= '<div style="background-color:#fcf8e3" class="center-block">'.html_safe %>
+              <% else %>
+                <%= '<div style="background-color:#dff0d8" class="center-block">'.html_safe %>
+              <% end %>
+              <%= group.golfer4_name %>
+              <%= group.golfer4_email %>
+              (<%= User.golfer_status(group.golfer4_email) %>)
+              <%= '</div>'.html_safe %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</section>

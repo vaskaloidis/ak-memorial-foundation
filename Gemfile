@@ -19,7 +19,8 @@ gem 'jquery'
 gem 'jquery-rails'
 gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
-# gem 'judge'
+gem 'judge'
+gem 'font-awesome-rails'
 
 gem 'rails_12factor'
 # gem 'rails_12factor', group: :production

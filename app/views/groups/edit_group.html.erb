@@ -1,0 +1,78 @@
+<h2>Edit Golfer Group</h2>
+
+<%= form_for(@user, as: User, url: registration_path(User), html: {method: :put}) do |f| %>
+
+  <%#= devise_error_messages! %>
+  <%#= render 'layouts/error_messages', object: resource %>
+
+  <div class="container section-bottom-60">
+    <div class="row">
+      <div class="col-xs-6 text-center unit-align-center">
+        <%= f.label :email %><br/>
+        <input id="email-textbox" disabled value="<%= current_user.email %>" type="text" name="user[email]" class="form-control form-control-gray">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+
+        <div class="row section-bottom-30">
+          <div class="col-xs-12 col-md-6">
+            <label for="contact-golfer1-email" disabled class="form-label form-label-outside">Golfer 1 Name</label>
+            <input id="golfer-1-name" disabled value="<%= current_user.email %>" type="text" name="name" class="form-control form-control-gray">
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <label for="contact-golfer1-email" disabled class="form-label form-label-outside">Golfer 1 Name</label>
+            <input id="golfer-1-email" disabled value="<%= current_user.first_name %> <%= current_user.last_name %>" type="text" name="name" class="form-control form-control-gray">
+          </div>
+        </div>
+
+        <div class="row section-bottom-30 bg-gray-light">
+          <div class="col-xs-12 col-md-6">
+            <label for="contact-golfer2-name-label" class="form-label form-label-outside">Golfer 2 Name</label>
+            <%= f.text_field(:golfer2_name, class: "form-control form-control-gray") %>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <label for="contact-golfer2-email-label" class="form-label form-label-outside">Golfer 2 Email</label>
+            <%= f.text_field(:golfer2_email, class: "form-control form-control-gray") %>
+          </div>
+        </div>
+
+        <div class="row section-bottom-30">
+          <div class="col-xs-12 col-md-6">
+            <label for="contact-golfer3" class="form-label form-label-outside">Golfer 3 Name</label>
+            <%= f.text_field(:golfer3_name, class: "form-control form-control-gray") %>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <label for="contact-golfer3" class="form-label form-label-outside">Golfer 3 Email</label>
+            <%= f.text_field(:golfer3_email, class: "form-control form-control-gray") %>
+          </div>
+        </div>
+
+        <div class="row section-bottom-30 bg-gray-light">
+          <div class="col-xs-12 col-md-6">
+            <label for="contact-golfer4" class="form-label form-label-outside">Golfer 4 Name</label>
+            <%= f.text_field(:golfer4_name, class: "form-control form-control-gray") %>
+          </div>
+          <div class="col-xs-12 col-md-6">
+            <label for="contact-golfer4" class="form-label form-label-outside">Golfer 4 Email</label>
+            <%= f.text_field(:golfer4_email, class: "form-control form-control-gray") %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class=" text-center text-md-left">
+        <button type="submit" class="btn btn-primary btn-sm">Update Profile</button>
+        <%= link_to "Cancel", :back, class: 'btn btn-info btn-sm' %>
+
+      </div>
+    </div>
+
+  </div>
+
+<% end %>
+
+<%#= button_to "Cancel my account", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete %>

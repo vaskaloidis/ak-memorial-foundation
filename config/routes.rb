@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'user/edit'
+
+  get 'groups/edit_group'
+
   resources :invites
   devise_for :users, :controllers =>
       {
           :registrations => "users/registrations"
       }
-
   resources :purchases
   resources :charges
   resources :shopping_carts
@@ -16,8 +19,12 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/edit_group/:user_id', to: 'groups#edit_group', as: 'edit_user'
+  match 'update_user', to: 'user#update', via: [:put], as: 'update_user'
+
+
   get '/invite/:invite_id',
-      to: 'users#users/registrations',
+      to: 'users/registrations#new',
       as: 'invite_golfer'
 
   get '/quick_purchase/:product_id', to: 'charges#new', as: 'quick_purchase'
@@ -30,7 +37,7 @@ Rails.application.routes.draw do
 
   root to: 'main#home'
 
-  get '/admin', to: 'main#admin', as: 'admin'
+  get '/admin', to: 'admin#home', as: 'admin'
 
   get '/view_profile', to: 'main#profile', as: 'view_profile'
 

@@ -1,0 +1,31 @@
+<section class="section-40">
+  <h4>Admins</h4>
+  <div class="offset-top-32">
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <table class="table table-hover table-striped">
+          <thead>
+          <tr>
+            <th class="success">Name</th>
+            <th class="success">Email</th>
+            <th class="success">Phone</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @admins.each do |admin| %>
+            <tr>
+              <td><%= admin.first_name %> <%= admin.last_name %></td>
+              <td><%= admin.email %></td>
+              <td>
+                <% unless admin.phone.nil? %>
+                  <%= admin.phone %>
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

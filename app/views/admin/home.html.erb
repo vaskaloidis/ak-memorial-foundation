@@ -1,0 +1,47 @@
+<main class="page-content">
+
+  <div class="container-fluid right text-xl-center">
+
+    <h2>Admin</h2>
+    <hr class="divider divider-30 divider-primary">
+    <h4>Groups</h4>
+
+    <div style="padding: 0px 40px 0px 40px" class="container-fluid">
+
+      <div data-type="horizontal" class="responsive-tabs responsive responsive-tabs-classic horizontal">
+        <ul class="resp-tabs-list tabs-1 text-center tabs-group-default">
+          <li>Tournament Groups</li>
+          <li>Admins</li>
+          <li>Registered Users</li>
+          <li>Donations</li>
+        </ul>
+        <div class="resp-tabs-container text-sm-left tabs-group-default">
+          <div>
+            <p>
+              <%= render 'admin/groups' %>
+              <br>
+              <%= render 'admin/users' %>
+            </p>
+          </div>
+          <div>
+            <p>
+              <%= render 'admin/admins' %>
+            </p>
+          </div>
+          <div>
+            <p>
+              <%= render 'admin/users' %>
+            </p>
+          </div>
+          <div>
+            <p>
+              <%= render 'admin/donations' %>
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</main>

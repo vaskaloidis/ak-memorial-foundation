@@ -23,12 +23,12 @@ module ApplicationHelper
   end
 
   def self.tournament_venue
-    return 'Waterbury Golf Club'
+    return 'The Watertown Golf Club'
   end
 
   def self.tournament_venue_address(break_line = false)
-    if break_linke
-      return '46 Guernseytown Rd<br>Watertown, CT 06795'.html_safe
+    if break_line
+      return '46 Guernseytown Rd. <br>Watertown, CT 06795'.html_safe
     else
       return 'return 46 Guernseytown Rd Watertown, CT 06795'.html_safe
     end

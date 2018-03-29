@@ -2,16 +2,6 @@ class MainController < ApplicationController
   before_action :authenticate_user!, only: [:profile]
   before_action :verify_admin, only: [:admin]
 
-  def admin
-    @golf_packages = Purchase.where(:product_category => 'golf_package').all
-    @donations = Purchase.where(:product_category => 'donation').all
-    @sponsorships = Purchase.where(:product_category => 'sponsor').order('amount DESC').all
-
-    @users = User.where(admin: false).all
-    @admins = User.where(admin: true).all
-
-  end
-
   def home
   end
 
