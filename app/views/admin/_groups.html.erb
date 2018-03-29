@@ -24,9 +24,9 @@
               <% else %>
                 <%= '<div style="background-color:#dff0d8" class="center-block">'.html_safe %>
               <% end %>
-              <%= group.golfer2_name %>
+              <%= group.golfer2_name %> (<%= User.golfer_status(group.golfer2_email) %>)<br>
               <%= group.golfer2_email %>
-              (<%= User.golfer_status(group.golfer2_email) %>)
+
               <%= '</div>'.html_safe %>
             <% end %>
 
@@ -39,9 +39,8 @@
               <% else %>
                 <%= '<div style="background-color:#dff0d8" class="center-block">'.html_safe %>
               <% end %>
-              <%= group.golfer3_name %>
+              <%= group.golfer3_name %> (<%= User.golfer_status(group.golfer3_email) %>)<br>
               <%= group.golfer3_email %>
-              (<%= User.golfer_status(group.golfer3_email) %>)
               <%= '</div>'.html_safe %>
             <% end %>
 
@@ -54,9 +53,8 @@
               <% else %>
                 <%= '<div style="background-color:#dff0d8" class="center-block">'.html_safe %>
               <% end %>
-              <%= group.golfer4_name %>
+              <%= group.golfer4_name %> (<%= User.golfer_status(group.golfer4_email) %>)<br>
               <%= group.golfer4_email %>
-              (<%= User.golfer_status(group.golfer4_email) %>)
               <%= '</div>'.html_safe %>
             <% end %>
           </div>
