@@ -19,7 +19,8 @@ Rails.application.routes.draw do
     end
   end
 
-  get '/edit_group/:user_id', to: 'groups#edit_group', as: 'edit_user'
+  get '/edit_group/:user_id', to: 'groups#edit_group', as: 'edit_group'
+  get '/edit_user/:user_id', to: 'user#edit', as: 'edit_user'
   match 'update_user', to: 'user#update', via: [:put], as: 'update_user'
 
 
