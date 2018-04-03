@@ -1,9 +1,12 @@
 <% unless ENV['environment'].nil? %>
   <% environment = ENV['environment'] %>
-  <% if environment.casecmp('development') %>
-    <div class="alert alert-warning text-center">Development Server</div>
-  <% elsif Rails.env.casecmp('staging') %>
-    <div class="alert alert-warning text-center">Staging Server</div>
+  <% alert_staging = false %>
+  <% if alert_staging %>
+    <% if environment.casecmp('development') %>
+      <div class="alert alert-warning text-center">Development Server</div>
+    <% elsif Rails.env.casecmp('staging') %>
+      <div class="alert alert-warning text-center">Staging Server</div>
+    <% end %>
   <% end %>
 <% end %>
 
