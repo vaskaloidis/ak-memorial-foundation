@@ -5,7 +5,7 @@
     <div data-speed="0" data-type="html" class="rd-parallax-layer">
       <div class="breadcrumb-wrapper">
         <div class="shell context-dark section-40 section-lg-top-158">
-          <h1>Events</h1>
+          <h1>Golf Tournament Supporters</h1>
           <ol class="breadcrumb">
             <li><a href="<%= root_url %>">Home</a></li>
             <li>Supporters
@@ -17,21 +17,22 @@
   </section>
   <section class="section-80 section-md-110">
     <div class="shell shell-wide">
-      <h2>Supporters</h2>
+      <h2>Sponsorships</h2>
       <hr class="divider divider-primary divider-60 divider-offset">
       <div class="range offset-top-60">
 
         <% count = 1 %>
         <% @supporters.each do |purchase| %>
 
+          <div
           <% if count == 1 %>
-            <div class="cell-lg-4 cell-sm-6">
+          class="cell-lg-4 cell-sm-6">
           <% elsif count == 2 %>
-            <div class="cell-lg-4 cell-sm-6 offset-top-32 offset-sm-top-0">
+          class="cell-lg-4 cell-sm-6 offset-top-32 offset-sm-top-0">
           <% elsif count == 3 %>
-            <div class="cell-lg-4 cell-sm-6 offset-top-32 offset-lg-top-0">
+          class="cell-lg-4 cell-sm-6 offset-top-32 offset-lg-top-0">
           <% else %>
-            <div class="cell-lg-4 cell-sm-6 offset-top-32">
+          class="cell-lg-4 cell-sm-6 offset-top-32">
           <% end %>
 
           <div class="thumbnail">
@@ -61,7 +62,7 @@
           <% count = count + 1 %>
         <% end %>
 
-        </div>
-        </div>
+      </div>
+    </div>
   </section>
 </main>
