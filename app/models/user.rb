@@ -37,34 +37,37 @@ class User < ApplicationRecord
   end
 
   def validate_golfer2
+    empty_error = 'Cannot Be Empty'
     unless golfer2_name.blank? and golfer2_email.blank?
       if golfer2_name.blank?
-        errors.add(:golfer2_name, 'Golfer 2 Name Cannot Be Left Empty')
+        errors.add(:golfer2_name, empty_error)
       end
       if golfer2_email.blank?
-        errors.add(:golfer2_email, 'Golfer 2 Email Cannot Be Left Empty')
+        errors.add(:golfer2_email, empty_error)
       end
     end
   end
 
   def validate_golfer3
+    empty_error = 'Cannot Be Empty'
     unless golfer3_name.blank? and golfer3_email.blank?
       if golfer3_name.blank?
-        errors.add(:golfer3_name, 'Golfer 3 Name Cannot Be Left Empty')
+        errors.add(:golfer3_name, empty_error)
       end
       if golfer3_email.blank?
-        errors.add(:golfer3_email, 'Golfer 3 Email Cannot Be Left Empty')
+        errors.add(:golfer3_email, empty_error)
       end
     end
   end
 
   def validate_golfer4
+    empty_error = 'Cannot Be Empty'
     unless golfer4_name.blank? and golfer4_email.blank?
       if golfer4_name.blank?
-        errors.add(:golfer4_name, 'Golfer 4 Name Cannot Be Left Empty')
+        errors.add(:golfer4_name, empty_error)
       end
       if golfer4_email.blank?
-        errors.add(:golfer4_email, 'Golfer 4 Email Cannot Be Left Empty')
+        errors.add(:golfer4_email, empty_error)
       end
     end
   end
@@ -151,7 +154,7 @@ class User < ApplicationRecord
   def invite_golfer_two
     unless self.golfer2_email.nil?
       if !User.where(email: self.golfer2_email).empty?
-        logger.info('Golfer 2 ' + self.golfer2_email + ' does not exist yet. Invite!')
+        logger.debug('Golfer 2 ' + self.golfer2_email + ' does not exist yet. Invite!')
 
         invite = Invite.new
         invite.user = self
@@ -163,15 +166,15 @@ class User < ApplicationRecord
         invite.save
 
         if !self.golfer2_name.nil?
-          logger.info('Invite Sent To Golfer Two ' + invite.email + ' ' + invite.name)
+          logger.debug('Invite Sent To Golfer Two ' + invite.email + ' ' + invite.name)
         else
-          logger.info('Invite Sent To Golfer Two ' + invite.email)
+          logger.debug('Invite Sent To Golfer Two ' + invite.email)
         end
 
         # mailer = InviteUsersMailer.invite_users(invite).deliver_later
-        # logger.info(mailer)
+        # logger.debug(mailer)
       else
-        logger.info("Golfer 2 Exists")
+        logger.debug("Golfer 2 Exists")
       end
     end
   end
@@ -179,7 +182,7 @@ class User < ApplicationRecord
   def invite_golfer_three
     unless self.golfer3_email.nil?
       if !User.where(email: self.golfer3_email).empty?
-        logger.info('Golfer 3 ' + self.golfer2_email + ' does not exist yet. Invite!')
+        logger.debug('Golfer 3 ' + self.golfer2_email + ' does not exist yet. Invite!')
         invite = Invite.new
         invite.email = golfer3_email
         invite.user = self
@@ -190,15 +193,15 @@ class User < ApplicationRecord
         invite.save
 
         if !self.golfer3_name.nil?
-          logger.info('Invite Sent To Golfer Three ' + invite.email + ' ' + invite.name)
+          logger.debug('Invite Sent To Golfer Three ' + invite.email + ' ' + invite.name)
         else
-          logger.info('Invite Sent To Golfer Three ' + invite.email)
+          logger.debug('Invite Sent To Golfer Three ' + invite.email)
         end
 
         mailer = InviteUsersMailer.invite_users(invite).deliver_later
-        logger.info(mailer)
+        logger.debug(mailer)
       else
-        logger.info("Golfer 3 Exists")
+        logger.debug("Golfer 3 Exists")
       end
 
     end
@@ -207,7 +210,7 @@ class User < ApplicationRecord
   def invite_golfer_four
     unless self.golfer4_email.nil?
       if !User.where(email: self.golfer4_email).empty?
-        logger.info('Golfer 4 ' + self.golfer4_email + ' does not exist yet. Invite!')
+        logger.debug('Golfer 4 ' + self.golfer4_email + ' does not exist yet. Invite!')
         invite = Invite.new
         invite.email = golfer4_email
         invite.user = self
@@ -218,16 +221,16 @@ class User < ApplicationRecord
         invite.save
 
         if !self.golfer4_name.nil?
-          logger.info('Invite Sent To Golfer Four ' + invite.email + ' ' + invite.name)
+          logger.debug('Invite Sent To Golfer Four ' + invite.email + ' ' + invite.name)
         else
-          logger.info('Invite Sent To Golfer Four ' + invite.email)
+          logger.debug('Invite Sent To Golfer Four ' + invite.email)
         end
 
         mailer = InviteUsersMailer.invite_users(invite).deliver_later
 
-        logger.info(mailer)
+        logger.debug(mailer)
       else
-        logger.info("Golfer 4 Exists")
+        logger.debug("Golfer 4 Exists")
       end
     end
   end

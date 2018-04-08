@@ -140,6 +140,8 @@
         <% if @current_password_error %>
           <div style="color: white" class="alert alert-danger"><small>Current password required to edit profile</small></div>
         <% end %>
+        <%#= f.password_field :current_password, lass: 'form-control corm-control-gray' %>
+
         <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
         <%= f.password_field :current_password, autocomplete: "off", class: 'form-control corm-control-gray' %>
       </div>
@@ -154,9 +156,9 @@
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br/>
-        <!--<input id="password" type="password" name="password" data-constraints="@Required" class="form-control form-control-gray">-->
         <label for="password-2" class="form-label form-label-outside">Repeat your password</label>
         <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control corm-control-gray' %>
+
         <!--TODO: JS Pass verify
       </div>
 

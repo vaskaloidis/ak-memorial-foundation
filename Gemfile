@@ -21,18 +21,14 @@ gem 'coffee-rails', '~> 4.2'
 gem 'jbuilder', '~> 2.5'
 gem 'judge'
 gem 'font-awesome-rails'
-
 gem 'rails_12factor'
 # gem 'rails_12factor', group: :production
-
-
 group :development, :test do
   gem 'dotenv-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
 end
-
 group :development do
   # gem 'letter_opener'
   gem 'web-console', '>= 3.3.0'

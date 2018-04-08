@@ -56,8 +56,7 @@ class ChargesController < ApplicationController
             :currency => 'usd'
         )
 
-        logger.info("Stripe Charge Made - " + @amount.round.to_s)
-        logger.info(charge)
+        logger.debug("Stripe Charge Made - " + @amount.round.to_s)
 
         purchase = Purchase.new
         purchase.user = u
