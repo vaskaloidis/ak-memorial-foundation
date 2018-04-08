@@ -33,6 +33,22 @@
             <% if !current_user.phone.nil? %>
               <strong>Phone: </strong> <%= current_user.phone %><br>
             <% end %>
+
+            <% if !current_user.address.nil? %>
+              <strong>Address: </strong> <%= current_user.address %><br>
+            <% end %>
+
+            <% if !current_user.city.nil? %>
+              <strong>City: </strong> <%= current_user.city %><br>
+            <% end %>
+
+            <% if !current_user.state.nil? %>
+              <strong>State: </strong> <%= current_user.state %><br>
+            <% end %>
+
+            <% if !current_user.zip.nil? %>
+              <strong>Zip: </strong> <%= current_user.zip %><br>
+            <% end %>
           </div>
 
           <div class="col-xs-12 col-md-6">
