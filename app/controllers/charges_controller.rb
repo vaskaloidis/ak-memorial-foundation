@@ -24,7 +24,7 @@ class ChargesController < ApplicationController
       charge = Stripe::Charge.create(
           :source => params[:stripeToken],
           :amount => @amount.round,
-          :description => 'Athan Kaloidis Memorial Foundation, LLC. Donation',
+          :description => 'Athen Kaloidis Memorial Foundation, LLC. Donation',
           :currency => 'usd'
       )
 
@@ -52,7 +52,7 @@ class ChargesController < ApplicationController
         charge = Stripe::Charge.create(
             :source => params[:stripeToken],
             :amount => @amount.round,
-            :description => 'Athan Kaloidis Memorial Foundation, LLC. Donation',
+            :description => 'Athen Kaloidis Memorial Foundation, LLC. Donation',
             :currency => 'usd'
         )
 
