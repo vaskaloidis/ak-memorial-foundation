@@ -1,26 +1,30 @@
 <!-- Groups -->
 <section>
+  <div class="row text-center">
+    <div class="alert alert-success col-xs-12 col-md-4 text-left">
+      <i class="fas fa-dollar-sign"></i> Registered & Paid User <br>
+      <i class="fas fa-exclamation-circle"></i> Un-Registered or Registered But Un-Paid User <br>
+    </div>
+  </div>
   <div class="row">
     <% @users.each do |group| %>
       <% unless (group.golfer2_email.nil? or group.golfer2_email.empty?) and (group.golfer3_email.nil? or group.golfer3_email.empty?) and (group.golfer4_email.nil? or group.golfer4_email.empty?) %>
-        <div class="col-xs-12 col-md-4 section-top-30">
+        <div class="col-xs-12 col-md-4 section-top-30 text-center">
           <div style="padding:20px">
                 <span style="border-bottom:1px solid #a4a18f;background-color:#dff0d8" class="center-block">
                   <h5>
-                    <span style="color:black;" class="inset-right-5 text-middle icon icon-lg text-primary mdi mdi-trophy-variant"></span>
-                    <strong><%= User.golfer_status_icon(group.email).html_safe %> <%= group.first_name %> <%= group.last_name %> <%= group.email %> </strong>
+                    <span class="text-center"><strong><%= User.golfer_status_icon(group.email).html_safe %> <%= group.first_name %> <%= group.last_name %></strong> <br> (<%= group.email %>) </span>
+                    <span style="color:black;" class="inset-right-5 pull-right icon icon-lg text-primary mdi mdi-trophy-variant"></span>
                     <%#= link_to '<i class="fas fa-cogs"></i>'.html_safe, edit_group_path(group.id) %>
                   </h5>
                 </span>
 
             <% unless group.golfer2_email.nil? or group.golfer2_email.empty? %>
               <% user_status = User.golfer_status(group.golfer2_email) %>
-              <% if user_status == 'Un-Registered' %>
-                <%= '<div style="background-color:#fcf8e3" class="center-block">'.html_safe %>
-              <% elsif user_status == 'Incomplete' %>
-                <%= '<div style="background-color:#fcf8e3" class="center-block">'.html_safe %>
+              <% if user_status == 'Un-Registered' or user_status == 'Incomplete' %>
+                <%= '<div class="unregistered_group_bg center-block">'.html_safe %>
               <% else %>
-                <%= '<div style="background-color:#dff0d8" class="center-block">'.html_safe %>
+                <%= '<div class="registered_group_bg center-block">'.html_safe %>
               <% end %>
               <%= User.golfer_status_icon(group.golfer2_email).html_safe %> <%= group.golfer2_name %> <%= group.golfer2_email %>
 
@@ -29,12 +33,10 @@
 
             <% unless group.golfer3_email.nil? or group.golfer3_email.empty? %>
               <% user_status = User.golfer_status(group.golfer3_email) %>
-              <% if user_status == 'Un-Registered' %>
-                <%= '<div style="background-color:#fcf8e3" class="center-block">'.html_safe %>
-              <% elsif user_status == 'Incomplete' %>
-                <%= '<div style="background-color:#fcf8e3" class="center-block">'.html_safe %>
+              <% if user_status == 'Un-Registered' or user_status == 'Incomplete' %>
+                <%= '<div class="unregistered_group_bg center-block">'.html_safe %>
               <% else %>
-                <%= '<div style="background-color:#dff0d8" class="center-block">'.html_safe %>
+                <%= '<div class="registered_group_bg center-block">'.html_safe %>
               <% end %>
               <%= User.golfer_status_icon(group.golfer3_email).html_safe %> <%= group.golfer3_name %> <%= group.golfer3_email %>
               <%= '</div>'.html_safe %>
@@ -42,12 +44,10 @@
 
             <% unless group.golfer4_email.nil? or group.golfer4_email.empty? %>
               <% user_status = User.golfer_status(group.golfer4_email) %>
-              <% if user_status == 'Un-Registered'.html_safe %>
-                <%= '<div style="background-color:#fcf8e3" class="center-block">'.html_safe %>
-              <% elsif user_status == 'Incomplete' %>
-                <%= '<div style="background-color:#fcf8e3" class="center-block">'.html_safe %>
+              <% if user_status == 'Un-Registered' or user_status == 'Incomplete' %>
+                <%= '<div class="unregistered_group_bg center-block">'.html_safe %>
               <% else %>
-                <%= '<div style="background-color:#dff0d8" class="center-block">'.html_safe %>
+                <%= '<div class="registered_group_bg center-block">'.html_safe %>
               <% end %>
               <%= User.golfer_status_icon(group.golfer4_email).html_safe %> <%= group.golfer4_name %> <%= group.golfer4_email %>
               <%= '</div>'.html_safe %>

@@ -15,6 +15,16 @@
  *= require font-awesome
  */
 
+.unregistered_group_bg {
+    background-color:#fcf8e3;
+}
+.incomplete_group_bg {
+    background-color:#fcf8e3;
+}
+.registered_group_bg {
+    background-color:#dff0d8;
+}
+
 .rd-navbar-panel {
   padding-top: 20px;
   padding-bottom: 15px;
