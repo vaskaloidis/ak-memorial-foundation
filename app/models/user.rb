@@ -151,6 +151,20 @@ class User < ApplicationRecord
 
   end
 
+  def self.golfer_status_icon(email)
+    if self.golfer_status(email) == 'Registered'
+      return '<i class="fas fa-dollar-sign"></i>'.html_safe
+    elsif self.golfer_status(email) == 'Un-Registered'
+      if email == '' or email.nil?
+        return 'Un-Registered'
+      else
+        return '<i class="fas fa-exclamation-circle"></i>'.html_safe
+      end
+    else
+      return '<i class="fas fa-exclamation-circle"></i>'.html_safe
+    end
+  end
+
   def invite_golfer_two
     unless self.golfer2_email.nil?
       if !User.where(email: self.golfer2_email).empty?
