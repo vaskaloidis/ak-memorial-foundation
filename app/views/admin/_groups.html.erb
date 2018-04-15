@@ -12,9 +12,9 @@
         <div class="col-xs-12 col-md-4 section-top-30 text-center">
           <div style="padding:20px">
                 <span style="border-bottom:1px solid #a4a18f;background-color:#dff0d8" class="center-block">
+                  <span style="color:black;" class="inset-right-5 icon icon-lg text-primary mdi mdi-trophy-variant"></span><br>
                   <h5>
                     <span class="text-center"><strong><%= User.golfer_status_icon(group.email).html_safe %> <%= group.first_name %> <%= group.last_name %></strong> <br> (<%= group.email %>) </span>
-                    <span style="color:black;" class="inset-right-5 pull-right icon icon-lg text-primary mdi mdi-trophy-variant"></span>
                     <%#= link_to '<i class="fas fa-cogs"></i>'.html_safe, edit_group_path(group.id) %>
                   </h5>
                 </span>

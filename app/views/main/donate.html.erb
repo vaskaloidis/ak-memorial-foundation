@@ -1,75 +1,76 @@
 <main class="page-content">
 
-  <% if !user_signed_in? %>
-    <section class="hidden-xs">
-      <!-- Swiper-->
-      <div class="swiper-outer">
-        <div data-simulate-touch="false" data-slide-effect="fade" data-autoplay="3000" class="swiper-container swiper-slider swiper-slider-variant-1">
-          <div class="swiper-wrapper">
-            <div data-slide-bg="<%= image_path 'index-02.jpg' %>" class="swiper-slide">
-              <div class="swiper-slide-caption">
-                <div class="shell shell-wide">
-                  <div class="range">
-                    <div class="cell-md-7 cell-lg-7 context-dark cell-xs-middle">
-                      <h1>Donations</h1>
-                      <p class="big">Contribute to The Athan Kaloidis Memorial Foundation.
-                      </p>
+  <% if false %>
+    <% if !user_signed_in? %>
+      <section class="hidden-xs">
+        <!-- Swiper-->
+        <div class="swiper-outer">
+          <div data-simulate-touch="false" data-slide-effect="fade" data-autoplay="3000" class="swiper-container swiper-slider swiper-slider-variant-1">
+            <div class="swiper-wrapper">
+              <div data-slide-bg="<%= image_path 'index-02.jpg' %>" class="swiper-slide">
+                <div class="swiper-slide-caption">
+                  <div class="shell shell-wide">
+                    <div class="range">
+                      <div class="cell-md-7 cell-lg-7 context-dark cell-xs-middle">
+                        <h1>Donations</h1>
+                        <p class="big">Contribute to The Athan Kaloidis Memorial Foundation.
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="swiper-on-slider">
-          <div class="shell shell-wide">
-            <div class="range">
-              <div class="cell-md-7 cell-lg-7 context-dark cell-xs-middle"></div>
-              <div class="cell-md-5 cell-lg-4 cell-xl-3 cell-xl-preffix-1 offset-top-0">
-                <div class="well-variant-3 swiper-on-slider-inner">
-                  <h2>Login</h2>
-                  <%= form_for(User.new,
-                               as: User.new,
-                               url: session_path(User.new),
-                               html: {
-                                       :class => 'rd-mailform text-left',
-                                       :data_form_output => 'form-output-global',
-                                       :data_form_type => 'contact',
-                                       :novalidate => 'novalidate',
-                                       :autocomplete => 'off'
-                               }) do |f| %>
+          <div class="swiper-on-slider">
+            <div class="shell shell-wide">
+              <div class="range">
+                <div class="cell-md-7 cell-lg-7 context-dark cell-xs-middle"></div>
+                <div class="cell-md-5 cell-lg-4 cell-xl-3 cell-xl-preffix-1 offset-top-0">
+                  <div class="well-variant-3 swiper-on-slider-inner">
+                    <h2>Login</h2>
+                    <%= form_for(:user,
+                                 :url => session_path(:user),
+                                 html: {
+                                     :class => 'rd-mailform text-left',
+                                     :data_form_output => 'form-output-global',
+                                     :data_form_type => 'contact',
+                                     :novalidate => 'novalidate',
+                                     :autocomplete => 'off'
+                                 }, local: true) do |f| %>
 
-                    <div class="cell-sm-6 cell-md-12">
-                      <div class="form-group">
-                        <label for="user_email" class="form-label form-label-outside">Email</label>
-                        <%= f.email_field :email, class: "form-control form-control-gray-base" %>
-                      </div>
-                    </div>
-                    <div class="cell-sm-6 cell-md-12 offset-top-20 offset-sm-top-0 offset-md-top-20">
-                      <div class="form-group">
-                        <label for="user_password" class="form-label form-label-outside">Password</label>
-                        <%= f.password_field :password, class: "form-control form-control-gray-base" %>
-                      </div>
-                    </div>
-                    <div class="range offset-top-20">
-                      <div class="cell-sm-6">
-                        <div class="field">
-                          <%= f.check_box :remember_me %>
-                          <%= f.label :remember_me %>
+                      <div class="cell-sm-6 cell-md-12">
+                        <div class="form-group">
+                          <label for="user_email" class="form-label form-label-outside">Email</label>
+                          <%= f.email_field :email, class: "form-control form-control-gray-base" %>
                         </div>
                       </div>
-                    </div>
-                    <div class="cell-md-12 offset-top-20">
-                      <button class="btn btn-block btn-primary btn-sm">Login</button>
-                    </div>
-                  <% end %>
+                      <div class="cell-sm-6 cell-md-12 offset-top-20 offset-sm-top-0 offset-md-top-20">
+                        <div class="form-group">
+                          <label for="user_password" class="form-label form-label-outside">Password</label>
+                          <%= f.password_field :password, class: "form-control form-control-gray-base" %>
+                        </div>
+                      </div>
+                      <div class="range offset-top-20">
+                        <div class="cell-sm-6">
+                          <div class="field">
+                            <%= f.check_box :remember_me %>
+                            <%= f.label :remember_me %>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="cell-md-12 offset-top-20">
+                        <button class="btn btn-block btn-primary btn-sm">Login</button>
+                      </div>
+                    <% end %>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    <% end %>
   <% end %>
 
   <section class="section-bottom-30 section-40">
@@ -97,7 +98,8 @@
               <span class="inset-right-5 text-middle icon icon-lg text-primary mdi mdi-trophy-variant"></span>
               <h6><%= product.name %></h6>
               <hr class="divider divider-50 divider-gray-dark">
-              <p>Register to play in the Memorial Foundation Tournament. <br>Package Includes: <%= product.description %></p>
+              <p>Register to play in the Memorial Foundation Tournament. <br>Package
+                Includes: <%= product.description %></p>
               <p class="text-dark offset-top-14">
                     <span class="text-middle">
                       <i class="fas fa-dollar-sign"></i>
