@@ -83,7 +83,7 @@
         <div class="row text-center">
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                   data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-                  data-description="Athen Kaloidis Memorial Purchase"
+                  data-description="Athan Kaloidis Memorial Purchase"
                   data-amount="<%= (@total_charge * 100).to_s %>"
                   data-locale="auto"></script>
 

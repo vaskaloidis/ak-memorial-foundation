@@ -1,4 +1,4 @@
-# Athen Kaloidis Memorial Golf Tournament Seeds
+# Athan Kaloidis Memorial Golf Tournament Seeds
 
 unless Rails.env.production?
   User.delete_all
@@ -101,7 +101,7 @@ p.category = 'golf_package'
 p.save
 p = Product.new
 p.name = 'Donation'
-p.description = 'Donate any amount to the Athen Kaloidis Memorial Foundation.'
+p.description = 'Donate any amount to the Athan Kaloidis Memorial Foundation.'
 p.category = 'donation'
 p.save
 

@@ -44,7 +44,7 @@ class MainController < ApplicationController
   def twenty_ten_gallery
   end
 
-  def athen_gallery
+  def athan_gallery
   end
 
   private

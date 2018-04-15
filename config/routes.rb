@@ -44,7 +44,7 @@ Rails.application.routes.draw do
 
   get '/twenty_ten_gallery', to: 'main#twenty_ten_gallery'
   get '/twenty_fifteen_gallery', to: 'main#twenty_fifteen_gallery'
-  get '/athen_gallery', to: 'main#athen_gallery'
+  get '/athan_gallery', to: 'main#athan_gallery'
 
   get '/about', to: 'main#about', as: 'about'
   get '/donate', to: 'main#donate', as: 'donate'

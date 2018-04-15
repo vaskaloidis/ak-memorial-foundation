@@ -68,16 +68,16 @@
               <% end %>
               <%= link_to 'Children\'s Exhibit', childrens_exhibit_path %></li>
 
-              <% if current_page?(twenty_ten_gallery_path) or current_page?(athen_gallery_path) or current_page?(twenty_fifteen_gallery_path) %>
+              <% if current_page?(twenty_ten_gallery_path) or current_page?(athan_gallery_path) or current_page?(twenty_fifteen_gallery_path) %>
                 <li class="active">
               <% else %>
                 <li>
               <% end %>
-              <a href="<%= athen_gallery_path %>">Gallery</a>
+              <a href="<%= athan_gallery_path %>">Gallery</a>
               <ul class="rd-navbar-dropdown">
                 <li><a href="<%= twenty_ten_gallery_path %>">2010 Tournament</a></li>
                 <li><a href="<%= twenty_fifteen_gallery_path %>">2015 Tournament</a></li>
-                <li><a href="<%= athen_gallery_path %>">Athen & Family</a></li>
+                <li><a href="<%= athan_gallery_path %>">Athan & Family</a></li>
               </ul>
               </li>
 
