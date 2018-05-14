@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <div>
+      This is a test. Ignore this Email.
+    </div>
+    <h1>Athan Kaloidis Memorial Golf Tournament</h1>
+    <h2><%= @customer.full_name %> registered for the tournament</h1>
+    <p>
+      <strong>Name: </strong> <%= @customer.full_name %><br>
+      <strong>Email: </strong> <%= @customer.email %><br>
+
+      <h3>Customer Info</h3>
+      <% unless @customer.phone.nil? %>
+        <strong>Phone: </strong> <%= @customer.phone %><br>
+      <% end %>
+
+      <% unless @customer.address.nil? %>
+        <strong>Address: </strong> <%= @customer.address %><br>
+        <% if !@customer.city.nil? and !@customer.state.nil? and !@customer.zip.nil? %>
+        <%= @customer.city %>, <%= @customer.state %> <%= @customer.zip %>
+        <% end %>
+      <% end %>
+
+      <% unless @customer.company_name.nil? %>
+        <strong>Company: </strong> <%= @customer.company_name %><br>
+      <% end %>
+
+      <% unless @customer.company_website.nil? %>
+        <strong>Company Website: </strong> <%= @customer.company_website %><br>
+      <% end %>
+
+      <% unless @customer.company_published_name.nil? %>
+        <strong>Company Published Name (Name to appear on banners): </strong> <%= @customer.company_published_name %><br>
+      <% end %>
+
+      <% unless @customer.fax.nil? %>
+        <strong>Fax: </strong> <%= @customer.fax %><br>
+      <% end %>
+
+      <% unless @customer.note.nil? %>
+        <strong>Registration Note: </strong> <%= @customer.note %><br>
+      <% end %>
+
+      <h3>Golf Group</h3>
+      <% unless @customer.golfer2_name.nil? and @customer.golfer2_email.nil? %>
+        <strong>Golfer2: </strong> <%= @customer.golfer2_name %> /<%= @customer.golfer2_email %> <br>
+      <% end %>
+      <% unless @customer.golfer3_name.nil? and @customer.golfer3_email.nil? %>
+        <strong>Golfer3: </strong> <%= @customer.golfer3_name %> /<%= @customer.golfer3_email %> <br>
+      <% end %>
+      <% unless @customer.golfer4_name.nil? and @customer.golfer4_email.nil? %>
+        <strong>Golfer4: </strong> <%= @customer.golfer4_name %> /<%= @customer.golfer4_email %> <br>
+      <% end %>
+
+    </p>
+    <p>
+      We will notify you again when this customer has paid for the tournament golf package, or if he makes any donations or purchases any sponsorships.
+    </p>
+    <p>
+      Thanks!<br>
+      - Vas / Athan Kaloidis Memorial Golf Tournament Admin
+    </p>
+
+    <p>
+      <strong>Note: </strong> This email was sent to the admins for the golf tournament:
+      <% admins = User.where(admin: true) %>
+      <% admins.each_with_index do |admin, index| %>
+        <% if index != admins.count %>
+          <%= admin.full_name %>,
+        <% else %>
+          <%= admin.full_name %>
+        <% end %>
+      <% end %>
+    </p>
+  </body>
+</html>

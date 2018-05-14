@@ -5,10 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :shopping_cart, dependent: :destroy
-  has_many :shopping_cart_items, :source => :product, :through => :shopping_cart, dependent: :nullify
+  has_many :shopping_cart_items, :source => :product, :through => :shopping_cart, dependent: :destroy
   has_many :purchases, dependent: :nullify
   has_many :purchased_items, :source => :product, :through => :purchases, dependent: :nullify
-  has_many :invites
+  has_many :invites, dependent: :destroy
 
   accepts_nested_attributes_for :shopping_cart
   accepts_nested_attributes_for :shopping_cart_items

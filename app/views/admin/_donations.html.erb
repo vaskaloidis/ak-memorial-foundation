@@ -17,12 +17,17 @@
           <% total = 0.0 %>
           <% @sponsorships.each do |purchase| %>
             <tr>
-              <td><%= purchase.user.first_name %> <%= purchase.user.last_name %></td>
-              <td>
-                <% unless purchase.user.company_name.nil? %>
-                  <%= purchase.user.company_name %>
-                <% end %>
-              </td>
+              <% unless purchase.user.nil? %>
+                <td><%= purchase.user.first_name %> <%= purchase.user.last_name %></td>
+                <td>
+                  <% unless purchase.user.company_name.nil? %>
+                    <%= purchase.user.company_name %>
+                  <% end %>
+                </td>
+              <% else %>
+                <td>(User Account Deleted)</td>
+                <td></td>
+              <% end %>
               <td><%= purchase.product.name %></td>
               <td><%= Money.us_dollar(purchase.amount * 100.00).format %></td>
               <% total = total + purchase.amount %>

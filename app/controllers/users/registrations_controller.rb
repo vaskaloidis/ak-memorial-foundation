@@ -19,6 +19,8 @@ class Users::RegistrationsController < Devise::RegistrationsController
       # resource.invite_golfer_three
       # resource.invite_golfer_four
 
+      AdminMailer.registration_notifications(resource).deliver_now
+
       cart = ShoppingCart.new
       cart.user = resource
       cart.product = Product.golf_package

@@ -4,7 +4,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 # Athan Kaloidis Memorial Gems
-ruby "2.5.0"
+ruby "2.5.1"
 gem 'rails', '~> 5.1.4' # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rollbar'
 gem 'stripe'
@@ -22,12 +22,14 @@ gem 'jbuilder', '~> 2.5'
 gem 'judge'
 gem 'font-awesome-rails'
 gem 'rails_12factor'
-# gem 'rails_12factor', group: :production
+gem "recaptcha", require: "recaptcha/rails"
 group :development, :test do
   gem 'dotenv-rails'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
+  gem 'rubocop', require: false
+  gem 'pry-rails'
 end
 group :development do
   # gem 'letter_opener'
