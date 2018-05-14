@@ -4,17 +4,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  has_many :shopping_cart
-  has_many :shopping_cart_items, :source => :product, :through => :shopping_cart
-  has_many :purchases
-  has_many :purchased_items, :source => :product, :through => :purchases
+  has_many :shopping_cart, dependent: :destroy
+  has_many :shopping_cart_items, :source => :product, :through => :shopping_cart, dependent: :nullify
+  has_many :purchases, dependent: :nullify
+  has_many :purchased_items, :source => :product, :through => :purchases, dependent: :nullify
   has_many :invites
 
   accepts_nested_attributes_for :shopping_cart
   accepts_nested_attributes_for :shopping_cart_items
   accepts_nested_attributes_for :purchases
   accepts_nested_attributes_for :invites
-
 
   # Validations
   validate :validate_name
@@ -24,7 +23,6 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :phone, presence: true
 
-  # Validation Methods
   def validate_name
     unless first_name.blank? and last_name.blank?
       if first_name.blank?
@@ -72,7 +70,31 @@ class User < ApplicationRecord
     end
   end
 
+
   # Methods
+
+  def full_name
+    # TODO: Check this works if first or last name are nil / combinations of each use case
+    if !self.first_name.nil? and !self.last_name.nil?
+      return self.first_name + ' ' + self.last_name
+    elsif self.last_name.nil? and !self.first_name.nil?
+      return self.first_name
+    elsif !self.last_name.nil?
+      return self.last_name
+    elsif self.first_name.nil? and self.last_name.nil?
+      return self.email
+    else
+      return self.email
+    end
+  end
+
+  def is_god?
+    if self.email == 'vas.kaloidis@gmail.com'
+      return true
+    else
+      return false
+    end
+  end
 
   def group_member
     membership = Array.new

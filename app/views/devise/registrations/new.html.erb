@@ -40,33 +40,18 @@
                 </label>
                 <% if params.has_key?(:invite_id) %>
                   <%= f.email_field :email, value: Invite.find(params[:invite_id].email), class: "form-control form-control-gray" %>
-              <% else %>
+                <% else %>
                   <%= f.email_field :email, class: "form-control form-control-gray" %>
-              <% end %>
+                <% end %>
               </div>
 
               <div class="form-group">
-                <label for="address" class="form-label form-label-outside">Address</label>
-                <%= f.text_field(:address, id: "address-textbox", class: "form-control form-control-gray") %>
+                <label for="user_phone" class="form-label form-label-outside">Phone
+                  <small>(Required)</small>
+                </label>
+                <%= f.telephone_field(:phone, class: "form-control form-control-gray") %>
               </div>
-
-              <div class="form-group">
-                <label for="city-name" class="form-label form-label-outside">City</label>
-                <%= f.text_field(:city, id: "city-textbox", class: "form-control form-control-gray") %>
-              </div>
-
-              <div class="form-group">
-                <label for="state-name" class="form-label form-label-outside">State</label>
-                <%= f.text_field(:state, id: "state-textbox", class: "form-control form-control-gray") %>
-              </div>
-
-              <div class="form-group">
-                <label for="zip-name" class="form-label form-label-outside">Zipcode</label>
-                <%= f.text_field(:zip, id: "zip-textbox", class: "form-control form-control-gray") %>
-              </div>
-
             </div>
-
 
             <div class="col-xs-12 col-md-6">
               <h4>Company Info
@@ -91,23 +76,45 @@
               </div>
 
               <div class="form-group">
-                <label for="user_phone" class="form-label form-label-outside">Phone
-                  <small>(Required)</small>
-                </label>
-                <%= f.telephone_field(:phone, class: "form-control form-control-gray") %>
-              </div>
-
-              <div class="form-group">
                 <label for="user_fax" class="form-label form-label-outside">Fax</label>
                 <%= f.telephone_field(:fax, class: "form-control form-control-gray") %>
               </div>
-
             </div>
 
           </div>
         </div>
 
-        <hr>
+        <div class="row margin-bottom-20">
+          <h4>Address
+            <small>(Optional)</small>
+          </h4>
+
+          <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+              <label for="address" class="form-label form-label-outside">Address</label>
+              <%= f.text_field(:address, id: "address-textbox", class: "form-control form-control-gray") %>
+            </div>
+
+            <div class="form-group">
+              <label for="city-name" class="form-label form-label-outside">City</label>
+              <%= f.text_field(:city, id: "city-textbox", class: "form-control form-control-gray") %>
+            </div>
+          </div>
+
+          <div class="col-xs-12 col-md-6">
+            <div class="form-group">
+              <label for="state-name" class="form-label form-label-outside">State</label>
+              <%= f.text_field(:state, id: "state-textbox", class: "form-control form-control-gray") %>
+            </div>
+
+            <div class="form-group">
+              <label for="zip-name" class="form-label form-label-outside">Zipcode</label>
+              <%= f.text_field(:zip, id: "zip-textbox", class: "form-control form-control-gray") %>
+            </div>
+          </div>
+        </div>
+
+        <br>
 
         <div class="row">
           <div class="col-xs-12 col-md-12">

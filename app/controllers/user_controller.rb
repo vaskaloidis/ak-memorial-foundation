@@ -1,12 +1,10 @@
 class UserController < ApplicationController
-  before_action :set_user, only: [:edit, :update]
-
+  before_action :set_user, only: [:edit, :update, :destroy]
+  before_action :get_users, only: [:destroy]
 
   def edit
   end
 
-  # PATCH/PUT /invites/1
-  # PATCH/PUT /invites/1.json
   def update
     respond_to do |format|
       if @invite.update(user_params)
@@ -19,13 +17,24 @@ class UserController < ApplicationController
     end
   end
 
+  def destroy
+    @user.destroy
+    respond_to do |format|
+      format.html {redirect_to root_path, notice: 'Product Removed From Cart'}
+      format.json {head :no_content}
+      format.js
+    end
+  end
+
   private
-  # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:user_id])
   end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
+  def get_users
+    @users = User.where(admin: false).all
+  end
+
   def user_params
     params.require(:user).permit(:company_name, :company_website, :company_published_name, :first_name, :last_name, :address, :city, :state, :zip, :name, :phone, :fax, :golfer2_name, :golfer2_email, :golfer3_name, :golfer3_email, :golfer4_name, :golfer4_email, :note)
   end

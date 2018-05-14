@@ -36,7 +36,9 @@
             <p>
               <%= render 'admin/groups' %>
               <br>
-              <%= render 'admin/users' %>
+            <div id="users-target-1">
+              <%= render 'user/users', users: @users %>
+            </div>
             </p>
           </div>
           <div>
@@ -45,9 +47,9 @@
             </p>
           </div>
           <div>
-            <p>
-              <%= render 'admin/users' %>
-            </p>
+            <div id="users-target-2">
+              <%= render 'user/users', users: @users %>
+            </div>
           </div>
           <div>
             <p>

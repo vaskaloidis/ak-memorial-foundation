@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  match 'users/:user_id' => 'user#destroy', :via => :delete, :as => :admin_destroy_user
+
   get 'user/edit'
 
   get 'groups/edit_group'

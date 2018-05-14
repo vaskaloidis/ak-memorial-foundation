@@ -17,8 +17,8 @@
           </tr>
           </thead>
           <tbody>
-          <% if @users.count > 0 %>
-            <% @users.each do |user| %>
+          <% unless users.empty? %>
+            <% users.each do |user| %>
               <tr>
                 <td>
                   <% unless user.first_name.nil? %>
@@ -74,7 +74,7 @@
                 </td>
                 <td>
                   <% if current_user.is_god? %>
-                    <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, admin_destroy_user_path(user), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete " + user.full_name + "?"} %>
+                    <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, admin_destroy_user_path(user.id), remote: true, method: :delete, data: {confirm: "Are you sure you want to delete " + user.full_name + "?"} %>
                   <% end %>
                 </td>
               </tr>
