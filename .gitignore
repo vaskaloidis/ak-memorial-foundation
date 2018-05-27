@@ -37,3 +37,4 @@
 /.idea/jewlerCRM.iml
 /app/assets/.DS_Store
 /.idea/modules.xml
+.coveralls.yml
