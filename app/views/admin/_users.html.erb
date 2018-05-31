@@ -7,6 +7,7 @@
         <table class="table table-hover table-striped">
           <thead>
           <tr>
+            <th class="success"></th>
             <th class="success">Name</th>
             <th class="success">Email</th>
             <th class="success">Phone</th>
@@ -20,6 +21,9 @@
           <% if @users.count > 0 %>
             <% @users.each do |user| %>
               <tr>
+                <td>
+                  <%= User.golfer_status_icon(user.email).html_safe %>
+                </td>
                 <td>
                   <% unless user.first_name.nil? %>
                     <%= user.first_name %>

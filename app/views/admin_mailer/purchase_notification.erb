@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+</head>
+<body>
+<% unless Rails.env.production? %>
+  <div>
+    (This is a test. Ignore this Email.)
+  </div>
+<% end %>
+<h1>Athan Kaloidis Memorial Foundation</h1>
+<h2>Memorial Golf Tournament - Admin Notification</h2>
+<hr>
+<%
+  title_action = case @purchase.product_category
+                  when 'golf_package'
+                    'Purchased a Golfer-Package ($150)'
+                  when 'donation'
+                    'Purchased a Donation of ($' + @purchase.amount.to_s + ')'
+                  when 'sponsor'
+                    'Purchased the ' + @purchase.product.name + ' ($' + @purchase.product.price.to_s + ') Sponsorship Package'
+                  end
+
+  product_pretty_name = case @purchase.product.name
+                         when 'golf_package'
+                           'Tournament Golfer Package'
+                         when 'donation'
+                           'Donation'
+                         when 'sponsor'
+                           @purchase.product.name + ' Sponsorship Package'
+                         end
+%>
+<h4><%= @purchase.user.full_name %> <%= title_action %> </h4>
+<div>
+  <strong>Name: </strong> <%= @purchase.user.full_name %><br>
+  <strong>Product: </strong> <%= product_pretty_name %><br>
+  <% if @purchase.product_category == 'donation' %>
+    <% amount = @purchase.amount.to_s %>
+  <% else %>
+    <% amount = @purchase.product.price.to_s %>
+  <% end %>
+  <strong>Amount: </strong> <%= amount.to_s %><br>
+  <strong>Payment Method: </strong> <%= @purchase.payment_type.titleize %><br>
+  <strong>Date: </strong> <%= @purchase.created_at.to_date %><br>
+</div>
+<p>
+  You will be notified again upon further user activity (Golfer-Package purchase, Sponsorship Purchases, Donations,
+  etc..).
+</p>
+
+<p>
+  <strong>Note: </strong> This email was sent to the admins for the golf tournament:
+  <% admins = User.where(admin: true) %>
+  <% admins.each_with_index do |admin, index| %>
+    <%= admin.full_name %> (<%= admin.email %>),
+  <% end %>
+</p>
+</body>
+</html>

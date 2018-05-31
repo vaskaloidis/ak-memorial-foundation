@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  prepend_before_action :check_captcha, only: [:create]
 
   # GET /resource/sign_up
   # def new
@@ -14,12 +15,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
 
     if resource.valid? and resource.errors.empty?
+      # TODO: Finish the invitation system
       # user = User.find(resource.id)
       # resource.invite_golfer_two
       # resource.invite_golfer_three
       # resource.invite_golfer_four
 
-      AdminMailer.registration_notifications(resource).deliver_now
+      AdminMailer.with(customer_id: resource.id).registration_notifications.deliver_now
+      # UserInviteMailer.with(email: @customer_email, project: @invoice.project.id).invite_user.deliver_now
 
       cart = ShoppingCart.new
       cart.user = resource
@@ -71,6 +74,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
   protected
+
+  def check_captcha
+    unless verify_recaptcha
+      self.resource = resource_class.new sign_up_params
+      resource.validate # Look for any other validation errors besides Recaptcha
+      set_minimum_password_length
+      respond_with resource
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params

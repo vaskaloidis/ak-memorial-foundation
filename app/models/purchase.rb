@@ -1,5 +1,6 @@
 class Purchase < ApplicationRecord
   enum product_category: [ :golf_package, :donation, :sponsor ]
+  enum payment_type: [:unpaid, :stripe, :check, :cash]
 
   belongs_to :product
   belongs_to :user

@@ -10,7 +10,7 @@
 
       <div class="text-center">
         <div class="row text-center">
-          <div class="col-xs-12 col-lg-6 alert alert-warning">
+          <div class="alert alert-warning">
             <strong>Golfer Packages:</strong>
             <span style="color: green">$<%= number_with_precision(Purchase.golf_package_total_sales, :precision => 2, :delimiter => ',') %></span>
             <strong>Donations:</strong>
@@ -27,24 +27,19 @@
       <div data-type="horizontal" class="responsive-tabs responsive responsive-tabs-classic horizontal">
         <ul class="resp-tabs-list tabs-1 text-center tabs-group-default">
           <li>Tournament Groups</li>
-          <li>Admins</li>
-          <li>Registered Users</li>
+          <li>All Registered Users</li>
+          <li>Sponsorships</li>
+          <li>Golf-Packages</li>
           <li>Donations</li>
+          <li>Admins</li>
         </ul>
         <div class="resp-tabs-container text-sm-left tabs-group-default">
           <div>
-            <p>
-              <%= render 'admin/groups' %>
-              <br>
+            <%= render 'admin/groups' %>
+            <br>
             <div id="users-target-1">
               <%= render 'user/users', users: @users %>
             </div>
-            </p>
-          </div>
-          <div>
-            <p>
-              <%= render 'admin/admins' %>
-            </p>
           </div>
           <div>
             <div id="users-target-2">
@@ -52,9 +47,17 @@
             </div>
           </div>
           <div>
-            <p>
-              <%= render 'admin/donations' %>
-            </p>
+            <%= render 'admin/sponsorships', sponsorships: @sponsorships %>
+          </div>
+          <div>
+            <%= render 'admin/golfer_packages', packages: @packages %>
+          </div>
+
+          <div>
+            <%= render 'admin/donations', donations: @donations %>
+          </div>
+          <div>
+            <%= render 'admin/admins', admins: @admins %>
           </div>
         </div>
       </div>

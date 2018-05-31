@@ -73,6 +73,23 @@ class User < ApplicationRecord
 
   # Methods
 
+  def full_address
+    result = ''
+    unless address.nil?
+      result += address + ', '
+    end
+    unless city.nil?
+      result += city + ', '
+    end
+    unless state.nil?
+      result += state
+    end
+    unless zip.nil?
+      result += zip
+    end
+    result
+  end
+
   def full_name
     # TODO: Check this works if first or last name are nil / combinations of each use case
     if !self.first_name.nil? and !self.last_name.nil?
@@ -173,14 +190,22 @@ class User < ApplicationRecord
 
   end
 
+  def self.account_exists?(email)
+    q = User.where(email: email)
+    if q.empty?
+      false
+    else
+      q.first
+    end
+  end
+
   def self.golfer_status_icon(email)
-    if self.golfer_status(email) == 'Registered'
-      return '<i class="fas fa-dollar-sign"></i>'.html_safe
-    elsif self.golfer_status(email) == 'Un-Registered'
-      if email == '' or email.nil?
-        return 'Un-Registered'
+    user = self.account_exists?(email)
+    if user
+      if user.purchased_golf_package?
+        return '<i class="fas fa-dollar-sign"></i>'.html_safe
       else
-        return '<i class="fas fa-exclamation-circle"></i>'.html_safe
+        return '<i class="fas fa-check"></i>'.html_safe
       end
     else
       return '<i class="fas fa-exclamation-circle"></i>'.html_safe

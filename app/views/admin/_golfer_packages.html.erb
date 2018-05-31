@@ -1,0 +1,83 @@
+<!-- Golfer Packages -->
+<section class="section-xs-30 section-md-60">
+  <h4>Purchased Tournament Golfer Packages</h4>
+  <div class="offset-top-32">
+    <div class="row">
+      <div class="col-xs-12 col-md-12">
+        <table class="table table-hover table-striped">
+          <thead>
+          <tr>
+            <th class="success">Name</th>
+            <th class="success">Email</th>
+            <th class="success">Address</th>
+            <th class="success">Phone</th>
+            <th class="success">Company / Signup Msg.</th>
+            <th class="success">Group</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% total = 0.0 %>
+          <% packages.each do |package| %>
+            <tr>
+              <% unless package.user.nil? %>
+                <%user = package.user %>
+                <td><%= user.first_name %> <%= user.last_name %></td>
+                <td>
+                  <% unless user.email.nil? %>
+                    <%= user.email %>
+                  <% end %>
+                </td>
+                <td><%= user.full_address %></td>
+                <td>
+                  <% unless user.phone.nil? %>
+                    <%= user.phone %><br>
+                  <% end %>
+                </td>
+                <td>
+                  <strong>Company: </strong><br>
+                  <% unless user.company_name.nil? %>
+                    <%= user.company_name %><br>
+                  <% end %>
+                  <% unless user.company_website.nil? %>
+                    <%= user.company_website %><br>
+                  <% end %>
+
+                  <% unless user.note.nil? %>
+                    <strong>Note: </strong> <%= user.note %><br>
+                  <% end %></td>
+                <td>
+                  <% unless user.golfer2_name.nil? %>
+                    <%= user.golfer2_name %><br>
+                  <% end %>
+                  <% unless user.golfer3_name.nil? %>
+                    <%= user.golfer3_name %><br>
+                  <% end %>
+                  <% unless user.golfer4_name.nil? %>
+                    <%= user.golfer4_name %><br>
+                  <% end %>
+                </td>
+              <% else %>
+                <td>(User Account Deleted)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+              <% end %>
+
+            </tr>
+          <% end %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><Strong>Total: </Strong></td>
+            <td>$<%= (packages.count * 150.00).to_s %></td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
