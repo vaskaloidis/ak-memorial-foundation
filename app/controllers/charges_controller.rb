@@ -1,8 +1,6 @@
 class ChargesController < ApplicationController
   def new
-
     flash.keep
-
     if signed_in?
       @total_charge = current_user.cart_total
       @shopping_carts = current_user.shopping_cart

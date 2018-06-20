@@ -25,6 +25,7 @@ gem 'rails_12factor'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'bcrypt'
 group :development, :test do
+  gem 'bullet'
   gem 'coveralls', require: false
   # gem 'capybara-email'
   gem 'factory_bot'
@@ -38,17 +39,18 @@ group :development, :test do
   gem 'launchy'
 end
 group :test do
-  gem 'minitest-around'
+  gem 'rspec-rails'
   gem 'capybara'
   gem 'chromedriver-helper'
   gem 'database_cleaner'
-  gem 'minitest-reporters'
   gem 'selenium-webdriver'
   gem 'shoulda', '~> 3.5'
   gem 'shoulda-matchers', '~> 2.0'
   gem 'simplecov', require: false
 end
 group :development do
+  gem 'to_factory'
+  gem 'rspec-kickstarter'
   gem 'better_errors'
   # gem 'letter_opener'
   gem 'web-console', '>= 3.3.0'

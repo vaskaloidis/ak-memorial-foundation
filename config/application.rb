@@ -22,6 +22,16 @@ module AkMemorialFoundation
     config.action_mailer.raise_delivery_errors = true
     config.action_mailer.delivery_method = :smtp
 
+    config.generators do |g|
+      g.fixture_replacement :factory_girl
+    g.test_framework :rspec,
+                     :fixtures => true,
+                     :view_specs => false,
+                     :helper_specs => false,
+                     :routing_specs => false,
+                     :controller_specs => true,
+                     :request_specs => true
+    end
 
     ActionMailer::Base.smtp_settings = {
         :address => "smtp.gmail.com",
