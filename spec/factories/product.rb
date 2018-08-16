@@ -1,8 +1,8 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory(:product) do
     category "sponsor"
-    description "ToFactory: RubyParser exception parsing this attribute"
-    name "Tournament Sponsor"
+    description {Faker::ChuckNorris.fact}
+    name {Faker::ChuckNorris.fact}
     price BigDecimal.new("5000.0")
   end
 end

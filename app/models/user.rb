@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  # include Discard::Model
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -6,8 +8,11 @@ class User < ApplicationRecord
 
   has_many :shopping_cart, dependent: :destroy
   has_many :shopping_cart_items, :source => :product, :through => :shopping_cart, dependent: :destroy
-  has_many :purchases, dependent: :nullify
+
+  has_many :admin_purchases, :class_name => 'Purchase', :foreign_key => 'admin_id', dependent: :nullify
+  has_many :purchases, :class_name => 'Purchase', :foreign_key => 'user_id', dependent: :nullify
   has_many :purchased_items, :source => :product, :through => :purchases, dependent: :nullify
+
   has_many :invites, dependent: :destroy
 
   accepts_nested_attributes_for :shopping_cart
@@ -23,6 +28,126 @@ class User < ApplicationRecord
   validates :email, presence: true
   validates :phone, presence: true
 
+  def self.customers
+    where(admin: false).all
+  end
+
+  # TODO: Move this to helper
+  def full_address
+    result = ''
+    unless address.nil?
+      result += address + ', '
+    end
+    unless city.nil?
+      result += city + ', '
+    end
+    unless state.nil?
+      result += state
+    end
+    unless zip.nil?
+      result += zip
+    end
+    result
+  end
+
+  def full_name
+    if !first_name.nil? and !last_name.nil?
+      first_name + ' ' + last_name
+    else
+      if !first_name.nil? or !last_name.nil?
+        first_name unless first_name.nil?
+        last_name unless last_name.nil?
+      else
+        email
+      end
+    end
+  end
+
+  def is_god?
+    (email == 'vas.kaloidis@gmail.com')
+  end
+
+  def group_member
+    membership = Array.new
+    User.where(golfer2_email: self.email).all.each do |member|
+      membership << member
+    end
+    User.where(golfer3_email: self.email).all.each do |member|
+      unless membership.include?(member)
+        membership << member
+      end
+    end
+    User.where(golfer3_email: self.email).all.each do |member|
+      unless membership.include?(member)
+        membership << member
+      end
+    end
+    membership
+  end
+
+  def add_to_cart(product)
+    shopping_cart.create(product: product)
+  end
+
+  def cart_total
+    total = 0.0
+    self.shopping_cart.each do |item|
+      total += item.product.price
+    end
+    total
+  end
+
+  def cart_contains_golf_package?
+    shopping_cart_items.include?(Product.golf_package)
+  end
+
+  def purchased_golf_package?
+    purchased?(Product.golf_package)
+  end
+
+  def cart_contains?(product)
+    shopping_cart.include?(product)
+  end
+
+  def purchased?(product)
+    purchased_items.include?(product)
+  end
+
+  def self.golfer_status(email)
+    if !User.where(email: email).empty?
+      user = User.where(email: email).first
+      if user.purchased?(Product.golf_package)
+        'Incomplete'
+      else
+        'Registered'
+      end
+    else
+      'Un-Registered'
+    end
+  end
+
+  def self.account_exists?(email)
+    a = User.where(email: email)
+    return false if a.empty?
+    a.first
+  end
+
+  # TODO: Move to helper
+  def self.golfer_status_icon(email)
+    user = self.account_exists?(email)
+    if user
+      if user.purchased_golf_package?
+        return '<i class="fas fa-dollar-sign"></i>'.html_safe
+      else
+        return '<i class="fas fa-check"></i>'.html_safe
+      end
+    else
+      return '<i class="fas fa-exclamation-circle"></i>'.html_safe
+    end
+  end
+
+
+  # Validations
   def validate_name
     unless first_name.blank? and last_name.blank?
       if first_name.blank?
@@ -70,148 +195,8 @@ class User < ApplicationRecord
     end
   end
 
-
-  # Methods
-
-  def full_address
-    result = ''
-    unless address.nil?
-      result += address + ', '
-    end
-    unless city.nil?
-      result += city + ', '
-    end
-    unless state.nil?
-      result += state
-    end
-    unless zip.nil?
-      result += zip
-    end
-    result
-  end
-
-  def full_name
-    # TODO: Check this works if first or last name are nil / combinations of each use case
-    if !self.first_name.nil? and !self.last_name.nil?
-      return self.first_name + ' ' + self.last_name
-    elsif self.last_name.nil? and !self.first_name.nil?
-      return self.first_name
-    elsif !self.last_name.nil?
-      return self.last_name
-    elsif self.first_name.nil? and self.last_name.nil?
-      return self.email
-    else
-      return self.email
-    end
-  end
-
-  def is_god?
-    if self.email == 'vas.kaloidis@gmail.com'
-      return true
-    else
-      return false
-    end
-  end
-
-  def group_member
-    membership = Array.new
-    User.where(golfer2_email: self.email).all.each do |member|
-      membership << member
-    end
-    User.where(golfer3_email: self.email).all.each do |member|
-      unless membership.include?(member)
-        membership << member
-      end
-    end
-    User.where(golfer3_email: self.email).all.each do |member|
-      unless membership.include?(member)
-        membership << member
-      end
-    end
-    return membership
-  end
-
-  def cart_total
-    total = 0.0
-    self.shopping_cart.each do |sci|
-      total = total + sci.product.price
-    end
-    return total
-  end
-
-  def cart_contains_golf_package?
-    self.shopping_cart.each do |sci|
-      if sci.product.category == 'golf_package'
-        return true
-      end
-    end
-    return false
-  end
-
-  def purchased_golf_package?
-    self.purchases.each do |purchase|
-      if purchase.product.category == 'golf_package'
-        return true
-      end
-    end
-    return false
-  end
-
-  def cart_contains?(product)
-    if self.shopping_cart.include?(product)
-      return true
-    else
-      return false
-    end
-  end
-
-  def purchased?(product)
-    if self.purchases.include?(product)
-      return true
-    else
-      return false
-    end
-  end
-
-  def self.golfer_status(email)
-
-    if !User.where(email: email).empty?
-
-      user = User.where(email: email).first
-      if user.purchased?(Product.golf_package)
-        return 'Incomplete'
-      else
-        return 'Registered'
-      end
-
-    else
-      return 'Un-Registered'
-    end
-
-  end
-
-  def self.account_exists?(email)
-    q = User.where(email: email)
-    if q.empty?
-      false
-    else
-      q.first
-    end
-  end
-
-  def self.golfer_status_icon(email)
-    user = self.account_exists?(email)
-    if user
-      if user.purchased_golf_package?
-        return '<i class="fas fa-dollar-sign"></i>'.html_safe
-      else
-        return '<i class="fas fa-check"></i>'.html_safe
-      end
-    else
-      return '<i class="fas fa-exclamation-circle"></i>'.html_safe
-    end
-  end
-
+  # Invitations
+  # TODO: Refactor this when we do invites this is horrible and repetitive garbage
   def invite_golfer_two
     unless self.golfer2_email.nil?
       if !User.where(email: self.golfer2_email).empty?

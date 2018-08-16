@@ -10,6 +10,8 @@ gem 'rollbar'
 gem 'stripe'
 gem 'yaml_db'
 gem 'devise'
+gem 'pundit'
+gem 'pundit-matchers', '~> 1.6.0'
 gem 'money'
 gem 'pg'
 gem 'puma', '~> 3.7'
@@ -24,7 +26,9 @@ gem 'font-awesome-rails'
 gem 'rails_12factor'
 gem 'recaptcha', require: 'recaptcha/rails'
 gem 'bcrypt'
+gem 'discard', '~> 1.0'
 group :development, :test do
+  gem 'stripe-ruby-mock', '~> 2.5.4', :require => 'stripe_mock'
   gem 'bullet'
   gem 'coveralls', require: false
   # gem 'capybara-email'
@@ -44,12 +48,11 @@ group :test do
   gem 'chromedriver-helper'
   gem 'database_cleaner'
   gem 'selenium-webdriver'
-  gem 'shoulda', '~> 3.5'
-  gem 'shoulda-matchers', '~> 2.0'
+  # gem 'shoulda', '~> 3.5'
+  # gem 'shoulda-matchers', '~> 2.0'
   gem 'simplecov', require: false
 end
 group :development do
-  gem 'to_factory'
   gem 'rspec-kickstarter'
   gem 'better_errors'
   # gem 'letter_opener'

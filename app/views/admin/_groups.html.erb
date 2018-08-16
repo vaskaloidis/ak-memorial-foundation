@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="row">
-    <% @users.each do |group| %>
+    <% users.each do |group| %>
       <% unless (group.golfer2_email.nil? or group.golfer2_email.empty?) and (group.golfer3_email.nil? or group.golfer3_email.empty?) and (group.golfer4_email.nil? or group.golfer4_email.empty?) %>
         <div class="col-xs-12 col-md-4 section-top-30 text-center">
           <div style="padding:20px">

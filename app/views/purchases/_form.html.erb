@@ -1,32 +1,65 @@
-<%= form_with(model: purchase, local: true) do |form| %>
-  <% if purchase.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(purchase.errors.count, "error") %> prohibited this purchase from being saved:</h2>
+<main class="page-content">
+  <section class="section-80 section-md-110">
+    <h2>Add Purchase</h2>
+    <hr class="divider divider-primary divider-60 divider-offset">
 
-      <ul>
-      <% purchase.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+    <%= form_with(model: purchase, local: true, :html => {:class => 'rd-mailform text-left'}) do |f| %>
 
-  <div class="field">
-    <%= form.label :product_id %>
-    <%= form.text_field :product_id, id: :purchase_product_id %>
-  </div>
+      <div class="container">
 
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id, id: :purchase_user_id %>
-  </div>
+        <div id="form_validate_alert" class="alert alert-danger">
+          <% if purchase.errors.any? %>
+            <div id="error_explanation">
+              <h2><%= pluralize(purchase.errors.count, "error") %> prohibited this purchase from being saved:</h2>
+              <ul>
+                <% purchase.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+              </ul>
+            </div>
+          <% end %>
+        </div>
 
-  <div class="field">
-    <%= form.label :product_category %>
-    <%= form.number_field :product_category, id: :purchase_product_category %>
-  </div>
+        <div class="section-40 col-xs-12 col-md-12">
+          <div class="row">
+            <div class="col-xs-12 col-md-6">
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
+
+              <div class="form-group">
+                <%= f.label :product_id, 'Product', class: "form-label form-label-outside" %>
+                <%= f.collection_select(:product_id, Product.purchase_options, :id, :name_with_price, prompt: 'Product') %>
+              </div>
+
+
+              <%= f.label :user_id, 'Customer', class: "form-label form-label-outside" %>
+              <%= f.collection_select(:user_id, User.customers, :id, :full_name, prompt: 'Customer') %>
+            </div>
+
+            <div class="form-group">
+              <div class="alert alert-warning"><strong>Payment Requests:</strong> Users will be emailed requesting they
+                login to make a payment by credit card. All other users will be notified of their payment with a
+                follow-up
+                Thank You email.
+              </div>
+              <%= f.label :payment_type, 'Payment Type', class: "form-label form-label-outside" %>
+              <%= select("payment_type", Purchase::PAYMENT_TYPE_DESC.collect {|k, v| [k, v]}, {prompt: 'Select Person'}) %>
+            </div>
+
+            <div class="form-group">
+              <%= f.label :note, 'Payment Note', class: "form-label form-label-outside" %>
+              <%= f.text_field(:note, class: "form-control form-control-gray") %>
+            </div>
+
+            <div class="form-group">
+              <div class="alert alert-info"><strong>Admin: </strong><%= "%{current_user.full_name}" %></div>
+            </div>
+
+            <div class="actions">
+              <%= f.submit 'Add Payment', class: 'btn btn-primary btn-sm' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </section>
+</main>

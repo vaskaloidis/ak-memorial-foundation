@@ -1,0 +1,254 @@
+<% if user.first_name.nil? or user.last_name.nil? %>
+  <div class="alert alert-warning">
+    <!--<button type="button" class="close" aria-hidden="true">&times;</button>-->
+    Please set your First and Last name.<br>
+    <%= link_to 'Edit Profile', edit_user_registration_path %></div>
+<% end %>
+
+<main class="page-content">
+
+  <section class="section-10 section-md-30 bg-gray-light">
+    <div class="shell text-xl-center offset-top-42">
+
+      <h2>Your Tournament Golfer Group</h2>
+      <hr class="divider divider-60 divider-primary offset-top-32">
+      <a href="<%= edit_user_registration_path %>" class="btn btn-primary">Edit Profile</a>
+
+      <div class="offset-top-42">
+        <div class="row">
+
+          <div class="col-xs-12 col-md-6">
+            <% if !user.first_name.nil? %>
+              <strong>Name: </strong> <%= user.first_name %>
+              <% if !user.last_name.nil? %>
+                <%= user.last_name %>
+              <% end %>
+              <br>
+            <% end %>
+
+            <% if !user.email.nil? %>
+              <strong>Email: </strong> <%= user.email %><br>
+            <% end %>
+
+            <% if !user.phone.nil? %>
+              <strong>Phone: </strong> <%= user.phone %><br>
+            <% end %>
+
+            <% if !user.address.nil? %>
+              <strong>Address: </strong> <%= user.address %><br>
+            <% end %>
+
+            <% if !user.city.nil? %>
+              <strong>City: </strong> <%= user.city %><br>
+            <% end %>
+
+            <% if !user.state.nil? %>
+              <strong>State: </strong> <%= user.state %><br>
+            <% end %>
+
+            <% if !user.zip.nil? %>
+              <strong>Zip: </strong> <%= user.zip %><br>
+            <% end %>
+          </div>
+
+          <div class="col-xs-12 col-md-6">
+            <% if !user.company_name.nil? %>
+              <strong>Company Name: </strong> <%= user.company_name %><br>
+            <% end %>
+
+            <% if !user.company_website.nil? %>
+              <strong>Company Website: </strong> <%= user.company_website %><br>
+            <% end %>
+
+            <% if !user.company_published_name.nil? %>
+              <strong>Company Formal Name: </strong> <%= user.company_published_name %><br>
+            <% end %>
+
+            <% if !user.fax.nil? %>
+              <strong>Fax: </strong> <%= user.fax %><br>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+
+      <h4>Golf Tournament Group</h4>
+      <div class="offset-top-32">
+        <div class="row">
+          <div class="col-xs-12 col-md-12">
+            <table class="table table-hover table-striped">
+              <thead>
+              <tr>
+                <th class="success"></th>
+                <th class="success">Name</th>
+                <th class="success">Email</th>
+                <th class="success">Tournament Registration Status</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% unless user.golfer2_email.nil? %>
+                <tr>
+                  <td>Golfer 2</td>
+                  <td><%= user.golfer2_name %></td>
+                  <td>
+                    <% unless user.golfer2_email.nil? %>
+                      <%= user.golfer2_email %>
+                    <% end %>
+                  </td>
+                  <td><%= User.golfer_status(user.golfer2_email) %></td>
+                </tr>
+                <% unless user.golfer3_email.nil? %>
+                  <tr>
+                    <td>Golfer 3</td>
+                    <td><%= user.golfer3_name %></td>
+                    <td>
+                      <% unless user.golfer3_email.nil? %>
+                        <%= user.golfer3_email %>
+                      <% end %>
+                    </td>
+                    <td><%= User.golfer_status(user.golfer3_email) %></td>
+                  </tr>
+                <% end %>
+
+                <% unless user.golfer4_email.nil? %>
+                  <tr>
+                    <td>Golfer 4</td>
+                    <td><%= user.golfer4_name %></td>
+                    <td>
+                      <% unless user.golfer4_email.nil? %>
+                        <%= user.golfer4_email %>
+                      <% end %>
+                    </td>
+                    <td><%= User.golfer_status(user.golfer4_email) %></td>
+                  </tr>
+                <% end %>
+
+              <% else %>
+                <tr>
+                  <td>You Need to Set A Tournament Group in your Profile</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-xs-30 section-md-60">
+        <h4>Purchases</h4>
+        <div class="offset-top-32">
+          <div class="row">
+            <div class="col-xs-12 col-md-12">
+
+              <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                  <th class="success">Product</th>
+                  <th class="success">Description</th>
+                  <th class="success">Price</th>
+                  <th class="success">Date</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% if user.purchases.count > 0 %>
+                  <% user.purchases.each do |purchase| %>
+                    <tr>
+                      <td><%= purchase.product.name %></td>
+                      <td><%= purchase.product.description %></td>
+                      <td>$<%= purchase.amount %></td>
+                      <td><%= purchase.created_at %></td>
+                    </tr>
+                  <% end %>
+                <% else %>
+                  <tr>
+                    <td>(None)</td>
+                  </tr>
+                <% end %>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-xs-30 section-md-60">
+        <h4>Golf Groups<br>
+          <small>(Groups you are listed as a member) of</small>
+        </h4>
+        <div class="offset-top-32">
+          <div class="row">
+            <div class="col-xs-12 col-md-12">
+
+              <table class="table table-hover table-striped">
+                <thead>
+                <tr>
+                  <th class="success">User</th>
+                  <th class="success">Golfer 2</th>
+                  <th class="success">Golfer 3</th>
+                  <th class="success">Golfer 4</th>
+                </tr>
+                </thead>
+                <tbody>
+                <% if !user.group_member.count.zero? %>
+                  <% user.group_member.each do |user| %>
+                    <tr>
+                      <td><%= user.first_name %> <%= user.last_name %><br>(<%= user.email %>
+                        )<br>(<%= User.golfer_status(user.email) %>)
+                      </td>
+
+                      <% if user.golfer2_email == user.email %>
+                        <td>You</td>
+                      <% else %>
+                        <td><%= user.golfer2_name %><br>
+                          (<%= user.golfer2_email %>)<br>
+                          (<%= User.golfer_status(user.golfer2_email) %>)
+                        </td>
+                      <% end %>
+
+                      <% if user.golfer3_email == user.email %>
+                        <td>You</td>
+                      <% else %>
+                        <td><%= user.golfer3_name %><br>
+                          (<%= user.golfer3_email %>)<br>
+                          (<%= User.golfer_status(user.golfer3_email) %>)
+                        </td>
+                      <% end %>
+
+                      <% if user.golfer4_email == user.email %>
+                        <td>You</td>
+                      <% else %>
+                        <td><%= user.golfer4_name %><br>
+                          (<%= user.golfer4_email %>)<br>
+                          (<%= User.golfer_status(user.golfer4_email) %>)
+                        </td>
+                      <% end %>
+                    </tr>
+                  <% end %>
+                <% else %>
+                  <tr>
+                    <td>(None)</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                <% end %>
+                </tbody>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+    </div>
+  </section>
+
+
+</main>

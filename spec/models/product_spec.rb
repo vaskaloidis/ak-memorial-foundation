@@ -4,19 +4,13 @@ require 'spec_helper'
 
 describe Product do
 
-  # TODO: auto-generated
-  describe '#golf_package' do
-    it 'works' do
-      result = Product.golf_package
-      expect(result).not_to be_nil
+  describe 'Domain Data' do
+    it 'exists' do
+      expect(Product.golf_package).to be true
     end
-  end
-
-  # TODO: auto-generated
-  describe '#donation' do
-    it 'works' do
-      result = Product.donation
-      expect(result).not_to be_nil
+    it 'does not exist' do
+      result = User.account_exists?('email_does_not_exist@gmail.com')
+      expect(result).to be false
     end
   end
 

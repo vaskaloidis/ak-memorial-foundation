@@ -1,8 +1,15 @@
+require 'capybara/rspec'
+require "pundit/rspec"
+require 'pundit/matchers'
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
+    DatabaseCleaner.clean_with(:truncation, {:except => %w[products]})
+    load "#{Rails.root}/db/seeds.rb"
+    # Rails.application.load_seed # loading seeds
   end
 
   config.around(:each) do |example|

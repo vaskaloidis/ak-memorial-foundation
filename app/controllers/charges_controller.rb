@@ -1,10 +1,12 @@
 class ChargesController < ApplicationController
+  # before_action :authenticate_user!
+
   def new
     flash.keep
-    if signed_in?
+    if signed_in? # Shopping-Cart Purchase
       @total_charge = current_user.cart_total
       @shopping_carts = current_user.shopping_cart
-    else
+    else # Quick Purchase
       @product = Product.find(params[:product_id])
       @total_charge = @product.price
     end
@@ -14,7 +16,6 @@ class ChargesController < ApplicationController
   def create
 
     if signed_in? # Regular Purchase
-
       # Amount in cents
       @amount_dollars = current_user.cart_total
       @amount = (current_user.cart_total * 100)
@@ -59,7 +60,7 @@ class ChargesController < ApplicationController
             :currency => 'usd'
         )
 
-        logger.debug("Stripe Charge Made - " + @amount.round.to_s)
+        logger.info("Stripe Charge Made - " + @amount.round.to_s)
 
         purchase = Purchase.new
         purchase.user = u
@@ -89,12 +90,10 @@ class ChargesController < ApplicationController
 
     end
 
-
-      # Empty Shopping Cart Last
+    # Empty Shopping Cart Last
   rescue Stripe::CardError => e
     flash[:error] = e.message
     redirect_to new_charge_path
-
   end
 
   private

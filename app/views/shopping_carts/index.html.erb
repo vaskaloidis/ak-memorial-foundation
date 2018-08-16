@@ -9,21 +9,11 @@
 
       <div class="offset-top-42 offset-lg-top-100">
 
-        <% if signed_in? %>
-
           <%= render 'shopping_carts/cart' %>
 
           <div class="offset-top-32 offset-md-top-60">
             <a href="<%= new_charge_path %>" class="btn btn-primary btn-sm">Checkout</a></div>
           </div>
-
-        <% else %>
-
-          <div class="alert alert-success">
-            You need to <%= link_to('Login', new_user_session_path) %> First.
-          </div>
-
-        <% end %>
 
       </div>
     </div>

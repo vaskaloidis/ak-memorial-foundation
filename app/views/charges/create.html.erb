@@ -12,7 +12,7 @@
           <div class="alert alert-success">
             Thank You for your Donation of $<%= @amount_dollars.to_s %> to the Athan Kaloidis Memorial Golf Tournament.
 
-            You can view your donations <%= link_to 'in your Profile', view_profile_path %>
+            You can view your donations <%= link_to 'in your Profile', user_path(current_user) %>
           </div>
 
       </div>

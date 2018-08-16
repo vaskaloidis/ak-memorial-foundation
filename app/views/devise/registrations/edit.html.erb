@@ -190,20 +190,20 @@
           </h4>
           <%= f.text_area(:note, class: "form-control form-control-gray") %>
           <!--<textarea id="contact-message" name="message" data-constraints="@Required" class="form-control form-control-gray"></textarea>-->
+        </div>
+
+      </div>
+
+      <div class="row">
+        <div class=" text-center text-md-left">
+          <button type="submit" class="btn btn-primary btn-sm">Update Profile</button>
+          <%= link_to "Cancel", :back, class: 'btn btn-info btn-sm' %>
+
+        </div>
       </div>
 
     </div>
-
-    <div class="row">
-      <div class=" text-center text-md-left">
-        <button type="submit" class="btn btn-primary btn-sm">Update Profile</button>
-        <%= link_to "Cancel", :back, class: 'btn btn-info btn-sm' %>
-
-      </div>
-    </div>
-
   </div>
-
 <% end %>
 
 <%#= button_to "Cancel my account", registration_path(resource_name), data: {confirm: "Are you sure?"}, method: :delete %>

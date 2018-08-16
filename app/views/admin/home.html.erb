@@ -11,50 +11,53 @@
       <div class="text-center">
         <div class="row text-center">
           <div class="alert alert-warning">
-            <strong>Golfer Packages:</strong>
-            <span style="color: green">$<%= number_with_precision(Purchase.golf_package_total_sales, :precision => 2, :delimiter => ',') %></span>
-            <strong>Donations:</strong>
-            <span style="color: green">$<%= number_with_precision(Purchase.donation_total_sales, :precision => 2, :delimiter => ',') %></span>
-            <strong>Sponsorships:</strong>
-            <span style="color: green">$<%= number_with_precision(Purchase.sponsor_total_sales, :precision => 2, :delimiter => ',') %></span><br>
-            <strong>Total:</strong>
-            <% total = Purchase.golf_package_total_sales + Purchase.donation_total_sales + Purchase.sponsor_total_sales %>
-            <span style="color: green">$<%= number_with_precision(total, :precision => 2, :delimiter => ',') %></span>
+            <div class="row">
+              <strong>Golfer Packages:</strong>
+              <span style="color: green">$<%= number_with_precision(Purchase.golf_package_total_sales, :precision => 2, :delimiter => ',') %></span>
+              <strong>Donations:</strong>
+              <span style="color: green">$<%= number_with_precision(Purchase.donation_total_sales, :precision => 2, :delimiter => ',') %></span>
+              <strong>Sponsorships:</strong>
+              <span style="color: green">$<%= number_with_precision(Purchase.sponsor_total_sales, :precision => 2, :delimiter => ',') %></span><br>
+              <strong>Total:</strong>
+              <% total = Purchase.golf_package_total_sales + Purchase.donation_total_sales + Purchase.sponsor_total_sales %>
+              <span style="color: green">$<%= number_with_precision(total, :precision => 2, :delimiter => ',') %></span>
+            </div>
+            <div class="row">
+              <%= link_to new_purchase_path do %>
+                <strong>Add Payment</strong>
+              <% end %>
+              <%= link_to new_user_path do %>
+                <strong>Create User</strong>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
 
       <div data-type="horizontal" class="responsive-tabs responsive responsive-tabs-classic horizontal">
         <ul class="resp-tabs-list tabs-1 text-center tabs-group-default">
-          <li>Tournament Groups</li>
-          <li>All Registered Users</li>
+          <li>Registered Golfers</li>
           <li>Sponsorships</li>
-          <li>Golf-Packages</li>
           <li>Donations</li>
+          <li>All Users</li>
           <li>Admins</li>
         </ul>
         <div class="resp-tabs-container text-sm-left tabs-group-default">
           <div>
-            <%= render 'admin/groups' %>
             <br>
             <div id="users-target-1">
-              <%= render 'user/users', users: @users %>
-            </div>
-          </div>
-          <div>
-            <div id="users-target-2">
-              <%= render 'user/users', users: @users %>
+              <%= render 'users/all', users: @golfers, display_groups: true %>
             </div>
           </div>
           <div>
             <%= render 'admin/sponsorships', sponsorships: @sponsorships %>
           </div>
           <div>
-            <%= render 'admin/golfer_packages', packages: @packages %>
-          </div>
-
-          <div>
             <%= render 'admin/donations', donations: @donations %>
+          </div>
+          <div>
+            <%#= render 'admin/golfer_packages', packages: @packages %>
+            <%= render 'users/all', users: @users %>
           </div>
           <div>
             <%= render 'admin/admins', admins: @admins %>

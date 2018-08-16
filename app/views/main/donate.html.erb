@@ -124,30 +124,7 @@
     </div>
   </section>
 
-  <section class="bg-gray-light section-80 section-md-110">
-    <div class="shell">
-      <h2>Memorial Foundation Donations</h2>
-      <div class="range range-xs-center offset-md-top-42 offset-top-22 text-md-left">
-        <div class="cell-md-6 cell-sm-8">
-          <p>Make a donation of any amount, to the Athan Kaloidis Memorial Foundation. We use the proceeds of donations
-            to support the Make-A-Wish Foundation.</p>
-          <% form_tag add_donation_path,
-                      :method => :post,
-                      :class => "offset-top-22 rd-mailform form-inline" do %>
-
-            <div class="form-group">
-              <label for="donation-amount" class="form-label">Donation Amount</label>
-              <%= text_field :amount, class: "form-control" %>
-            </div>
-            <button type="submit" class="btn btn-primary btn-sm">Donate</button>
-          <% end %>
-
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section-80">
+  <section class="bg-gray-light section-80">
     <div class="shell shell-wide">
       <h2>Tournament Sponsorship Packages</h2>
       <hr class="divider divider-60 divider-primary offset-top-32">

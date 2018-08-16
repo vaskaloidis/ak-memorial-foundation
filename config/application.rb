@@ -23,7 +23,7 @@ module AkMemorialFoundation
     config.action_mailer.delivery_method = :smtp
 
     config.generators do |g|
-      g.fixture_replacement :factory_girl
+    g.fixture_replacement :factory_bot
     g.test_framework :rspec,
                      :fixtures => true,
                      :view_specs => false,

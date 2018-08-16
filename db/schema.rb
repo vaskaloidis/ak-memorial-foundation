@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180530232020) do
+ActiveRecord::Schema.define(version: 20180623024637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,8 @@ ActiveRecord::Schema.define(version: 20180530232020) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_invites_on_discarded_at"
     t.index ["user_id"], name: "index_invites_on_user_id"
   end
 
@@ -38,12 +40,16 @@ ActiveRecord::Schema.define(version: 20180530232020) do
   create_table "purchases", force: :cascade do |t|
     t.bigint "product_id"
     t.bigint "user_id"
-    t.integer "product_category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "amount"
     t.boolean "display"
     t.integer "payment_type"
+    t.bigint "admin_id"
+    t.string "note"
+    t.datetime "discarded_at"
+    t.index ["admin_id"], name: "index_purchases_on_admin_id"
+    t.index ["discarded_at"], name: "index_purchases_on_discarded_at"
     t.index ["product_id"], name: "index_purchases_on_product_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
@@ -92,6 +98,8 @@ ActiveRecord::Schema.define(version: 20180530232020) do
     t.string "golfer4_name"
     t.boolean "admin", default: false
     t.boolean "force_password_change", default: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
