@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory(:purchase) do
     amount BigDecimal.new("150.0")
     display nil

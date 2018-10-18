@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory(:product) do
     category "sponsor"
     description "ToFactory: RubyParser exception parsing this attribute"
